@@ -1,12 +1,12 @@
-import { SiGithub, SiLinkedin } from "react-icons/all";
+import { SiGithub, SiLinkedin } from "react-icons/si";
 
 import OpenInNew from "./Icons/OpenInNew";
 import Button from "./Inputs/Button";
 
 export default function Header() {
   return (
-    <header className="flex h-12 w-full justify-between rounded-b-2xl bg-slate-800 px-8 text-xl">
-      <div className="flex items-center gap-4">
+    <header className="flex h-12 w-fit select-none justify-center self-center rounded-b-2xl bg-slate-800 bg-opacity-90 px-6 text-xl backdrop-blur-md sm:w-full sm:justify-between">
+      <div className="hidden items-center sm:flex sm:gap-4">
         <a className="cursor-pointer">About</a>
         <a className="cursor-pointer">Projects</a>
         <a className="cursor-pointer">Contact</a>
