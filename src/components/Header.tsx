@@ -47,7 +47,7 @@ export default function Header() {
   return (
     <motion.header
       className={
-        "fixed flex h-12 w-fit max-w-7xl select-none justify-center self-center px-6 text-xl bg-blend-color backdrop-blur-md dark:bg-slate-800/90 sm:w-11/12 sm:justify-between"
+        "fixed flex h-12 w-fit max-w-7xl select-none justify-center self-center px-6 text-xl backdrop-blur-md dark:bg-slate-800/80 sm:w-11/12 sm:justify-between"
       }
       style={{
         y,
