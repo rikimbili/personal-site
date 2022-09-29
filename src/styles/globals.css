@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply max-w-7xl mx-auto px-4 bg-slate-50 text-indigo-900 dark:bg-slate-900 dark:text-slate-50;
+    font-family: 'Roboto', sans-serif;
+  }
+}
