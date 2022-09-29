@@ -11,9 +11,11 @@ const springConfig = {
 };
 
 export default function Header() {
+  //#region Hooks.
+
   const { scrollYProgress } = useScroll({ offset: ["start", "end"] });
   const y = useSpring(0, springConfig);
-  const borderRadius = useSpring(16, springConfig);
+  const borderRadius = useSpring(0, springConfig);
   const borderBottomRadius = useSpring(16, springConfig);
 
   useEffect(() => {
@@ -29,7 +31,18 @@ export default function Header() {
         borderBottomRadius.set(32);
       }
     });
-  }, [borderRadius, scrollYProgress, y]);
+  }, [borderBottomRadius, borderRadius, scrollYProgress, y]);
+
+  // Retain header state if a previous scrollY value is retained (e.g. Refreshing the page)
+  useEffect(() => {
+    if (window.scrollY > 0) {
+      y.set(16);
+      borderRadius.set(32);
+      borderBottomRadius.set(32);
+    }
+  }, []);
+
+  //#endregion
 
   return (
     <motion.header
