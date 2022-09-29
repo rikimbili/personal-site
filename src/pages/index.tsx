@@ -1,3 +1,4 @@
+import { motion, useScroll, useSpring } from "framer-motion";
 import Head from "next/head";
 
 import Footer from "../components/Footer";
@@ -9,11 +10,11 @@ export default function Home() {
       <Head>
         <title>{"Raciel's Portfolio"}</title>
       </Head>
-      <div className="flex min-h-screen flex-col">
+      <motion.div className="flex min-h-screen flex-col">
         <Header />
-        <main className="grow"></main>
+        <main className="h-[200vh] grow"></main>
         <Footer />
-      </div>
+      </motion.div>
     </>
   );
 }

@@ -8,10 +8,11 @@ interface Props extends HTMLAttributes<HTMLButtonElement> {
 export default function Button({ children }: Props) {
   return (
     <motion.button
-      className="flex items-center gap-2 rounded-md px-3 py-1 dark:bg-slate-700 dark:text-slate-50 dark:hover:bg-slate-600"
-      whileHover={{ scale: 1.03 }}
-      whileTap={{ scale: 0.97 }}
-      transition={{ type: "spring", stiffness: 500, damping: 30 }}
+      className={
+        "flex items-center gap-2 rounded-md px-3 py-1 transition duration-100 ease-out active:duration-75 dark:bg-slate-700 dark:text-slate-50 dark:hover:bg-slate-600"
+      }
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
     >
       {children}
     </motion.button>
