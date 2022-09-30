@@ -1,9 +1,12 @@
-import { motion, useMotionValue, useScroll, useSpring } from "framer-motion";
-import { useEffect, useState } from "react";
+import { motion, useScroll, useSpring } from "framer-motion";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 import { SiGithub, SiLinkedin } from "react-icons/si";
 
 import OpenInNew from "./Icons/OpenInNew";
 import Button from "./Inputs/Button";
+import HyperLink from "./Inputs/IconHyperLink";
+import IconHyperLink from "./Inputs/IconHyperLink";
 
 const springConfig = {
   stiffness: 400,
@@ -12,6 +15,7 @@ const springConfig = {
 
 export default function Header() {
   //#region Hooks.
+  const router = useRouter();
 
   const { scrollYProgress } = useScroll({ offset: ["start", "end"] });
   const y = useSpring(0, springConfig);
@@ -47,7 +51,7 @@ export default function Header() {
   return (
     <motion.header
       className={
-        "fixed flex h-12 w-fit max-w-7xl select-none justify-center self-center px-6 text-xl backdrop-blur-md dark:bg-slate-800/80 sm:w-11/12 sm:justify-between"
+        "fixed flex h-12 w-fit max-w-7xl select-none justify-center self-center px-6 text-xl shadow-weak backdrop-blur-md dark:bg-slate-800/80 sm:w-11/12 sm:justify-between"
       }
       style={{
         y,
@@ -62,12 +66,12 @@ export default function Header() {
         <a className={"cursor-pointer"}>Contact</a>
       </div>
       <div className={"flex items-center gap-4"}>
-        <a>
-          <SiGithub className={"cursor-pointer fill-slate-50 text-3xl"} />
-        </a>
-        <a>
-          <SiLinkedin className={"cursor-pointer fill-slate-50 text-3xl"} />
-        </a>
+        <IconHyperLink href={"https://github.com/Rikimbili"}>
+          <SiGithub />
+        </IconHyperLink>
+        <IconHyperLink href={"https://www.linkedin.com/in/racielap"}>
+          <SiLinkedin />
+        </IconHyperLink>
         <Button>
           Resume
           <OpenInNew className={"w-6 fill-slate-50"} />

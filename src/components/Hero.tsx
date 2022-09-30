@@ -25,6 +25,7 @@ export default function Hero() {
       }
     >
       <div className={"relative -z-10 hidden h-full w-4/5 sm:block"}>
+        {/* TODO: Add sizes prop -> https://nextjs.org/docs/api-reference/next/future/image#sizes */}
         <Image
           src={"/../public/images/hero_photo.png"}
           alt={"Hero Photo"}
@@ -40,8 +41,8 @@ export default function Hero() {
           Hey there{" "}
           <motion.span
             className={"inline-block cursor-grab"}
-            whileHover={"waving"}
             variants={wavingHandVariants}
+            whileHover={"waving"}
             animate={"wave"}
           >
             👋
@@ -51,8 +52,8 @@ export default function Hero() {
           My name is <b>Raciel</b> Antela Pardo.
         </p>
         <p>
-          I'm a software developer interested in building responsive and
-          approachable web and mobile applications
+          I specialize in building responsive web and mobile apps, while using
+          modern development practices.
         </p>
       </div>
     </section>

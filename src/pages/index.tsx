@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>{"Raciel's Portfolio"}</title>
+        <title>{"Raciel Antela Pardo"}</title>
       </Head>
       <div className="flex min-h-screen flex-col">
         <Header />
