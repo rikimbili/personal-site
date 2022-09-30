@@ -38,7 +38,7 @@ export default function Home() {
       {!widthWarning && (
         <div className="flex min-h-screen flex-col">
           <Header />
-          <main className="my-24 flex grow flex-col gap-16 sm:gap-24 lg:gap-36">
+          <main className="my-20 flex grow flex-col gap-16 sm:my-24 sm:gap-24 lg:gap-36">
             <Hero />
             <About />
             <Projects />
