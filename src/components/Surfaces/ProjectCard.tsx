@@ -1,5 +1,5 @@
+import { motion } from "framer-motion";
 import Image from "next/future/image";
-import { RiExternalLinkLine } from "react-icons/ri";
 import { SiGithub } from "react-icons/si";
 
 import OpenInNew from "../Icons/OpenInNew";
@@ -8,22 +8,42 @@ import Button from "../Inputs/Button";
 interface Props {
   title: string;
   description: string;
-  tags: string[];
-  hostedLink?: string;
+  tags?: string[];
+  visitLink?: string;
   sourceLink?: string;
   image: string;
+  visitTextOverride?: string;
 }
 
 export default function ProjectCard({
   title,
   description,
   tags,
-  hostedLink,
+  visitLink,
   sourceLink,
   image,
+  visitTextOverride = "Try it out!",
 }: Props) {
+  //#region Handlers
+
+  const handleVisitClick = () => {
+    window.open(visitLink, "_blank");
+  };
+
+  const handleSourceClick = () => {
+    window.open(sourceLink, "_blank");
+  };
+
+  //#endregion
+
   return (
-    <div className="flex w-full max-w-xl flex-1 flex-col gap-2 overflow-hidden rounded-2xl bg-slate-800 pb-8 sm:min-w-[24rem] sm:gap-4">
+    <motion.div
+      whileHover={{
+        scale: 1.01,
+        boxShadow: "0rem 0.5rem 1rem rgba(0, 0, 0, 0.5)",
+      }}
+      className="flex w-full max-w-xl flex-1 flex-col gap-2 overflow-hidden rounded-2xl bg-slate-800 pb-8 sm:min-w-[24rem] sm:gap-4"
+    >
       <div
         className={
           "relative h-[56vw] w-full sm:h-[58vw] md:h-96 lg:h-[28vw] xl:h-96"
@@ -44,7 +64,7 @@ export default function ProjectCard({
         {description}
       </p>
       <div className={"mx-2 flex flex-wrap justify-center gap-2 sm:mx-4"}>
-        {tags.map((tag) => (
+        {tags?.map((tag) => (
           <span
             key={tag}
             className={
@@ -60,17 +80,17 @@ export default function ProjectCard({
           "mx-2 mt-4 flex justify-evenly gap-4 whitespace-nowrap sm:mx-4"
         }
       >
-        {hostedLink && (
-          <Button>
-            Try it out! <OpenInNew className={"w-7 fill-slate-50"} />
+        {visitLink && (
+          <Button onClick={handleVisitClick}>
+            {visitTextOverride} <OpenInNew className={"w-7 fill-slate-50"} />
           </Button>
         )}
         {sourceLink && (
-          <Button>
-            Source <SiGithub className={"fill-slate-50"}></SiGithub>
+          <Button onClick={handleSourceClick}>
+            Source <SiGithub className={"fill-slate-50"} />
           </Button>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 }

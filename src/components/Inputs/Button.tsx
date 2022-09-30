@@ -1,7 +1,7 @@
-import { motion, MotionProps } from "framer-motion";
+import { HTMLMotionProps, motion, MotionProps } from "framer-motion";
 import { ReactNode } from "react";
 
-interface Props extends MotionProps {
+interface Props extends HTMLMotionProps<"button"> {
   children: ReactNode;
 }
 

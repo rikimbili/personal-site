@@ -24,43 +24,43 @@ export default function Projects() {
         }
       >
         <ProjectCard
-          title={"Notes"}
+          title={"Keymorph"}
           description={
-            "Note-taking webapp with categories, rich text editing and markdown support."
+            "Software development collective. Our goal is to create responsive and useful apps under a unified ecosystem."
           }
-          tags={["Next.js", "MUI", "CosmosDB", "Framer Motion"]}
-          image={"/../public/images/projects/notes.png"}
-          hostedLink={"https://notes.keymorph.com"}
-          sourceLink={"https://github.com/keymorph/notes"}
+          tags={["Web Development", "UI/UX"]}
+          image={"/../public/images/projects/keymorph_dark.png"}
+          visitLink={"https://keymorph.com"}
+          sourceLink={"https://github.com/keymorph"}
+          visitTextOverride={"Visit"}
         />
         <ProjectCard
           title={"Notes"}
           description={
-            "Note-taking webapp with categories, rich text editing and markdown support."
+            "Note-taking web app with categories, rich text editing and markdown support."
           }
           tags={["Next.js", "MUI", "CosmosDB", "Framer Motion"]}
           image={"/../public/images/projects/notes.png"}
-          hostedLink={"https://notes.keymorph.com"}
+          visitLink={"https://notes.keymorph.com"}
           sourceLink={"https://github.com/keymorph/notes"}
         />
         <ProjectCard
-          title={"Notes"}
+          title={"AiBud"}
           description={
-            "Note-taking webapp with categories, rich text editing and markdown support."
+            "Discord chat bot that uses OpenAI's GPT-3 language models to generate reply prompts."
           }
-          tags={["Next.js", "MUI", "CosmosDB", "Framer Motion"]}
-          image={"/../public/images/projects/notes.png"}
-          hostedLink={"https://notes.keymorph.com"}
-          sourceLink={"https://github.com/keymorph/notes"}
+          tags={["Discord.js", "TypeScript"]}
+          image={"/../public/images/projects/AiBud.png"}
+          sourceLink={"https://github.com/Rikimbili/AiBud"}
         />
         <ProjectCard
-          title={"Notes"}
+          title={"motionLED"}
           description={
-            "Note-taking webapp with categories, rich text editing and markdown support."
+            "Python program to control LED lights with motion detection and schedules."
           }
-          tags={["Next.js", "MUI", "CosmosDB", "Framer Motion"]}
-          image={"/../public/images/projects/notes.png"}
-          sourceLink={"https://github.com/keymorph/notes"}
+          tags={["Python", "IoT", "Raspberry Pi", "API"]}
+          image={"/../public/images/projects/motionLED.png"}
+          sourceLink={"https://github.com/Rikimbili/motionLED"}
         />
       </div>
     </section>
