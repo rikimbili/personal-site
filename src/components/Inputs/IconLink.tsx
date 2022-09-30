@@ -14,7 +14,8 @@ export default function IconLink({
   return (
     <motion.a
       className={
-        "cursor-pointer text-3xl transition duration-100 ease-out active:duration-75 [&>*]:fill-slate-50 [&>*]:transition [&>*]:duration-100 [&>*]:ease-out [&>*]:hover:fill-slate-200 [&>*]:active:duration-75"
+        "cursor-pointer text-3xl transition duration-100 ease-out active:duration-75 [&>*]:fill-slate-50 [&>*]:transition [&>*]:duration-100 [&>*]:ease-out [&>*]:hover:fill-slate-200 [&>*]:active:duration-75 " +
+        rest.className
       }
       whileHover={{ scale: 1.04 }}
       whileTap={{ scale: 0.96 }}
