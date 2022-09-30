@@ -6,7 +6,7 @@ interface Props extends HTMLMotionProps<"a"> {
   target?: string;
 }
 
-export default function IconHyperLink({
+export default function IconLink({
   children,
   target = "_blank",
   ...rest

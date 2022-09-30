@@ -5,8 +5,8 @@ import { SiGithub, SiLinkedin } from "react-icons/si";
 
 import OpenInNew from "./Icons/OpenInNew";
 import Button from "./Inputs/Button";
-import HyperLink from "./Inputs/IconHyperLink";
-import IconHyperLink from "./Inputs/IconHyperLink";
+import HyperLink from "./Inputs/IconLink";
+import IconLink from "./Inputs/IconLink";
 
 const springConfig = {
   stiffness: 400,
@@ -51,7 +51,7 @@ export default function Header() {
   return (
     <motion.header
       className={
-        "fixed flex h-12 w-fit max-w-7xl select-none justify-center self-center px-6 text-xl shadow-weak backdrop-blur-md dark:bg-slate-800/80 sm:w-11/12 sm:justify-between"
+        "fixed z-50 flex h-12 w-fit max-w-7xl select-none justify-center self-center px-6 text-xl shadow-weak backdrop-blur-md dark:bg-slate-800/80 sm:w-11/12 sm:justify-between"
       }
       style={{
         y,
@@ -61,17 +61,26 @@ export default function Header() {
       }}
     >
       <div className={"hidden items-center sm:flex sm:gap-4"}>
-        <a className={"cursor-pointer"}>About</a>
-        <a className={"cursor-pointer"}>Projects</a>
-        <a className={"cursor-pointer"}>Contact</a>
+        <span>
+          <a className={"cursor-pointer"}>About</a>
+          <span></span>
+        </span>
+        <span>
+          <a className={"cursor-pointer"}>Projects</a>
+          <span></span>
+        </span>
+        <span>
+          <a className={"cursor-pointer"}>Contact</a>
+          <span></span>
+        </span>
       </div>
       <div className={"flex items-center gap-4"}>
-        <IconHyperLink href={"https://github.com/Rikimbili"}>
+        <IconLink href={"https://github.com/Rikimbili"}>
           <SiGithub />
-        </IconHyperLink>
-        <IconHyperLink href={"https://www.linkedin.com/in/racielap"}>
+        </IconLink>
+        <IconLink href={"https://www.linkedin.com/in/racielap"}>
           <SiLinkedin />
-        </IconHyperLink>
+        </IconLink>
         <Button>
           Resume
           <OpenInNew className={"w-6 fill-slate-50"} />

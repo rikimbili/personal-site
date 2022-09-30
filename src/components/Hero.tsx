@@ -21,7 +21,7 @@ export default function Hero() {
   return (
     <section
       className={
-        "flex select-none items-center sm:h-[22rem] md:h-[32rem] lg:h-[48rem]"
+        "flex select-none items-center justify-center sm:h-[22rem] md:h-[32rem] lg:h-[48rem]"
       }
     >
       <div className={"relative -z-10 hidden h-full w-4/5 sm:block"}>
@@ -34,9 +34,11 @@ export default function Hero() {
           priority
         />
       </div>
-      <div className={"text-center text-lg sm:text-xl lg:text-2xl"}>
+      <div className={"text-lg sm:w-full sm:text-xl md:w-10/12 lg:text-2xl"}>
         <h2
-          className={"mb-6 text-4xl sm:mb-8 sm:text-5xl lg:mb-12 lg:text-6xl"}
+          className={
+            "mb-8 text-center text-4xl sm:mb-10 sm:text-5xl lg:mb-14 lg:text-6xl"
+          }
         >
           Hey there{" "}
           <motion.span
@@ -48,12 +50,10 @@ export default function Hero() {
             👋
           </motion.span>
         </h2>
-        <p>
-          My name is <b>Raciel</b> Antela Pardo.
-        </p>
-        <p>
-          I specialize in building responsive web and mobile apps, while using
-          modern development practices.
+        <p className={"text-justify sm:text-center"}>
+          My name is <b>Raciel</b> Antela Pardo. I specialize in building
+          responsive web and mobile apps, while using modern development
+          practices.
         </p>
       </div>
     </section>
