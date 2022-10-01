@@ -65,7 +65,6 @@ export default function Header({ aboutRef, projectsRef, contactRef }: Props) {
         scroll > aboutOffset - 300 ||
         (aboutOffset === Infinity && window.location.hash === "#about")
       ) {
-        console.log("about", scroll, aboutOffset, window.location.hash);
         updateProgress(20, 16);
       } else {
         updateProgress(-30, 0);
