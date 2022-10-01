@@ -32,7 +32,7 @@ export default function SectionWrapper({
   //#region Hooks
 
   const ref = useRef(null);
-  const isInView = useInView(ref, { margin: "-15%" });
+  const isInView = useInView(ref, { margin: "-10%" });
   const sectionControl = useAnimationControls();
 
   // Add the anchor tag to the URL and animate the section when it comes into view.

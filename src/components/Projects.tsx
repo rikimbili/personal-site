@@ -9,7 +9,7 @@ const Projects = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
   return (
     <SectionWrapper
       id={"projects"}
-      fadeInDelay={0.2}
+      fadeInDelay={0.1}
       className={
         "scroll-mt-20 text-justify text-lg sm:w-full sm:text-xl lg:text-2xl"
       }

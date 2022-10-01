@@ -19,14 +19,14 @@ const springConfig = {
 
 const dampenedSpringConfig = {
   stiffness: 300,
-  damping: 25,
+  damping: 30,
 };
 
 export default function Header({ aboutRef, projectsRef, contactRef }: Props) {
   //#region Hooks.
   const { scrollY } = useScroll();
-  const progressX = useSpring(20, dampenedSpringConfig);
-  const progressWidth = useSpring(16, dampenedSpringConfig);
+  const progressX = useSpring(-30, dampenedSpringConfig);
+  const progressWidth = useSpring(0, dampenedSpringConfig);
   const headerY = useSpring(0, springConfig);
   const headerBorderRadius = useSpring(0, springConfig);
   const headerBorderBottomRadius = useSpring(16, springConfig);
@@ -44,22 +44,31 @@ export default function Header({ aboutRef, projectsRef, contactRef }: Props) {
         headerBorderBottomRadius.set(32);
       }
       // Get the offset position of all the main sections.
-      const aboutOffset = aboutRef?.current?.offsetTop ?? -1;
-      const projectsOffset = projectsRef?.current?.offsetTop ?? -1;
-      const contactOffset = contactRef?.current?.offsetTop ?? -1;
+      const aboutOffset = aboutRef?.current?.offsetTop || Infinity;
+      const projectsOffset = projectsRef?.current?.offsetTop || Infinity;
+      const contactOffset = contactRef?.current?.offsetTop || Infinity;
 
-      if (scroll + window.innerHeight > contactOffset + 100) {
-        progressX.set(185);
-        progressWidth.set(16);
-      } else if (scroll > projectsOffset - 200) {
-        progressX.set(100);
-        progressWidth.set(16);
-      } else if (scroll > aboutOffset - 300) {
-        progressX.set(20);
-        progressWidth.set(16);
+      // Updates the progress dot position and width based on the scroll position.
+      // If the offset is Infinity due to the ref not being set / the section not being rendered, the progress dot will
+      // be set based on the hash in the URL.
+      if (
+        scroll + window.innerHeight > contactOffset + 100 ||
+        (contactOffset === Infinity && window.location.hash === "#contact")
+      ) {
+        updateProgress(185, 16);
+      } else if (
+        scroll > projectsOffset - 200 ||
+        (projectsOffset === Infinity && window.location.hash === "#projects")
+      ) {
+        updateProgress(100, 16);
+      } else if (
+        scroll > aboutOffset - 300 ||
+        (aboutOffset === Infinity && window.location.hash === "#about")
+      ) {
+        console.log("about", scroll, aboutOffset, window.location.hash);
+        updateProgress(20, 16);
       } else {
-        progressX.set(-30);
-        progressWidth.set(0);
+        updateProgress(-30, 0);
       }
     });
   }, [
@@ -74,8 +83,8 @@ export default function Header({ aboutRef, projectsRef, contactRef }: Props) {
     contactRef,
   ]);
 
-  // Retain header state if a previous scrollY value is retained (e.g. Refreshing the page)
   useEffect(() => {
+    // Retain header state if a previous scrollY value is retained (e.g. Refreshing the page)
     if (window.scrollY > 0) {
       headerY.set(16);
       headerBorderRadius.set(32);
@@ -84,6 +93,13 @@ export default function Header({ aboutRef, projectsRef, contactRef }: Props) {
   }, []);
 
   //#endregion
+
+  //#region Utility functions.
+
+  const updateProgress = (x: number, width: number) => {
+    progressX.set(x);
+    progressWidth.set(width);
+  };
 
   //#region Handlers
 

@@ -3,7 +3,7 @@ import CurrentlyPlaying from "./Widgets/CurrentlyPlaying";
 
 export default function Footer() {
   return (
-    <footer className="flex flex-col items-center gap-4 self-center rounded-t-2xl bg-slate-800/90 px-8 pt-2 pb-4 text-base sm:w-full sm:gap-6 sm:pt-4 sm:pb-6 sm:text-xl">
+    <footer className="flex flex-col items-center gap-4 self-center rounded-t-2xl px-8 pt-2 pb-4 text-base dark:bg-slate-800/80 sm:w-full sm:gap-6 sm:pt-4 sm:pb-6 sm:text-xl">
       <WebsiteInfo className={"lg:-mb-14"} />
       <div
         className={

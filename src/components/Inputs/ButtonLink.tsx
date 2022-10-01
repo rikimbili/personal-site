@@ -16,7 +16,7 @@ export default function ButtonLink({
   return (
     <motion.a
       className={
-        "cursor-pointer text-3xl text-slate-50 transition duration-100 ease-out hover:text-slate-300  active:duration-75 " +
+        "cursor-pointer text-3xl transition duration-100 ease-out hover:text-slate-700 dark:hover:text-slate-300  active:duration-75 " +
         "[&>*]:fill-slate-50 [&>*]:transition [&>*]:duration-100 [&>*]:ease-out [&>*]:hover:fill-slate-300 [&>*]:active:duration-75 " +
         className
       }

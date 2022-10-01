@@ -26,7 +26,7 @@ export default function Home() {
         <title>{"Raciel Antela Pardo"}</title>
       </Head>
       {!smallWidth ? (
-        <div className="flex min-h-screen flex-col">
+        <div className="flex min-h-screen flex-col px-4">
           <Header
             aboutRef={aboutRef}
             projectsRef={projectsRef}

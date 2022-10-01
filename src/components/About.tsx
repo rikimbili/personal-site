@@ -7,7 +7,7 @@ const About = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
   return (
     <SectionWrapper
       id={"about"}
-      fadeInDelay={0.1}
+      fadeInDelay={0.05}
       className={
         "scroll-mt-20 text-justify text-lg sm:w-full sm:text-xl lg:text-2xl"
       }

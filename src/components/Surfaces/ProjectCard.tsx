@@ -1,6 +1,11 @@
-import { motion, useAnimationControls, useInView } from "framer-motion";
+import {
+  motion,
+  Reorder,
+  useAnimationControls,
+  useInView,
+} from "framer-motion";
 import Image from "next/future/image";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { SiGithub } from "react-icons/si";
 
 import OpenInNew from "../Icons/OpenInNew";
@@ -46,6 +51,8 @@ export default function ProjectCard({
   const ref = useRef(null);
   const isInView = useInView(ref, { margin: "-15%" });
   const sectionControl = useAnimationControls();
+
+  const [reorderedTags, setReorderedTags] = useState<string[]>(tags || []);
 
   // Add the anchor tag to the URL and animate the section when it comes into view.
   useEffect(() => {
@@ -100,18 +107,38 @@ export default function ProjectCard({
       <p className={"mx-2 text-center text-base sm:mx-4 sm:text-lg lg:text-xl"}>
         {description}
       </p>
-      <div className={"mx-2 flex flex-wrap justify-center gap-2 sm:mx-4"}>
-        {tags?.map((tag) => (
-          <span
+      <Reorder.Group
+        values={reorderedTags}
+        axis={"x"}
+        onReorder={setReorderedTags}
+        className={"mx-2 flex flex-wrap justify-center gap-2 sm:mx-4"}
+      >
+        {reorderedTags?.map((tag) => (
+          <Reorder.Item
             key={tag}
+            value={tag}
+            whileHover={{ cursor: "grab" }}
+            whileDrag={{
+              cursor: "grabbing",
+              rotate: [0, 2, 0, -2],
+              transition: {
+                duration: 0.4,
+                repeat: Infinity,
+                repeatType: "loop",
+              },
+            }}
+            dragTransition={{
+              bounceStiffness: 500,
+              bounceDamping: 30,
+            }}
             className={
-              "rounded-full bg-slate-700 px-2 py-1 text-sm font-bold text-slate-100 md:text-base lg:text-lg"
+              "rounded-full bg-slate-700 px-2 py-1 text-sm font-bold text-slate-800 dark:text-slate-100 md:text-base lg:text-lg"
             }
           >
             {tag}
-          </span>
+          </Reorder.Item>
         ))}
-      </div>
+      </Reorder.Group>
       <div
         className={
           "mx-2 mt-4 flex justify-evenly gap-4 whitespace-nowrap sm:mx-4"
