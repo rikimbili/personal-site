@@ -14,7 +14,7 @@ const springConfig = {
 
 const dampenedSpringConfig = {
   stiffness: 300,
-  damping: 30,
+  damping: 25,
 };
 
 export default function Header() {
@@ -22,7 +22,7 @@ export default function Header() {
   const lg = useMediaQuery("(min-width: 1024px)");
 
   const { scrollYProgress } = useScroll();
-  const progressX = useSpring(20, springConfig);
+  const progressX = useSpring(20, dampenedSpringConfig);
   const progressWidth = useSpring(16, dampenedSpringConfig);
   const headerY = useSpring(0, springConfig);
   const headerBorderRadius = useSpring(0, springConfig);
@@ -40,11 +40,9 @@ export default function Header() {
         headerBorderRadius.set(32);
         headerBorderBottomRadius.set(32);
       }
-      console.log(lg);
       // Update the progress indicator
-      const projectsOffset = lg ? 0.75 : 0.25;
+      const projectsOffset = lg ? 0.63 : 0.23;
 
-      console.log(projectsOffset, progress);
       if (progress > 0.95) {
         progressX.set(185);
         progressWidth.set(16);

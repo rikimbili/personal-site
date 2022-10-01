@@ -15,7 +15,7 @@ export default [
     title: "Keymorph",
     description:
       "Softwaredevelopment collective. Our goal is to create responsive and useful apps under a unified ecosystem.",
-    tags: ["Web Development", "UI/UX"],
+    tags: ["Web Development"],
     imageDark: "/../public/images/projects/keymorph_dark.png",
     imageLight: "/../public/images/projects/keymorph_light.png",
     visitLink: "https://keymorph.com",

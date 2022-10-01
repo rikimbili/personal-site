@@ -8,7 +8,7 @@ export default function About() {
   return (
     <SectionWrapper
       id={"about"}
-      delay={0.1}
+      fadeInDelay={0.1}
       className={
         "scroll-mt-20 text-justify text-lg sm:w-full sm:text-xl lg:text-2xl"
       }

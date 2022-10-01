@@ -4,7 +4,7 @@ import { ReactNode, useEffect, useRef } from "react";
 interface Props {
   className?: string;
   children: ReactNode;
-  delay?: number;
+  fadeInDelay?: number;
   id: string;
 }
 
@@ -25,7 +25,7 @@ const sectionVariants = {
 export default function SectionWrapper({
   id,
   children,
-  delay = 0,
+  fadeInDelay = 0,
   className = "",
 }: Props) {
   //#region Hooks
@@ -51,7 +51,7 @@ export default function SectionWrapper({
       animate={sectionControl}
       variants={sectionVariants}
       className={className}
-      custom={delay}
+      custom={fadeInDelay}
     >
       {children}
     </motion.section>

@@ -29,11 +29,13 @@ export default function CurrentlyPlaying({ className = "" }: Props) {
   const [item, setItem] = useState<CurrentlyPlayingItem | null>(null);
 
   useEffect(() => {
+    // Fetch the currently playing item from the Spotify API
     const getCurrPlaying = () =>
       fetch(`${window.location.origin}/api/currently-playing`, {
         method: "GET",
       }).then((res) =>
         res.json().then((data: CurrentlyPlayingData) => {
+          // If not a track or not playing, set item to null
           if (data?.currently_playing_type === "track" && data?.is_playing) {
             setItem(data.item);
           } else {
@@ -41,6 +43,7 @@ export default function CurrentlyPlaying({ className = "" }: Props) {
           }
         })
       );
+    // Fetch currently playing every 15 seconds
     const interval = setInterval(getCurrPlaying, 15000);
 
     getCurrPlaying();
@@ -53,7 +56,10 @@ export default function CurrentlyPlaying({ className = "" }: Props) {
   return (
     <div className={"flex " + className}>
       {item ? (
-        <>
+        <ButtonLink
+          href={item.external_urls.spotify}
+          className={"flex items-center"}
+        >
           <motion.div
             animate={{
               rotate: [10, 0, -10],
@@ -67,21 +73,17 @@ export default function CurrentlyPlaying({ className = "" }: Props) {
               duration: 0.4,
             }}
           >
-            <ButtonLink
-              href={item.external_urls.spotify}
-              className={"inline-block text-2xl"}
-            >
-              <MdMusicNote />
-            </ButtonLink>
+            <MdMusicNote className={"text-2xl"} />
           </motion.div>
-          <span className="ml-1 max-w-[15rem] overflow-hidden text-ellipsis whitespace-nowrap sm:max-w-xs">
-            {item.artists?.[0]?.name} - {item.name}
+          <MdMusicOff className={"inline-block text-2xl"} />
+          <span className="ml-1 max-w-[16rem] overflow-hidden text-ellipsis whitespace-nowrap sm:max-w-xs xl:max-w-sm">
+            {item.artists?.[0]?.name} — {item.name}
           </span>
-        </>
+        </ButtonLink>
       ) : (
         <>
           <MdMusicOff className={"inline-block text-2xl"} />
-          <span className="ml-1">Not playing</span>
+          <span className="ml-1">Not playing — Spotify</span>
         </>
       )}
     </div>

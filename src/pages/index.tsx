@@ -1,20 +1,12 @@
-import { motion } from "framer-motion";
 import Head from "next/head";
 
 import About from "../components/About";
+import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Hero from "../components/Hero";
 import Projects from "../components/Projects";
 import { useMediaQuery } from "../hooks/useMediaQuery";
-
-const mainVariants = {
-  stagger: {
-    transition: {
-      staggerChildren: 0.5,
-    },
-  },
-};
 
 export default function Home() {
   //#region Hooks
@@ -31,15 +23,12 @@ export default function Home() {
       {!smallWidth ? (
         <div className="flex min-h-screen flex-col">
           <Header />
-          <motion.main
-            className="my-20 flex grow flex-col gap-16 sm:my-24 sm:gap-24 lg:gap-36"
-            variants={mainVariants}
-            animate={"stagger"}
-          >
+          <main className="my-20 flex grow flex-col gap-16 sm:my-24 sm:gap-24 lg:gap-36">
             <Hero />
             <About />
             <Projects />
-          </motion.main>
+            <Contact />
+          </main>
           <Footer />
         </div>
       ) : (

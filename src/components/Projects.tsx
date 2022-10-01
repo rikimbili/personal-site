@@ -14,9 +14,9 @@ export default function Projects() {
   return (
     <SectionWrapper
       id={"projects"}
-      delay={0.2}
+      fadeInDelay={0.2}
       className={
-        "scroll-mt-20 text-justify text-lg sm:w-full sm:text-xl lg:text-2xl"
+        "select-none scroll-mt-20 text-justify text-lg sm:w-full sm:text-xl lg:text-2xl"
       }
     >
       <h2
@@ -36,7 +36,7 @@ export default function Projects() {
         {projects.map((project, index) => (
           <ProjectCard
             key={index}
-            fadeInDelay={0.1 + (index % 4) * 0.1}
+            fadeInDelay={0.1 + (index % 2) * 0.1}
             image={
               (isDarkTheme ? project.imageDark : project.imageLight) ||
               project.image ||
