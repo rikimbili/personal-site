@@ -1,10 +1,20 @@
+import projects from "../data/projects";
+import { useMediaQuery } from "../hooks/useMediaQuery";
 import AnchorLink from "./Inputs/AnchorLink";
+import SectionWrapper from "./SectionWrapper";
 import ProjectCard from "./Surfaces/ProjectCard";
 
 export default function Projects() {
+  //#region Hooks
+
+  const isDarkTheme = useMediaQuery("(prefers-color-scheme: dark)");
+
+  //#endregion
+
   return (
-    <section
+    <SectionWrapper
       id={"projects"}
+      delay={0.2}
       className={
         "scroll-mt-20 text-justify text-lg sm:w-full sm:text-xl lg:text-2xl"
       }
@@ -23,46 +33,24 @@ export default function Projects() {
           "flex flex-col flex-wrap items-center justify-center gap-8 sm:gap-16 lg:flex-row"
         }
       >
-        <ProjectCard
-          title={"Keymorph"}
-          description={
-            "Software development collective. Our goal is to create responsive and useful apps under a unified ecosystem."
-          }
-          tags={["Web Development", "UI/UX"]}
-          image={"/../public/images/projects/keymorph_dark.png"}
-          visitLink={"https://keymorph.com"}
-          sourceLink={"https://github.com/keymorph"}
-          visitTextOverride={"Visit"}
-        />
-        <ProjectCard
-          title={"Notes"}
-          description={
-            "Note-taking web app with categories, rich text editing and markdown support."
-          }
-          tags={["Next.js", "MUI", "CosmosDB", "Framer Motion"]}
-          image={"/../public/images/projects/notes.png"}
-          visitLink={"https://notes.keymorph.com"}
-          sourceLink={"https://github.com/keymorph/notes"}
-        />
-        <ProjectCard
-          title={"AiBud"}
-          description={
-            "Discord chat bot that uses OpenAI's GPT-3 language models to generate reply prompts."
-          }
-          tags={["Discord.js", "TypeScript"]}
-          image={"/../public/images/projects/AiBud.png"}
-          sourceLink={"https://github.com/Rikimbili/AiBud"}
-        />
-        <ProjectCard
-          title={"motionLED"}
-          description={
-            "Python program to control LED lights with motion detection and schedules."
-          }
-          tags={["Python", "IoT", "Raspberry Pi", "API"]}
-          image={"/../public/images/projects/motionLED.png"}
-          sourceLink={"https://github.com/Rikimbili/motionLED"}
-        />
+        {projects.map((project, index) => (
+          <ProjectCard
+            key={index}
+            fadeInDelay={0.1 + (index % 4) * 0.1}
+            image={
+              (isDarkTheme ? project.imageDark : project.imageLight) ||
+              project.image ||
+              ""
+            }
+            title={project.title}
+            description={project.description}
+            tags={project.tags}
+            visitLink={project.visitLink}
+            sourceLink={project.sourceLink}
+            visitTextOverride={project.visitTextOverride}
+          />
+        ))}
       </div>
-    </section>
+    </SectionWrapper>
   );
 }

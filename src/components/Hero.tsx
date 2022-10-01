@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import Image from "next/future/image";
 
+import SectionWrapper from "./SectionWrapper";
+
 const wavingHandVariants = {
   wave: {
     rotateZ: [0, 20, -20, 20, -20, 0],
@@ -19,7 +21,8 @@ const wavingHandVariants = {
 
 export default function Hero() {
   return (
-    <section
+    <SectionWrapper
+      id="hero"
       className={
         "flex select-none items-center justify-center sm:h-[22rem] md:h-[32rem] lg:h-[48rem]"
       }
@@ -56,6 +59,6 @@ export default function Hero() {
           practices.
         </p>
       </div>
-    </section>
+    </SectionWrapper>
   );
 }

@@ -1,5 +1,6 @@
-import { motion } from "framer-motion";
+import { motion, useAnimationControls, useInView } from "framer-motion";
 import Image from "next/future/image";
+import { useEffect, useRef } from "react";
 import { SiGithub } from "react-icons/si";
 
 import OpenInNew from "../Icons/OpenInNew";
@@ -13,7 +14,22 @@ interface Props {
   sourceLink?: string;
   image: string;
   visitTextOverride?: string;
+  fadeInDelay?: number;
 }
+
+const cardVariants = {
+  initial: {
+    opacity: 0,
+    y: -20,
+  },
+  visible: (delay: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay,
+    },
+  }),
+};
 
 export default function ProjectCard({
   title,
@@ -23,7 +39,23 @@ export default function ProjectCard({
   sourceLink,
   image,
   visitTextOverride = "Try it out!",
+  fadeInDelay = 0,
 }: Props) {
+  //#region Hooks
+
+  const ref = useRef(null);
+  const isInView = useInView(ref, { margin: "-15%" });
+  const sectionControl = useAnimationControls();
+
+  // Add the anchor tag to the URL and animate the section when it comes into view.
+  useEffect(() => {
+    if (isInView) {
+      sectionControl.start("visible");
+    }
+  }, [isInView, sectionControl]);
+
+  //#endregion
+
   //#region Handlers
 
   const handleVisitClick = () => {
@@ -38,10 +70,15 @@ export default function ProjectCard({
 
   return (
     <motion.div
+      ref={ref}
       whileHover={{
         scale: 1.01,
         boxShadow: "0rem 0.5rem 1rem rgba(0, 0, 0, 0.5)",
       }}
+      initial={"initial"}
+      animate={sectionControl}
+      variants={cardVariants}
+      custom={fadeInDelay}
       className="flex w-full max-w-xl flex-1 flex-col gap-2 overflow-hidden rounded-2xl bg-slate-800 pb-8 sm:min-w-[24rem] sm:gap-4"
     >
       <div

@@ -1,12 +1,14 @@
-import { FaHashtag } from "react-icons/fa";
-
 import AnchorLink from "./Inputs/AnchorLink";
-import IconLink from "./Inputs/IconLink";
+import SectionWrapper from "./SectionWrapper";
 
 export default function About() {
+  //#region Hooks
+  //#endregion
+
   return (
-    <section
+    <SectionWrapper
       id={"about"}
+      delay={0.1}
       className={
         "scroll-mt-20 text-justify text-lg sm:w-full sm:text-xl lg:text-2xl"
       }
@@ -26,6 +28,6 @@ export default function About() {
         Expecting to get my Bachelor&apos;s in Computer Science at the
         University of Central Florida by May, 2024.
       </p>
-    </section>
+    </SectionWrapper>
   );
 }

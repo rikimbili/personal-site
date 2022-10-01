@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { MdMusicNote, MdMusicOff } from "react-icons/md";
 
-import IconLink from "../Inputs/IconLink";
+import ButtonLink from "../Inputs/ButtonLink";
 
 interface CurrentlyPlayingItem {
   name: string;
@@ -67,12 +67,12 @@ export default function CurrentlyPlaying({ className = "" }: Props) {
               duration: 0.4,
             }}
           >
-            <IconLink
+            <ButtonLink
               href={item.external_urls.spotify}
               className={"inline-block text-2xl"}
             >
               <MdMusicNote />
-            </IconLink>
+            </ButtonLink>
           </motion.div>
           <span className="ml-1 max-w-[15rem] overflow-hidden text-ellipsis whitespace-nowrap sm:max-w-xs">
             {item.artists?.[0]?.name} - {item.name}
