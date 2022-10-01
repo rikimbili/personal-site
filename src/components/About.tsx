@@ -1,10 +1,9 @@
+import { ForwardedRef, forwardRef } from "react";
+
 import AnchorLink from "./Inputs/AnchorLink";
 import SectionWrapper from "./SectionWrapper";
 
-export default function About() {
-  //#region Hooks
-  //#endregion
-
+const About = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
   return (
     <SectionWrapper
       id={"about"}
@@ -14,7 +13,10 @@ export default function About() {
       }
     >
       <h2
-        className={"group mb-4 w-fit text-3xl sm:mb-8 sm:text-4xl lg:text-5xl"}
+        ref={ref}
+        className={
+          "group mb-4 w-fit select-none text-3xl sm:mb-8 sm:text-4xl lg:text-5xl"
+        }
       >
         About{" "}
         <AnchorLink
@@ -30,4 +32,8 @@ export default function About() {
       </p>
     </SectionWrapper>
   );
-}
+});
+
+About.displayName = "About";
+
+export default About;

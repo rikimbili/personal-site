@@ -10,7 +10,7 @@ export default function Footer() {
           "flex w-full flex-wrap-reverse justify-center gap-4 sm:gap-6 lg:justify-between"
         }
       >
-        <span className={"text-justify"}>
+        <span className={"select-none text-justify"}>
           &copy; {new Date().getFullYear()} Raciel Antela Pardo.
         </span>
         <CurrentlyPlaying />

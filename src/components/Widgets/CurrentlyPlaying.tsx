@@ -54,7 +54,7 @@ export default function CurrentlyPlaying({ className = "" }: Props) {
   //#endregion
 
   return (
-    <div className={"flex " + className}>
+    <div className={"flex items-center " + className}>
       {item ? (
         <ButtonLink
           href={item.external_urls.spotify}
@@ -64,7 +64,6 @@ export default function CurrentlyPlaying({ className = "" }: Props) {
             animate={{
               rotate: [10, 0, -10],
               y: [-5, 0, -5],
-              // fill: ["#000", "#fff"],
             }}
             transition={{
               repeat: Infinity,

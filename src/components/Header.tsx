@@ -1,11 +1,16 @@
 import { motion, useScroll, useSpring } from "framer-motion";
-import { useEffect } from "react";
+import { RefObject, useEffect } from "react";
 import { SiGithub, SiLinkedin } from "react-icons/si";
 
-import { useMediaQuery } from "../hooks/useMediaQuery";
 import OpenInNew from "./Icons/OpenInNew";
 import Button from "./Inputs/Button";
 import ButtonLink from "./Inputs/ButtonLink";
+
+interface Props {
+  aboutRef: RefObject<HTMLDivElement>;
+  projectsRef: RefObject<HTMLDivElement>;
+  contactRef: RefObject<HTMLDivElement>;
+}
 
 const springConfig = {
   stiffness: 400,
@@ -17,11 +22,9 @@ const dampenedSpringConfig = {
   damping: 25,
 };
 
-export default function Header() {
+export default function Header({ aboutRef, projectsRef, contactRef }: Props) {
   //#region Hooks.
-  const lg = useMediaQuery("(min-width: 1024px)");
-
-  const { scrollYProgress } = useScroll();
+  const { scrollY } = useScroll();
   const progressX = useSpring(20, dampenedSpringConfig);
   const progressWidth = useSpring(16, dampenedSpringConfig);
   const headerY = useSpring(0, springConfig);
@@ -29,9 +32,9 @@ export default function Header() {
   const headerBorderBottomRadius = useSpring(16, springConfig);
 
   useEffect(() => {
-    return scrollYProgress.onChange((progress) => {
-      // Progress will be 0 as long as the scroll position is below the offset
-      if (progress === 0) {
+    return scrollY.onChange((scroll) => {
+      // Scroll will be 0 when the user is at the top of the page.
+      if (scroll === 0) {
         headerY.set(0);
         headerBorderRadius.set(0);
         headerBorderBottomRadius.set(16);
@@ -40,16 +43,18 @@ export default function Header() {
         headerBorderRadius.set(32);
         headerBorderBottomRadius.set(32);
       }
-      // Update the progress indicator
-      const projectsOffset = lg ? 0.63 : 0.23;
+      // Get the offset position of all the main sections.
+      const aboutOffset = aboutRef?.current?.offsetTop ?? -1;
+      const projectsOffset = projectsRef?.current?.offsetTop ?? -1;
+      const contactOffset = contactRef?.current?.offsetTop ?? -1;
 
-      if (progress > 0.95) {
+      if (scroll + window.innerHeight > contactOffset + 100) {
         progressX.set(185);
         progressWidth.set(16);
-      } else if (progress > projectsOffset) {
+      } else if (scroll > projectsOffset - 200) {
         progressX.set(100);
         progressWidth.set(16);
-      } else if (progress > 0.1) {
+      } else if (scroll > aboutOffset - 300) {
         progressX.set(20);
         progressWidth.set(16);
       } else {
@@ -60,11 +65,13 @@ export default function Header() {
   }, [
     headerBorderBottomRadius,
     headerBorderRadius,
-    scrollYProgress,
     headerY,
-    lg,
     progressX,
     progressWidth,
+    scrollY,
+    aboutRef,
+    projectsRef,
+    contactRef,
   ]);
 
   // Retain header state if a previous scrollY value is retained (e.g. Refreshing the page)

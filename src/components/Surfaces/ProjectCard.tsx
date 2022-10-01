@@ -90,7 +90,7 @@ export default function ProjectCard({
           src={image}
           alt={title}
           fill
-          className={"object-cover"}
+          className={"select-none object-cover"}
           draggable={false}
         />
       </div>

@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useRef } from "react";
 
 import About from "../components/About";
 import Contact from "../components/Contact";
@@ -11,6 +12,10 @@ import { useMediaQuery } from "../hooks/useMediaQuery";
 export default function Home() {
   //#region Hooks
 
+  const aboutRef = useRef<HTMLDivElement>(null);
+  const projectsRef = useRef<HTMLDivElement>(null);
+  const contactRef = useRef<HTMLDivElement>(null);
+
   const smallWidth = useMediaQuery("(max-width: 320px)");
 
   //#endregion
@@ -22,12 +27,16 @@ export default function Home() {
       </Head>
       {!smallWidth ? (
         <div className="flex min-h-screen flex-col">
-          <Header />
+          <Header
+            aboutRef={aboutRef}
+            projectsRef={projectsRef}
+            contactRef={contactRef}
+          />
           <main className="my-20 flex grow flex-col gap-16 sm:my-24 sm:gap-24 lg:gap-36">
             <Hero />
-            <About />
-            <Projects />
-            <Contact />
+            <About ref={aboutRef} />
+            <Projects ref={projectsRef} />
+            <Contact ref={contactRef} />
           </main>
           <Footer />
         </div>

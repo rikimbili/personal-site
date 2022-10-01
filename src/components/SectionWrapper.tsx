@@ -1,7 +1,8 @@
 import { motion, useAnimationControls, useInView } from "framer-motion";
-import { ReactNode, useEffect, useRef } from "react";
+import { ReactNode, RefObject, useEffect, useRef } from "react";
 
 interface Props {
+  ref?: RefObject<HTMLDivElement>;
   className?: string;
   children: ReactNode;
   fadeInDelay?: number;

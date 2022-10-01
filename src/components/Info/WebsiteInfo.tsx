@@ -67,8 +67,8 @@ export default function WebsiteInfo({ className = "" }: Props) {
             <Popover.Panel static>
               <div className={"flex-col text-center"}>
                 <p className="">
-                  Built with Next.js, Tailwind CSS, Framer Motion and
-                  TypeScript.
+                  Built with Next.js, Tailwind CSS, Headless UI, Framer Motion
+                  and TypeScript.
                 </p>
                 <div className="my-2 mx-12 rounded-full border-t-2 border-slate-50/20 sm:mx-24" />
                 <p className="">
@@ -90,7 +90,7 @@ export default function WebsiteInfo({ className = "" }: Props) {
       </AnimatePresence>
       <Popover.Button
         className={
-          "flex cursor-help items-center rounded-lg p-2 outline-none transition duration-100 ease-out dark:group-hover:bg-slate-600"
+          "flex cursor-help select-none items-center rounded-lg p-2 outline-none transition duration-100 ease-out dark:group-hover:bg-slate-600"
         }
         onMouseOver={handlePanelOpen}
         onClick={handlePanelOpen}

@@ -1,26 +1,24 @@
+import { ForwardedRef, forwardRef } from "react";
+
 import projects from "../data/projects";
-import { useMediaQuery } from "../hooks/useMediaQuery";
 import AnchorLink from "./Inputs/AnchorLink";
 import SectionWrapper from "./SectionWrapper";
 import ProjectCard from "./Surfaces/ProjectCard";
 
-export default function Projects() {
-  //#region Hooks
-
-  const isDarkTheme = useMediaQuery("(prefers-color-scheme: dark)");
-
-  //#endregion
-
+const Projects = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
   return (
     <SectionWrapper
       id={"projects"}
       fadeInDelay={0.2}
       className={
-        "select-none scroll-mt-20 text-justify text-lg sm:w-full sm:text-xl lg:text-2xl"
+        "scroll-mt-20 text-justify text-lg sm:w-full sm:text-xl lg:text-2xl"
       }
     >
       <h2
-        className={"group mb-4 w-fit text-3xl sm:mb-8 sm:text-4xl lg:text-5xl"}
+        ref={ref}
+        className={
+          "group mb-4 w-fit select-none text-3xl sm:mb-8 sm:text-4xl lg:text-5xl"
+        }
       >
         Projects{" "}
         <AnchorLink
@@ -37,11 +35,7 @@ export default function Projects() {
           <ProjectCard
             key={index}
             fadeInDelay={0.1 + (index % 2) * 0.1}
-            image={
-              (isDarkTheme ? project.imageDark : project.imageLight) ||
-              project.image ||
-              ""
-            }
+            image={project.image}
             title={project.title}
             description={project.description}
             tags={project.tags}
@@ -53,4 +47,8 @@ export default function Projects() {
       </div>
     </SectionWrapper>
   );
-}
+});
+
+Projects.displayName = "Projects";
+
+export default Projects;

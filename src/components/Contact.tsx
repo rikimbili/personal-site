@@ -1,8 +1,10 @@
+import { ForwardedRef, forwardRef } from "react";
+
 import OpenInNew from "./Icons/OpenInNew";
 import AnchorLink from "./Inputs/AnchorLink";
 import SectionWrapper from "./SectionWrapper";
 
-export default function Contact() {
+const Contact = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
   return (
     <SectionWrapper
       id={"contact"}
@@ -12,7 +14,10 @@ export default function Contact() {
       }
     >
       <h2
-        className={"group mb-4 w-fit text-3xl sm:mb-8 sm:text-4xl lg:text-5xl"}
+        ref={ref}
+        className={
+          "group mb-4 w-fit select-none text-3xl sm:mb-8 sm:text-4xl lg:text-5xl"
+        }
       >
         Contact{" "}
         <AnchorLink
@@ -27,7 +32,7 @@ export default function Contact() {
         </a>{" "}
         or shoot me a message on{" "}
         <a
-          href="https://twitter.com/racielcodes"
+          href="https://www.linkedin.com/in/racielap"
           target={"_blank"}
           rel="noreferrer"
           className={"inline-flex items-center underline"}
@@ -40,4 +45,8 @@ export default function Contact() {
       </p>
     </SectionWrapper>
   );
-}
+});
+
+Contact.displayName = "Contact";
+
+export default Contact;
