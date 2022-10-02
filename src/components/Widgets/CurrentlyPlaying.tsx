@@ -24,8 +24,8 @@ export default function CurrentlyPlaying({ className = "" }: Props) {
       }).then((res) =>
         res.json().then((data: CurrentlyPlayingData) => {
           // If not a track or not playing, set item to null
-          if (data?.currently_playing_type === "track" && data?.is_playing) {
-            setItem(data.item);
+          if (data?.is_playing && data?.currently_playing_type === "track") {
+            setItem(data.item as CurrentlyPlayingItem);
           } else {
             setItem(null);
           }

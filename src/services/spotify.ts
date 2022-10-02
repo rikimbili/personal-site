@@ -10,8 +10,8 @@ export interface CurrentlyPlayingItem {
 
 export interface CurrentlyPlayingData {
   is_playing: boolean;
-  currently_playing_type: string;
-  item: CurrentlyPlayingItem;
+  currently_playing_type?: string;
+  item?: CurrentlyPlayingItem;
 }
 
 async function getNewAccessTokenFromRefreshToken(): Promise<void> {
@@ -38,7 +38,7 @@ async function getNewAccessTokenFromRefreshToken(): Promise<void> {
 
 // TODO: Implement exponential backoff and possibly cache the response
 //  -> https://www.npmjs.com/package/p-retry, https://www.npmjs.com/package/lru-cache
-export default async function getCurrentlyPlaying(): Promise<CurrentlyPlayingData | null> {
+export default async function getCurrentlyPlaying(): Promise<CurrentlyPlayingData> {
   const response = await fetch(
     "https://api.spotify.com/v1/me/player/currently-playing",
     {
@@ -53,8 +53,10 @@ export default async function getCurrentlyPlaying(): Promise<CurrentlyPlayingDat
     await getNewAccessTokenFromRefreshToken();
     return getCurrentlyPlaying();
   } else if (!response.ok || !response.body) {
-    console.error("Failed to get currently playing or not playing anything");
-    return null;
+    // If the response failed or no body is returned (e.g. no song is playing) return not playing
+    return {
+      is_playing: false,
+    };
   } else {
     const data = await response.json();
 

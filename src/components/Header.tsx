@@ -48,9 +48,9 @@ export default function Header({ aboutRef, projectsRef, contactRef }: Props) {
       }
 
       // Get the offset position of all the main sections and update the progress dot.
-      const aboutOffset = aboutRef?.current?.offsetTop;
-      const projectsOffset = projectsRef?.current?.offsetTop;
-      const contactOffset = contactRef?.current?.offsetTop;
+      const aboutOffset = aboutRef?.current?.offsetTop || Infinity;
+      const projectsOffset = projectsRef?.current?.offsetTop || Infinity;
+      const contactOffset = contactRef?.current?.offsetTop || Infinity;
 
       updateProgress(scroll, aboutOffset, projectsOffset, contactOffset);
     });
@@ -90,7 +90,7 @@ export default function Header({ aboutRef, projectsRef, contactRef }: Props) {
     projectsOffset = Infinity,
     contactOffset = Infinity
   ) => {
-    console.log(scroll, contactOffset, aboutOffset, projectsOffset);
+    console.log(aboutOffset, projectsOffset, contactOffset);
     if (
       scroll + window.innerHeight > contactOffset + 100 ||
       (contactOffset === Infinity && window.location.hash === "#contact") ||
