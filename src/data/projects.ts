@@ -33,7 +33,7 @@ export default [
     description:
       "Discord chat bot that uses OpenAI's GPT-3 language models to generate reply prompts.",
     tags: ["Discord.js", "TypeScript"],
-    image: "/images/projects/AiBud.png",
+    image: "/images/projects/aibud.png",
     sourceLink: "https://github.com/Rikimbili/AiBud",
   },
   {
@@ -41,7 +41,7 @@ export default [
     description:
       "Python program to control LED lights with motion detection and schedules.",
     tags: ["Python", "IoT", "Raspberry Pi", "API"],
-    image: "/images/projects/motionLED.png",
+    image: "/images/projects/motionled.png",
     sourceLink: "https://github.com/Rikimbili/motionLED",
   },
 ] as Project[];

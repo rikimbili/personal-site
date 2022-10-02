@@ -98,8 +98,12 @@ export default function ProjectCard({
           src={image}
           alt={title}
           fill
+          priority
           className={"select-none object-cover"}
           draggable={false}
+          sizes="(max-width: 1024px) 90vw,
+              (max-width: 1600px) 50vw,
+              33vw"
         />
       </div>
       <h3 className={"mx-4 text-center text-2xl sm:text-3xl lg:text-4xl"}>

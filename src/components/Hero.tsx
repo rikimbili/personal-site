@@ -36,6 +36,9 @@ export default function Hero() {
           fill
           priority
           draggable={false}
+          sizes="(max-width: 1024px) 40vw,
+              (max-width: 1400px) 33vw,
+              25vw"
         />
       </div>
       <div className={"text-lg sm:w-full sm:text-xl md:w-10/12 lg:text-2xl"}>
