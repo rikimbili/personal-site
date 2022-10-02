@@ -9,6 +9,7 @@ import { useEffect, useRef, useState } from "react";
 import { MdOpenInNew } from "react-icons/md";
 import { SiGithub } from "react-icons/si";
 
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 import Button from "../Inputs/Button";
 
 interface Props {
@@ -48,6 +49,8 @@ export default function ProjectCard({
   fadeInDelay = 0,
 }: Props) {
   //#region Hooks
+
+  const xl = useMediaQuery("(min-width: 1280px)");
 
   const ref = useRef(null);
   const isInView = useInView(ref, { margin: "-15%" });
@@ -116,10 +119,13 @@ export default function ProjectCard({
         values={reorderedTags}
         axis={"x"}
         onReorder={setReorderedTags}
-        className={"mx-2 flex flex-wrap justify-center gap-2 sm:mx-4"}
+        className={
+          "mx-2 flex select-none flex-wrap justify-center gap-2 sm:mx-4"
+        }
       >
         {reorderedTags?.map((tag) => (
           <Reorder.Item
+            drag={xl}
             key={tag}
             value={tag}
             whileHover={{ cursor: "grab" }}

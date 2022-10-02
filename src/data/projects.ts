@@ -23,7 +23,7 @@ export default [
     title: "Notes",
     description:
       "Note-taking web app with categories, rich text editing and markdown support.",
-    tags: ["Next.js", "MUI", "CosmosDB", "Framer Motion"],
+    tags: ["Next.js", "MUI", "Framer Motion", "Azure Cosmos DB"],
     image: "/images/projects/notes.png",
     visitLink: "https://notes.keymorph.com",
     sourceLink: "https://github.com/Keymorph/notes",
