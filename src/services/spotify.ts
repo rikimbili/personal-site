@@ -52,23 +52,26 @@ export default async function getCurrentlyPlaying(): Promise<CurrentlyPlayingDat
     // Refresh token if expired
     await getNewAccessTokenFromRefreshToken();
     return getCurrentlyPlaying();
-  } else if (!response.ok || !response.body) {
-    // If the response failed or no body is returned (e.g. no song is playing) return not playing
-    return {
-      is_playing: false,
-    };
-  } else {
-    const data = await response.json();
-
-    // Only return what is specified in CurrentlyPlayingData
-    return {
-      is_playing: data.is_playing,
-      currently_playing_type: data.currently_playing_type,
-      item: {
-        name: data.item.name,
-        artists: data.item.artists,
-        external_urls: data.item.external_urls,
-      },
-    };
   }
+
+  return await response
+    .json()
+    .then((data) => {
+      // Only return what is specified in CurrentlyPlayingData
+      return {
+        is_playing: data.is_playing,
+        currently_playing_type: data.currently_playing_type,
+        item: {
+          name: data.item.name,
+          artists: data.item.artists,
+          external_urls: data.item.external_urls,
+        },
+      };
+    })
+    .catch(() => {
+      // If the response failed or no body is returned (e.g. no song is playing) return is_playing set to false
+      return {
+        is_playing: false,
+      };
+    });
 }

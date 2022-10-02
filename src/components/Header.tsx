@@ -90,7 +90,6 @@ export default function Header({ aboutRef, projectsRef, contactRef }: Props) {
     projectsOffset = Infinity,
     contactOffset = Infinity
   ) => {
-    console.log(aboutOffset, projectsOffset, contactOffset);
     if (
       scroll + window.innerHeight > contactOffset + 100 ||
       (contactOffset === Infinity && window.location.hash === "#contact") ||
