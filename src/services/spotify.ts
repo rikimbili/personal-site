@@ -36,7 +36,9 @@ async function getNewAccessTokenFromRefreshToken(): Promise<void> {
   }
 }
 
-export default async function getCurrentlyPlaying(): Promise<CurrentlyPlayingData> {
+// TODO: Implement exponential backoff and possibly cache the response
+//  -> https://www.npmjs.com/package/p-retry, https://www.npmjs.com/package/lru-cache
+export default async function getCurrentlyPlaying(): Promise<CurrentlyPlayingData | null> {
   const response = await fetch(
     "https://api.spotify.com/v1/me/player/currently-playing",
     {
@@ -46,25 +48,25 @@ export default async function getCurrentlyPlaying(): Promise<CurrentlyPlayingDat
     }
   );
 
-  const data = await response.json();
-
-  // Refresh token if expired
-  if (data.error && data.error.status === 401) {
+  if (response.status === 401) {
+    // Refresh token if expired
     await getNewAccessTokenFromRefreshToken();
     return getCurrentlyPlaying();
-  } else if (data.error) {
-    console.error(data);
-    throw new Error("Failed to get currently playing");
-  }
+  } else if (!response.ok || !response.body) {
+    console.error("Failed to get currently playing or not playing anything");
+    return null;
+  } else {
+    const data = await response.json();
 
-  // Only return what is specified in CurrentlyPlayingData
-  return {
-    is_playing: data.is_playing,
-    currently_playing_type: data.currently_playing_type,
-    item: {
-      name: data.item.name,
-      artists: data.item.artists,
-      external_urls: data.item.external_urls,
-    },
-  };
+    // Only return what is specified in CurrentlyPlayingData
+    return {
+      is_playing: data.is_playing,
+      currently_playing_type: data.currently_playing_type,
+      item: {
+        name: data.item.name,
+        artists: data.item.artists,
+        external_urls: data.item.external_urls,
+      },
+    };
+  }
 }

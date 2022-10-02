@@ -31,8 +31,8 @@ export default function CurrentlyPlaying({ className = "" }: Props) {
           }
         })
       );
-    // Fetch currently playing every 15 seconds
-    const interval = setInterval(getCurrPlaying, 15000);
+    // Fetch currently playing 3 times a minute
+    const interval = setInterval(getCurrPlaying, 20000);
 
     getCurrPlaying();
 

@@ -1,8 +1,9 @@
 import { motion, useScroll, useSpring } from "framer-motion";
-import { RefObject, useEffect } from "react";
+import { RefObject, useEffect, useState } from "react";
+import { BiWindows } from "react-icons/bi";
 import { SiGithub, SiLinkedin } from "react-icons/si";
 
-import OpenInNew from "./Icons/OpenInNew";
+import ResumeDialog from "./Dialogs/ResumeDialog";
 import Button from "./Inputs/Button";
 import ButtonLink from "./Inputs/ButtonLink";
 
@@ -30,6 +31,8 @@ export default function Header({ aboutRef, projectsRef, contactRef }: Props) {
   const headerY = useSpring(0, springConfig);
   const headerBorderRadius = useSpring(0, springConfig);
   const headerBorderBottomRadius = useSpring(16, springConfig);
+
+  const [isResumeDialogOpen, setIsResumeDialogOpen] = useState(false);
 
   useEffect(() => {
     return scrollY.onChange((scroll) => {
@@ -102,12 +105,21 @@ export default function Header({ aboutRef, projectsRef, contactRef }: Props) {
 
   //#region Handlers
 
-  const handleResumeClick = () => {
-    window.open(
-      "https://drive.google.com/file/d/1mF6Z4U6Hk5yPq3V7c5y1J5V7XuZnX9j7/view?usp=sharing",
-      "_blank"
-    );
-  };
+  function closeResumeDialog() {
+    setIsResumeDialogOpen(false);
+    // Re-open the header
+    if (headerBorderRadius.get() === 0) {
+      headerY.set(0);
+    } else {
+      headerY.set(16);
+    }
+  }
+
+  function openResumeDialog() {
+    setIsResumeDialogOpen(true);
+    // Close the header while the dialog is open
+    headerY.set(-56);
+  }
 
   //#endregion
 
@@ -148,10 +160,14 @@ export default function Header({ aboutRef, projectsRef, contactRef }: Props) {
         <ButtonLink href={"https://www.linkedin.com/in/racielap"}>
           <SiLinkedin />
         </ButtonLink>
-        <Button>
+        <Button onClick={openResumeDialog}>
           Resume
-          <OpenInNew className={"w-6 fill-slate-50"} />
+          <BiWindows />
         </Button>
+        <ResumeDialog
+          isDialogOpen={isResumeDialogOpen}
+          closeDialog={closeResumeDialog}
+        />
       </div>
     </motion.header>
   );
