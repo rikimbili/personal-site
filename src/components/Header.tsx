@@ -46,32 +46,13 @@ export default function Header({ aboutRef, projectsRef, contactRef }: Props) {
         headerBorderRadius.set(32);
         headerBorderBottomRadius.set(32);
       }
-      // Get the offset position of all the main sections.
-      const aboutOffset = aboutRef?.current?.offsetTop || Infinity;
-      const projectsOffset = projectsRef?.current?.offsetTop || Infinity;
-      const contactOffset = contactRef?.current?.offsetTop || Infinity;
 
-      // Updates the progress dot position and width based on the scroll position.
-      // If the offset is Infinity due to the ref not being set / the section not being rendered, the progress dot will
-      // be set based on the hash in the URL.
-      if (
-        scroll + window.innerHeight > contactOffset + 100 ||
-        (contactOffset === Infinity && window.location.hash === "#contact")
-      ) {
-        updateProgress(185, 16);
-      } else if (
-        scroll > projectsOffset - 200 ||
-        (projectsOffset === Infinity && window.location.hash === "#projects")
-      ) {
-        updateProgress(100, 16);
-      } else if (
-        scroll > aboutOffset - 300 ||
-        (aboutOffset === Infinity && window.location.hash === "#about")
-      ) {
-        updateProgress(20, 16);
-      } else {
-        updateProgress(-30, 0);
-      }
+      // Get the offset position of all the main sections and update the progress dot.
+      const aboutOffset = aboutRef?.current?.offsetTop;
+      const projectsOffset = projectsRef?.current?.offsetTop;
+      const contactOffset = contactRef?.current?.offsetTop;
+
+      updateProgress(scroll, aboutOffset, projectsOffset, contactOffset);
     });
   }, [
     headerBorderBottomRadius,
@@ -92,15 +73,47 @@ export default function Header({ aboutRef, projectsRef, contactRef }: Props) {
       headerBorderRadius.set(32);
       headerBorderBottomRadius.set(32);
     }
+
+    updateProgress(window.scrollY);
   }, []);
 
   //#endregion
 
   //#region Utility functions.
 
-  const updateProgress = (x: number, width: number) => {
-    progressX.set(x);
-    progressWidth.set(width);
+  // Updates the progress dot position and width based on the scroll position.
+  // If the offset is Infinity due to the ref not being set / the section not being rendered, the progress dot will
+  // be set based on the hash in the URL.
+  const updateProgress = (
+    scroll: number,
+    aboutOffset = Infinity,
+    projectsOffset = Infinity,
+    contactOffset = Infinity
+  ) => {
+    console.log(scroll, contactOffset, aboutOffset, projectsOffset);
+    if (
+      scroll + window.innerHeight > contactOffset + 100 ||
+      (contactOffset === Infinity && window.location.hash === "#contact") ||
+      scroll + window.innerHeight === document.body.scrollHeight // If the user is at the bottom of the page.
+    ) {
+      progressX.set(185);
+      progressWidth.set(16);
+    } else if (
+      scroll > projectsOffset - 200 ||
+      (projectsOffset === Infinity && window.location.hash === "#projects")
+    ) {
+      progressX.set(100);
+      progressWidth.set(16);
+    } else if (
+      scroll > aboutOffset - 300 ||
+      (aboutOffset === Infinity && window.location.hash === "#about")
+    ) {
+      progressX.set(20);
+      progressWidth.set(16);
+    } else {
+      progressX.set(-30);
+      progressWidth.set(0);
+    }
   };
 
   //#region Handlers
