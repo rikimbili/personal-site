@@ -128,7 +128,7 @@ export default function ProjectCard({
             drag={xl}
             key={tag}
             value={tag}
-            whileHover={{ cursor: "grab" }}
+            whileHover={{ cursor: xl ? "grab" : "default" }}
             whileDrag={{
               cursor: "grabbing",
               rotate: [0, 2, 0, -2],
