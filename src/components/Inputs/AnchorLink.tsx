@@ -18,7 +18,7 @@ export default function AnchorLink({ className, ...rest }: Props) {
     >
       <FaHashtag
         className={
-          "fill-indigo-300 transition duration-100 ease-out hover:fill-indigo-100 active:duration-75"
+          "text-indigo-900/70 transition duration-100 ease-out hover:text-indigo-900 active:duration-75 dark:text-indigo-200/70 dark:hover:text-indigo-200"
         }
       />
     </motion.a>

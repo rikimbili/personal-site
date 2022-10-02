@@ -62,7 +62,7 @@ export default function WebsiteInfo({ className = "" }: Props) {
             animate={"visible"}
             exit={"hidden"}
             variants={panelVariants}
-            className="absolute z-10 w-screen max-w-[18rem] rounded-xl p-4 text-base shadow-xl backdrop-blur-md dark:bg-slate-700/80 sm:max-w-[26rem] sm:text-lg md:max-w-[30rem]"
+            className="absolute z-10 w-screen max-w-[18rem] rounded-xl bg-slate-300/80 p-4 text-base shadow-xl backdrop-blur-md dark:bg-slate-700/80 sm:max-w-[26rem] sm:text-lg md:max-w-[30rem]"
           >
             <Popover.Panel static>
               <div className={"flex-col text-center"}>
@@ -70,7 +70,7 @@ export default function WebsiteInfo({ className = "" }: Props) {
                   Built with Next.js, Tailwind CSS, Headless UI, Framer Motion
                   and TypeScript.
                 </p>
-                <div className="my-2 mx-12 rounded-full border-t-2 border-slate-50/20 sm:mx-24" />
+                <div className="my-2 mx-12 rounded-full border-t-2 border-slate-900/20 dark:border-slate-50/20 sm:mx-24" />
                 <p className="">
                   The source code is available on{" "}
                   <a
@@ -90,7 +90,7 @@ export default function WebsiteInfo({ className = "" }: Props) {
       </AnimatePresence>
       <Popover.Button
         className={
-          "flex cursor-help select-none items-center rounded-lg p-2 outline-none transition duration-100 ease-out dark:group-hover:bg-slate-600"
+          "flex cursor-help select-none items-center rounded-lg p-2 outline-none transition duration-100 ease-out group-hover:bg-slate-300 dark:group-hover:bg-slate-600"
         }
         onMouseOver={handlePanelOpen}
         onClick={handlePanelOpen}

@@ -1,6 +1,6 @@
 import { ForwardedRef, forwardRef } from "react";
+import { MdOpenInNew } from "react-icons/md";
 
-import OpenInNew from "./Icons/OpenInNew";
 import AnchorLink from "./Inputs/AnchorLink";
 import SectionWrapper from "./SectionWrapper";
 
@@ -38,7 +38,7 @@ const Contact = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
           className={"inline-flex items-center underline"}
         >
           LinkedIn
-          <OpenInNew className={"w-6 sm:w-7"} />
+          <MdOpenInNew />
         </a>
         . If you are looking for an up-to-date copy of my resume, just click the
         Resume button on the floating header.

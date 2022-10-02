@@ -16,8 +16,8 @@ export default function ButtonLink({
   return (
     <motion.a
       className={
-        "cursor-pointer [&>svg]:text-3xl transition duration-100 ease-out hover:text-slate-700 dark:hover:text-slate-300  active:duration-75 " +
-        "[&>*]:fill-slate-50 [&>*]:transition [&>*]:duration-100 [&>*]:ease-out [&>*]:hover:fill-slate-300 [&>*]:active:duration-75 " +
+        "cursor-pointer [&>svg]:text-3xl transition duration-100 ease-out hover:text-slate-600 dark:hover:text-slate-300  active:duration-75 " +
+        "[&>*]:fill-slate-50 [&>*]:fill-slate-800 [&>*]:transition [&>*]:duration-100 [&>*]:ease-out dark:[&>*]:hover:fill-slate-300 [&>*]:hover:fill-slate-600 [&>*]:active:duration-75 " +
         className
       }
       whileHover={{ scale: 1.03 }}

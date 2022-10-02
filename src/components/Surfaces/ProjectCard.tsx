@@ -6,9 +6,9 @@ import {
 } from "framer-motion";
 import Image from "next/future/image";
 import { useEffect, useRef, useState } from "react";
+import { MdOpenInNew } from "react-icons/md";
 import { SiGithub } from "react-icons/si";
 
-import OpenInNew from "../Icons/OpenInNew";
 import Button from "../Inputs/Button";
 
 interface Props {
@@ -24,6 +24,7 @@ interface Props {
 
 const cardVariants = {
   initial: {
+    boxShadow: "0rem 0.2rem 0.6rem rgba(0, 0, 0, 0.4)",
     opacity: 0,
     y: -20,
   },
@@ -80,13 +81,13 @@ export default function ProjectCard({
       ref={ref}
       whileHover={{
         scale: 1.01,
-        boxShadow: "0rem 0.5rem 1rem rgba(0, 0, 0, 0.5)",
+        boxShadow: "0rem 0.5rem 1.2rem rgba(0, 0, 0, 0.4)",
       }}
       initial={"initial"}
       animate={sectionControl}
       variants={cardVariants}
       custom={fadeInDelay}
-      className="flex w-full max-w-xl flex-1 flex-col gap-2 overflow-hidden rounded-2xl bg-slate-800 pb-8 sm:min-w-[24rem] sm:gap-4"
+      className="flex w-full max-w-xl flex-1 flex-col gap-2 overflow-hidden rounded-2xl bg-slate-200 pb-8 dark:bg-slate-800 sm:min-w-[24rem] sm:gap-4"
     >
       <div
         className={
@@ -132,7 +133,7 @@ export default function ProjectCard({
               bounceDamping: 30,
             }}
             className={
-              "rounded-full bg-slate-700 px-2 py-1 text-sm font-bold text-slate-800 dark:text-slate-100 md:text-base lg:text-lg"
+              "rounded-full bg-slate-300 px-2 py-1 text-sm font-bold text-slate-700 dark:bg-slate-700 dark:text-slate-100 md:text-base lg:text-lg"
             }
           >
             {tag}
@@ -146,12 +147,12 @@ export default function ProjectCard({
       >
         {visitLink && (
           <Button onClick={handleVisitClick}>
-            {visitTextOverride} <OpenInNew className={"w-7 fill-slate-50"} />
+            {visitTextOverride} <MdOpenInNew />
           </Button>
         )}
         {sourceLink && (
           <Button onClick={handleSourceClick}>
-            Source <SiGithub className={"fill-slate-50"} />
+            Source <SiGithub />
           </Button>
         )}
       </div>

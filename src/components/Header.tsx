@@ -127,7 +127,7 @@ export default function Header({ aboutRef, projectsRef, contactRef }: Props) {
     <motion.header
       className={
         "fixed z-50 flex h-12 w-fit max-w-7xl select-none justify-center self-center px-6 text-xl shadow-weak " +
-        "backdrop-blur-md dark:bg-slate-800/80 sm:w-11/12 sm:justify-between items-center overflow-hidden"
+        "backdrop-blur-md bg-slate-200/80 dark:bg-slate-800/80 sm:w-11/12 sm:justify-between items-center overflow-hidden"
       }
       style={{
         y: headerY,
@@ -149,7 +149,9 @@ export default function Header({ aboutRef, projectsRef, contactRef }: Props) {
           </ButtonLink>
         </div>
         <motion.span
-          className={"-mt-1 h-1 w-4 rounded-full dark:bg-slate-50"}
+          className={
+            "-mt-1 h-1 w-4 rounded-full bg-slate-900 dark:bg-slate-100"
+          }
           style={{ x: progressX, width: progressWidth }}
         />
       </div>

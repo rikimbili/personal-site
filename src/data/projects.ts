@@ -14,7 +14,7 @@ export default [
     description:
       "Software development collective. Our goal is to create responsive and useful apps under a unified ecosystem.",
     tags: ["Web Development"],
-    image: "/images/projects/keymorph_dark.png",
+    image: "/images/projects/keymorph.png",
     visitLink: "https://keymorph.com",
     sourceLink: "https://github.com/keymorph",
     visitTextOverride: "Visit",
@@ -24,7 +24,7 @@ export default [
     description:
       "Note-taking web app with categories, rich text editing and markdown support.",
     tags: ["Next.js", "MUI", "CosmosDB", "Framer Motion"],
-    image: "/images/projects/notes_dark.png",
+    image: "/images/projects/notes.png",
     visitLink: "https://notes.keymorph.com",
     sourceLink: "https://github.com/Keymorph/notes",
   },

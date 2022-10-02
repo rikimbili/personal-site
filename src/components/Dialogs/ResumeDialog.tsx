@@ -58,7 +58,7 @@ export default function ResumeDialog({ isDialogOpen, closeDialog }: Props) {
           />
           <Dialog.Panel
             className={
-              "h-full max-h-full w-full max-w-7xl rounded-2xl p-4 backdrop-blur-md dark:bg-slate-800/80 "
+              "h-full max-h-full w-full max-w-7xl rounded-2xl bg-slate-100/90 p-4 backdrop-blur-md dark:bg-slate-800/80 "
             }
           >
             <Dialog.Title
