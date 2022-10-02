@@ -16,7 +16,7 @@ export default function Home() {
   const projectsRef = useRef<HTMLDivElement>(null);
   const contactRef = useRef<HTMLDivElement>(null);
 
-  const smallWidth = useMediaQuery("(max-width: 320px)");
+  const smallWidth = useMediaQuery("(max-width: 319px)");
 
   //#endregion
 

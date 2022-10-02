@@ -68,23 +68,22 @@ export default function ResumeDialog({ isDialogOpen, closeDialog }: Props) {
             </Dialog.Title>
             <div className={"h-full w-full rounded-2xl pb-8 sm:pb-16"}>
               <object
+                aria-labelledby={"Google Drive Preview"}
                 data="https://drive.google.com/file/d/1QeabHVP-wJERMum3EX4oRIN4x6WCOPXl/preview"
                 className={
-                  "flex h-full w-full flex-col items-center justify-center rounded-2xl"
+                  "flex h-full w-full flex-col items-center justify-center rounded-2xl text-base sm:text-2xl"
                 }
               >
-                <p>The PDF cannot be displayed :(.</p>
-                <p>
-                  <a
-                    href="https://drive.google.com/file/d/1QeabHVP-wJERMum3EX4oRIN4x6WCOPXl/preview"
-                    target={"_blank"}
-                    className={"mt-4 text-base underline"}
-                    rel="noreferrer"
-                  >
-                    Click here to view the resume in a new tab
-                    <MdOpenInNew className={"inline-block"} />
-                  </a>
-                </p>
+                <p>The resume cannot be displayed &#128542;</p>
+                <a
+                  href="https://drive.google.com/file/d/1QeabHVP-wJERMum3EX4oRIN4x6WCOPXl/preview"
+                  target={"_blank"}
+                  className={"mt-2 underline sm:mt-4"}
+                  rel="noreferrer"
+                >
+                  Click here to load it in a new tab
+                  <MdOpenInNew className={"inline-block"} />
+                </a>
               </object>
             </div>
             <Button
