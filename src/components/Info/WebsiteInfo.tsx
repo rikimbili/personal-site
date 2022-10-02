@@ -4,6 +4,9 @@ import { useState } from "react";
 import { MdOutlineInfo } from "react-icons/md";
 import { SiGithub } from "react-icons/si";
 
+import TECHNOLOGIES from "../../data/technologies";
+import InlineLink from "../Inputs/InlineLink";
+
 interface Props {
   className?: string;
 }
@@ -22,6 +25,15 @@ const panelVariants = {
     left: "50%",
   },
 };
+
+const technologies = [
+  TECHNOLOGIES.NEXTJS,
+  TECHNOLOGIES.TAILWINDCSS,
+  TECHNOLOGIES.HEADLESSUI,
+  TECHNOLOGIES.MOTION,
+  TECHNOLOGIES.TYPESCRIPT,
+  TECHNOLOGIES.VERCEL,
+];
 
 export default function WebsiteInfo({ className = "" }: Props) {
   //#region Hooks
@@ -62,26 +74,29 @@ export default function WebsiteInfo({ className = "" }: Props) {
             animate={"visible"}
             exit={"hidden"}
             variants={panelVariants}
-            className="absolute z-10 w-screen max-w-[18rem] rounded-xl bg-slate-300/80 p-4 text-base shadow-xl backdrop-blur-md dark:bg-slate-700/80 sm:max-w-[26rem] sm:text-lg md:max-w-[30rem]"
+            className="absolute z-10 w-screen max-w-[18rem] rounded-xl bg-slate-300/80 py-4 px-2 text-base shadow-xl backdrop-blur-md dark:bg-slate-700/80 sm:max-w-[26rem] sm:text-lg md:max-w-[30rem]"
           >
             <Popover.Panel static>
               <div className={"flex-col text-center"}>
                 <p className="">
-                  Built with Next.js, Tailwind CSS, Headless UI, Framer Motion
-                  and TypeScript.
+                  Built with{" "}
+                  {technologies.map((technology, index) => (
+                    <span key={technology.name}>
+                      {index > 0 && index < technologies.length - 2 && ", "}
+                      {index === technologies.length - 2 && " and "}
+                      {index === technologies.length - 1 && ". Hosted on "}
+                      <InlineLink href={technology.link}>
+                        {technology.name} {technology.icon}
+                      </InlineLink>
+                    </span>
+                  ))}
                 </p>
                 <div className="my-2 mx-12 rounded-full border-t-2 border-slate-900/20 dark:border-slate-50/20 sm:mx-24" />
                 <p className="">
                   The source code is available on{" "}
-                  <a
-                    href="https://github.com/Rikimbili/portfolio"
-                    target="_blank"
-                    rel="noreferrer"
-                    className={"inline-flex items-center font-bold underline"}
-                  >
+                  <InlineLink href={"https://github.com/Rikimbili/portfolio"}>
                     GitHub <SiGithub />
-                  </a>
-                  .
+                  </InlineLink>
                 </p>
               </div>
             </Popover.Panel>

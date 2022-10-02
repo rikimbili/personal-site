@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { MdClose, MdOpenInNew } from "react-icons/md";
 
 import Button from "../Inputs/Button";
+import InlineLink from "../Inputs/InlineLink";
 
 interface Props {
   isDialogOpen: boolean;
@@ -71,19 +72,14 @@ export default function ResumeDialog({ isDialogOpen, closeDialog }: Props) {
                 aria-labelledby={"Google Drive Preview"}
                 data="https://drive.google.com/file/d/1QeabHVP-wJERMum3EX4oRIN4x6WCOPXl/preview"
                 className={
-                  "flex h-full w-full flex-col items-center justify-center rounded-2xl text-base sm:text-2xl"
+                  "flex h-full w-full flex-col items-center justify-center gap-2 rounded-2xl text-base sm:gap-4 sm:text-2xl"
                 }
               >
                 <p>The resume cannot be displayed &#128542;</p>
-                <a
-                  href="https://drive.google.com/file/d/1QeabHVP-wJERMum3EX4oRIN4x6WCOPXl/preview"
-                  target={"_blank"}
-                  className={"mt-2 underline sm:mt-4"}
-                  rel="noreferrer"
-                >
+                <InlineLink href="https://drive.google.com/file/d/1QeabHVP-wJERMum3EX4oRIN4x6WCOPXl/preview">
                   Click here to load it in a new tab
-                  <MdOpenInNew className={"inline-block"} />
-                </a>
+                  <MdOpenInNew />
+                </InlineLink>
               </object>
             </div>
             <Button

@@ -1,7 +1,8 @@
 import { ForwardedRef, forwardRef } from "react";
-import { MdOpenInNew } from "react-icons/md";
+import { MdEmail, MdOpenInNew } from "react-icons/md";
 
 import AnchorLink from "./Inputs/AnchorLink";
+import InlineLink from "./Inputs/InlineLink";
 import SectionWrapper from "./SectionWrapper";
 
 const Contact = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
@@ -27,19 +28,15 @@ const Contact = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
       </h2>
       <p>
         Feel free to reach out to me via email at{" "}
-        <a href="mailto:hey@raciel.dev" className={"underline"}>
+        <InlineLink href="mailto:hey@raciel.dev" target={"_self"}>
           hi@raciel.dev
-        </a>{" "}
+          <MdEmail />
+        </InlineLink>{" "}
         or shoot me a message on{" "}
-        <a
-          href="https://www.linkedin.com/in/racielap"
-          target={"_blank"}
-          rel="noreferrer"
-          className={"inline-flex items-center underline"}
-        >
+        <InlineLink href="https://www.linkedin.com/in/racielap">
           LinkedIn
           <MdOpenInNew />
-        </a>
+        </InlineLink>
         . If you are looking for an up-to-date copy of my resume, just click the
         Resume button on the floating header.
       </p>
