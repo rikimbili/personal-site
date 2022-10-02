@@ -23,7 +23,26 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>{"Raciel Antela Pardo"}</title>
+        <meta name="viewport" content="initial-scale=1, width=device-width" />
+        <meta
+          name="twitter:image:src"
+          content="https://i.imgur.com/2km7IeI.png"
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Raciel's Portfolio" />
+        <meta
+          name="twitter:description"
+          content="I'm a software developer with a passion for building full-stack web apps. Check out what I've been working on and get in touch!"
+        />
+        <meta name="twitter:site" content="@rikimbili_dev" />
+        <meta property="og:title" content="Raciel's Portfolio" />
+        <meta
+          property="og:description"
+          content="I'm a software developer with a passion for building full-stack web apps. Check out what I've been working on and get in touch!"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://raciel.dev" />
+        <title>{"Raciel's Portfolio"}</title>
       </Head>
       {!smallWidth ? (
         <div className="flex min-h-screen flex-col px-4">
