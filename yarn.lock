@@ -2321,9 +2321,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"framer-motion@npm:^7.4.0":
-  version: 7.4.0
-  resolution: "framer-motion@npm:7.4.0"
+"framer-motion@npm:^7.5.1":
+  version: 7.5.1
+  resolution: "framer-motion@npm:7.5.1"
   dependencies:
     "@emotion/is-prop-valid": ^0.8.2
     "@motionone/dom": 10.13.1
@@ -2338,7 +2338,7 @@ __metadata:
   dependenciesMeta:
     "@emotion/is-prop-valid":
       optional: true
-  checksum: 96973d93f8bc3c3e9611ebda2568d0cfae2b36bf7b3c8002e55b29a2e971223b3b0ee0a1c630b8d88652317813f2222a7cba366a83500750eafdffecac364e0b
+  checksum: 7785459f34b09b9c0d6534b39f7a0f5ba5748d061a0d9c5ba68fa1bc5a3e0873205f628347218873948be187b8c4e6f037837a35e73d642ea18c509253dcda02
   languageName: node
   linkType: hard
 
@@ -3735,15 +3735,15 @@ __metadata:
     eslint-plugin-react: latest
     eslint-plugin-simple-import-sort: latest
     eslint-plugin-tailwindcss: latest
-    framer-motion: ^7.4.0
+    framer-motion: ^7.5.1
     next: ^12.3.1
     next-transpile-modules: ^9.0.0
-    postcss: ^8.4.16
+    postcss: ^8.4.17
     prettier: ^2.7.1
     react: ^18.2.0
     react-dom: ^18.2.0
     react-icons: ^4.4.0
-    sharp: ^0.31.0
+    sharp: ^0.31.1
     tailwindcss: ^3.1.8
     typescript: ^4.8.4
   languageName: unknown
@@ -4135,7 +4135,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.4.14, postcss@npm:^8.4.16, postcss@npm:^8.4.4":
+"postcss@npm:^8.4.14, postcss@npm:^8.4.4":
   version: 8.4.16
   resolution: "postcss@npm:8.4.16"
   dependencies:
@@ -4143,6 +4143,17 @@ __metadata:
     picocolors: ^1.0.0
     source-map-js: ^1.0.2
   checksum: 10eee25efd77868036403858577da0cefaf2e0905feeaba5770d5438ccdddba3d01cba8063e96b8aac4c6daa0ed413dd5ae0554a433a3c4db38df1d134cffc1f
+  languageName: node
+  linkType: hard
+
+"postcss@npm:^8.4.17":
+  version: 8.4.17
+  resolution: "postcss@npm:8.4.17"
+  dependencies:
+    nanoid: ^3.3.4
+    picocolors: ^1.0.0
+    source-map-js: ^1.0.2
+  checksum: a6d9096dd711e17f7b1d18ff5dcb4fdedf3941d5a3dc8b0e4ea873b8f31972d57f73d6da9a8aed7ff389eb52190ed34f6a94f299a7f5ddc68b08a24a48f77eb9
   languageName: node
   linkType: hard
 
@@ -4518,9 +4529,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sharp@npm:^0.31.0":
-  version: 0.31.0
-  resolution: "sharp@npm:0.31.0"
+"sharp@npm:^0.31.1":
+  version: 0.31.1
+  resolution: "sharp@npm:0.31.1"
   dependencies:
     color: ^4.2.3
     detect-libc: ^2.0.1
@@ -4531,7 +4542,7 @@ __metadata:
     simple-get: ^4.0.1
     tar-fs: ^2.1.1
     tunnel-agent: ^0.6.0
-  checksum: 1ab73fea3a506f0bf290eb9dff6e7bab7947813e69bf8ca3eebcbe96498cb23dd6c8d8d02d67575fd8e9b555b01d9529d140c5a66e3a774855ba758455a90f3e
+  checksum: 42d00c9c6c61e5cf752c29583253782b3d821ee15fc2648c1f59892b94e9bc170a47ee9d138aa0a61c1c2ee9b7573ee54444c857fff887908701c4208710480d
   languageName: node
   linkType: hard
 
