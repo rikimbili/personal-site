@@ -51,7 +51,7 @@ export default function Home() {
             projectsRef={projectsRef}
             contactRef={contactRef}
           />
-          <main className="my-20 flex grow flex-col gap-16 sm:mt-24 sm:mb-48 sm:gap-24 lg:mb-64 lg:gap-36">
+          <main className="my-20 flex grow flex-col gap-16 sm:mt-24 sm:mb-32 sm:gap-24 lg:gap-36">
             <Hero />
             <About ref={aboutRef} />
             <Projects ref={projectsRef} />

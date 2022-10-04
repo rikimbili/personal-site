@@ -23,14 +23,36 @@ const dampenedSpringConfig = {
   damping: 30,
 };
 
+const PROGRESS = {
+  hiddenWidth: 0,
+  hiddenX: -30,
+  visibleWidth: 20,
+  visibleX: 0,
+  firstX: 20,
+  secondX: 100,
+  thirdX: 185,
+};
+
+const HEADER = {
+  hiddenY: -56,
+  dockedBorderRadius: 0,
+  dockedBorderBottomRadius: 16,
+  dockedY: 0,
+  floatingBorderRadius: 32,
+  floatingY: 16,
+};
+
 export default function Header({ aboutRef, projectsRef, contactRef }: Props) {
   //#region Hooks.
   const { scrollY } = useScroll();
-  const progressX = useSpring(-30, dampenedSpringConfig);
-  const progressWidth = useSpring(0, dampenedSpringConfig);
-  const headerY = useSpring(0, springConfig);
-  const headerBorderRadius = useSpring(0, springConfig);
-  const headerBorderBottomRadius = useSpring(16, springConfig);
+  const progressX = useSpring(PROGRESS.hiddenX, dampenedSpringConfig);
+  const progressWidth = useSpring(PROGRESS.hiddenWidth, dampenedSpringConfig);
+  const headerY = useSpring(HEADER.dockedY, springConfig);
+  const headerBorderRadius = useSpring(HEADER.dockedBorderRadius, springConfig);
+  const headerBorderBottomRadius = useSpring(
+    HEADER.dockedBorderBottomRadius,
+    springConfig
+  );
 
   const [isResumeDialogOpen, setIsResumeDialogOpen] = useState(false);
 
@@ -38,13 +60,13 @@ export default function Header({ aboutRef, projectsRef, contactRef }: Props) {
     return scrollY.onChange((scroll) => {
       // Scroll will be 0 when the user is at the top of the page.
       if (scroll === 0) {
-        headerY.set(0);
-        headerBorderRadius.set(0);
-        headerBorderBottomRadius.set(16);
+        headerY.set(HEADER.dockedY);
+        headerBorderRadius.set(HEADER.dockedBorderRadius);
+        headerBorderBottomRadius.set(HEADER.dockedBorderBottomRadius);
       } else {
-        headerY.set(16);
-        headerBorderRadius.set(32);
-        headerBorderBottomRadius.set(32);
+        headerY.set(HEADER.floatingY);
+        headerBorderRadius.set(HEADER.floatingBorderRadius);
+        headerBorderBottomRadius.set(HEADER.floatingBorderRadius);
       }
 
       // Get the offset position of all the main sections and update the progress dot.
@@ -69,9 +91,9 @@ export default function Header({ aboutRef, projectsRef, contactRef }: Props) {
   useEffect(() => {
     // Retain header state if a previous scrollY value is retained (e.g. Refreshing the page)
     if (window.scrollY > 0) {
-      headerY.set(16);
-      headerBorderRadius.set(32);
-      headerBorderBottomRadius.set(32);
+      headerY.set(HEADER.floatingY);
+      headerBorderRadius.set(HEADER.floatingBorderRadius);
+      headerBorderBottomRadius.set(HEADER.floatingBorderRadius);
     }
 
     updateProgress(window.scrollY);
@@ -95,23 +117,23 @@ export default function Header({ aboutRef, projectsRef, contactRef }: Props) {
       (contactOffset === Infinity && window.location.hash === "#contact") ||
       scroll + window.innerHeight === document.body.scrollHeight // If the user is at the bottom of the page.
     ) {
-      progressX.set(185);
-      progressWidth.set(16);
+      progressX.set(PROGRESS.thirdX);
+      progressWidth.set(PROGRESS.visibleWidth);
     } else if (
       scroll > projectsOffset - 200 ||
       (projectsOffset === Infinity && window.location.hash === "#projects")
     ) {
-      progressX.set(100);
-      progressWidth.set(16);
+      progressX.set(PROGRESS.secondX);
+      progressWidth.set(PROGRESS.visibleWidth);
     } else if (
       scroll > aboutOffset - 300 ||
       (aboutOffset === Infinity && window.location.hash === "#about")
     ) {
-      progressX.set(20);
-      progressWidth.set(16);
+      progressX.set(PROGRESS.firstX);
+      progressWidth.set(PROGRESS.visibleWidth);
     } else {
-      progressX.set(-30);
-      progressWidth.set(0);
+      progressX.set(PROGRESS.hiddenX);
+      progressWidth.set(PROGRESS.hiddenWidth);
     }
   };
 
@@ -121,16 +143,16 @@ export default function Header({ aboutRef, projectsRef, contactRef }: Props) {
     setIsResumeDialogOpen(false);
     // Re-open the header
     if (headerBorderRadius.get() === 0) {
-      headerY.set(0);
+      headerY.set(HEADER.dockedY);
     } else {
-      headerY.set(16);
+      headerY.set(HEADER.floatingY);
     }
   }
 
   function openResumeDialog() {
     setIsResumeDialogOpen(true);
     // Close the header while the dialog is open
-    headerY.set(-56);
+    headerY.set(HEADER.hiddenY);
   }
 
   //#endregion
@@ -162,7 +184,7 @@ export default function Header({ aboutRef, projectsRef, contactRef }: Props) {
         </div>
         <motion.span
           className={
-            "-mt-1 h-1 w-4 rounded-full bg-slate-900 dark:bg-slate-100"
+            "-mt-1 h-1 w-4 rounded-full bg-indigo-900 dark:bg-indigo-200"
           }
           style={{ x: progressX, width: progressWidth }}
         />

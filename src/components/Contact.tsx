@@ -37,8 +37,7 @@ const Contact = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
           LinkedIn
           <MdOpenInNew />
         </InlineLink>
-        . If you are looking for an up-to-date copy of my resume, just click the
-        Resume button on the floating header.
+        .
       </p>
     </SectionWrapper>
   );
