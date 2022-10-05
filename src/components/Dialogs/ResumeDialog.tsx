@@ -2,6 +2,7 @@ import { Dialog } from "@headlessui/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { MdClose, MdOpenInNew } from "react-icons/md";
 
+import personal from "../../data/personal";
 import Button from "../Inputs/Button";
 import InlineLink from "../Inputs/InlineLink";
 
@@ -70,13 +71,13 @@ export default function ResumeDialog({ isDialogOpen, closeDialog }: Props) {
             <div className={"h-full w-full rounded-2xl pb-8 sm:pb-16"}>
               <object
                 aria-labelledby={"Google Drive Preview"}
-                data="https://drive.google.com/file/d/1QeabHVP-wJERMum3EX4oRIN4x6WCOPXl/preview"
+                data={personal.resumeLink}
                 className={
                   "flex h-full w-full flex-col items-center justify-center gap-2 rounded-2xl text-base sm:gap-4 sm:text-2xl"
                 }
               >
                 <p>The resume cannot be displayed &#128542;</p>
-                <InlineLink href="https://drive.google.com/file/d/1QeabHVP-wJERMum3EX4oRIN4x6WCOPXl/preview">
+                <InlineLink href={personal.resumeLink}>
                   Click here to load it in a new tab
                   <MdOpenInNew />
                 </InlineLink>

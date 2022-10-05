@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Hero from "../components/Hero";
 import Projects from "../components/Projects";
-import head from "../data/head";
+import personal from "../data/personal";
 import { useMediaQuery } from "../hooks/useMediaQuery";
 
 export default function Home() {
@@ -28,13 +28,13 @@ export default function Home() {
           content="https://i.imgur.com/2km7IeI.png"
         />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={head.title} />
-        <meta name="twitter:description" content={head.description} />
-        <meta property="og:title" content={head.title} />
-        <meta property="og:description" content={head.description} />
+        <meta name="twitter:title" content={personal.title} />
+        <meta name="twitter:description" content={personal.description} />
+        <meta property="og:title" content={personal.title} />
+        <meta property="og:description" content={personal.description} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://raciel.dev" />
-        <title>{head.title}</title>
+        <title>{personal.title}</title>
       </Head>
       {!smallWidth ? (
         <div className="flex min-h-screen flex-col px-4">
