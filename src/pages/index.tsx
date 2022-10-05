@@ -1,7 +1,6 @@
 import Head from "next/head";
 import { useRef } from "react";
 
-import About from "../components/About";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -51,9 +50,8 @@ export default function Home() {
             projectsRef={projectsRef}
             contactRef={contactRef}
           />
-          <main className="my-20 flex grow flex-col gap-16 sm:mt-24 sm:mb-32 sm:gap-24 lg:gap-36">
+          <main className="mt-28 mb-20 flex grow flex-col gap-16 sm:my-32 sm:gap-24 lg:gap-36">
             <Hero />
-            <About ref={aboutRef} />
             <Projects ref={projectsRef} />
             <Contact ref={contactRef} />
           </main>

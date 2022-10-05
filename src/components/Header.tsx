@@ -8,7 +8,6 @@ import Button from "./Inputs/Button";
 import ButtonLink from "./Inputs/ButtonLink";
 
 interface Props {
-  aboutRef: RefObject<HTMLDivElement>;
   projectsRef: RefObject<HTMLDivElement>;
   contactRef: RefObject<HTMLDivElement>;
 }
@@ -28,9 +27,8 @@ const PROGRESS = {
   hiddenX: -30,
   visibleWidth: 20,
   visibleX: 0,
-  firstX: 20,
-  secondX: 100,
-  thirdX: 185,
+  projectsX: 27,
+  contactX: 115,
 };
 
 const HEADER = {
@@ -42,7 +40,7 @@ const HEADER = {
   floatingY: 16,
 };
 
-export default function Header({ aboutRef, projectsRef, contactRef }: Props) {
+export default function Header({ projectsRef, contactRef }: Props) {
   //#region Hooks.
   const { scrollY } = useScroll();
   const progressX = useSpring(PROGRESS.hiddenX, dampenedSpringConfig);
@@ -70,11 +68,10 @@ export default function Header({ aboutRef, projectsRef, contactRef }: Props) {
       }
 
       // Get the offset position of all the main sections and update the progress dot.
-      const aboutOffset = aboutRef?.current?.offsetTop || Infinity;
       const projectsOffset = projectsRef?.current?.offsetTop || Infinity;
       const contactOffset = contactRef?.current?.offsetTop || Infinity;
 
-      updateProgress(scroll, aboutOffset, projectsOffset, contactOffset);
+      updateProgress(scroll, projectsOffset, contactOffset);
     });
   }, [
     headerBorderBottomRadius,
@@ -83,7 +80,6 @@ export default function Header({ aboutRef, projectsRef, contactRef }: Props) {
     progressX,
     progressWidth,
     scrollY,
-    aboutRef,
     projectsRef,
     contactRef,
   ]);
@@ -108,7 +104,6 @@ export default function Header({ aboutRef, projectsRef, contactRef }: Props) {
   // be set based on the hash in the URL.
   const updateProgress = (
     scroll: number,
-    aboutOffset = Infinity,
     projectsOffset = Infinity,
     contactOffset = Infinity
   ) => {
@@ -117,19 +112,13 @@ export default function Header({ aboutRef, projectsRef, contactRef }: Props) {
       (contactOffset === Infinity && window.location.hash === "#contact") ||
       scroll + window.innerHeight === document.body.scrollHeight // If the user is at the bottom of the page.
     ) {
-      progressX.set(PROGRESS.thirdX);
+      progressX.set(PROGRESS.contactX);
       progressWidth.set(PROGRESS.visibleWidth);
     } else if (
       scroll > projectsOffset - 200 ||
       (projectsOffset === Infinity && window.location.hash === "#projects")
     ) {
-      progressX.set(PROGRESS.secondX);
-      progressWidth.set(PROGRESS.visibleWidth);
-    } else if (
-      scroll > aboutOffset - 300 ||
-      (aboutOffset === Infinity && window.location.hash === "#about")
-    ) {
-      progressX.set(PROGRESS.firstX);
+      progressX.set(PROGRESS.projectsX);
       progressWidth.set(PROGRESS.visibleWidth);
     } else {
       progressX.set(PROGRESS.hiddenX);
@@ -160,7 +149,7 @@ export default function Header({ aboutRef, projectsRef, contactRef }: Props) {
   return (
     <motion.header
       className={
-        "fixed z-50 flex h-12 w-fit max-w-7xl select-none justify-center self-center px-6 text-xl shadow-weak " +
+        "fixed z-50 flex h-14 w-fit max-w-7xl select-none justify-center self-center px-6 text-xl shadow-weak " +
         "backdrop-blur-md bg-slate-200/80 dark:bg-slate-800/80 sm:w-11/12 sm:justify-between items-center overflow-hidden"
       }
       style={{
@@ -172,9 +161,6 @@ export default function Header({ aboutRef, projectsRef, contactRef }: Props) {
     >
       <div className={"hidden flex-col gap-1 sm:flex"}>
         <div className={"mt-1 flex gap-4"}>
-          <ButtonLink className={"text-xl"} href={"#about"} target={""}>
-            About
-          </ButtonLink>
           <ButtonLink className={"text-xl"} href={"#projects"} target={""}>
             Projects
           </ButtonLink>

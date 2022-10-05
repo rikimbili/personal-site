@@ -8,11 +8,6 @@ module.exports = {
   ],
   theme: {
     extend: {
-      boxShadow: {
-        strong: "0rem 1.2rem 1.2rem rgba(0, 0, 0, 0.5)",
-        medium: "0rem 0.6rem 0.8rem rgba(0, 0, 0, 0.4)",
-        weak: "0rem 0.3rem 0.6rem rgba(0, 0, 0, 0.3)",
-      },
       colors: {
         primary: {
           light: "#C7BCF6",
@@ -33,11 +28,6 @@ module.exports = {
         success: {
           light: "#8CEA94",
           dark: "#4CCA4C",
-        },
-        background: {
-          darkish: "#2E3247",
-          dark: "#22253A",
-          darker: "#0D0E16",
         },
       },
       screens: {

@@ -82,10 +82,10 @@ export default function ProjectCard({
   return (
     <motion.div
       ref={ref}
-      whileHover={{
-        scale: 1.01,
-        boxShadow: "0rem 0.5rem 1.2rem rgba(0, 0, 0, 0.4)",
-      }}
+      // whileHover={{
+      //   scale: 1.01,
+      //   boxShadow: "0rem 0.5rem 1.2rem rgba(0, 0, 0, 0.4)",
+      // }}
       initial={"initial"}
       animate={sectionControl}
       variants={cardVariants}
