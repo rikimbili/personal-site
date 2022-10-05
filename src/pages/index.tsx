@@ -11,7 +11,6 @@ import { useMediaQuery } from "../hooks/useMediaQuery";
 export default function Home() {
   //#region Hooks
 
-  const aboutRef = useRef<HTMLDivElement>(null);
   const projectsRef = useRef<HTMLDivElement>(null);
   const contactRef = useRef<HTMLDivElement>(null);
 
@@ -45,11 +44,7 @@ export default function Home() {
       </Head>
       {!smallWidth ? (
         <div className="flex min-h-screen flex-col px-4">
-          <Header
-            aboutRef={aboutRef}
-            projectsRef={projectsRef}
-            contactRef={contactRef}
-          />
+          <Header projectsRef={projectsRef} contactRef={contactRef} />
           <main className="mt-28 mb-20 flex grow flex-col gap-16 sm:my-32 sm:gap-24 lg:gap-36">
             <Hero />
             <Projects ref={projectsRef} />
