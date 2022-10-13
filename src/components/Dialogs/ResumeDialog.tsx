@@ -32,8 +32,8 @@ const dialogVariants = {
 
 const transition = {
   type: "spring",
-  duration: 0.35,
-  bounce: 0.3,
+  duration: 0.3,
+  bounce: 0.25,
 };
 
 export default function ResumeDialog({ isDialogOpen, closeDialog }: Props) {
