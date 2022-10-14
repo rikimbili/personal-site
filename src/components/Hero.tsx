@@ -10,7 +10,7 @@ const wavingHandVariants = {
     rotateZ: [0, 20, -20, 20, -20, 0],
     transition: {
       duration: 1.2,
-      delay: 2,
+      delay: 1,
     },
   },
   waving: {
