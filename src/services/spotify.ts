@@ -11,6 +11,7 @@ export interface CurrentlyPlayingItem {
 export interface CurrentlyPlayingData {
   is_playing: boolean;
   currently_playing_type?: string;
+  access_token?: string;
   item?: CurrentlyPlayingItem;
 }
 
@@ -26,10 +27,10 @@ async function getNewAccessTokenFromRefreshToken(): Promise<void> {
     method: "post",
     body: params,
   });
-  const data = await response.json();
+  const data = (await response.json()) as CurrentlyPlayingData;
 
   if (response.ok) {
-    process.env.SPOTIFY_ACCESS_TOKEN = data.access_token;
+    process.env.SPOTIFY_ACCESS_TOKEN = data.access_token as string;
   } else {
     console.error(data);
     throw new Error("Failed to get new access token from refresh token");
@@ -43,7 +44,7 @@ export default async function getCurrentlyPlaying(): Promise<CurrentlyPlayingDat
     "https://api.spotify.com/v1/me/player/currently-playing",
     {
       headers: {
-        Authorization: `Bearer ${process.env.SPOTIFY_ACCESS_TOKEN}`,
+        Authorization: `Bearer ${process.env.SPOTIFY_ACCESS_TOKEN as string}`,
       },
     }
   );
@@ -56,7 +57,13 @@ export default async function getCurrentlyPlaying(): Promise<CurrentlyPlayingDat
 
   return await response
     .json()
-    .then((data) => {
+    .then((data: CurrentlyPlayingData) => {
+      if (!data.item) {
+        // If the response failed or no body is returned (e.g. no song is playing) return is_playing set to false
+        return {
+          is_playing: false,
+        };
+      }
       // Only return what is specified in CurrentlyPlayingData
       return {
         is_playing: data.is_playing,

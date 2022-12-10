@@ -1,11 +1,8 @@
+import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
 import { MdMusicNote, MdMusicOff } from "react-icons/md";
 
-import {
-  CurrentlyPlayingData,
-  CurrentlyPlayingItem,
-} from "../../services/spotify";
+import { CurrentlyPlayingData } from "../../services/spotify";
 import ButtonLink from "../Inputs/ButtonLink";
 
 interface Props {
@@ -14,30 +11,24 @@ interface Props {
 
 export default function CurrentlyPlaying({ className = "" }: Props) {
   //#region Hooks
-  const [item, setItem] = useState<CurrentlyPlayingItem | null>(null);
 
-  useEffect(() => {
-    // Fetch the currently playing item from the Spotify API
-    const getCurrPlaying = () =>
-      fetch(`${window.location.origin}/api/currently-playing`, {
-        method: "GET",
-      }).then((res) =>
-        res.json().then((data: CurrentlyPlayingData) => {
-          // If not a track or not playing, set item to null
-          if (data?.is_playing && data?.currently_playing_type === "track") {
-            setItem(data.item as CurrentlyPlayingItem);
-          } else {
-            setItem(null);
-          }
-        })
-      );
-    // Fetch currently playing 3 times a minute
-    const interval = setInterval(getCurrPlaying, 20000);
+  const { data } = useQuery({
+    queryKey: ["currently-playing"],
+    queryFn: () =>
+      fetch("/api/currently-playing").then((res) =>
+        res.json()
+      ) as Promise<CurrentlyPlayingData>,
+    refetchInterval: 1000 * 20,
+  });
 
-    getCurrPlaying();
+  //#endregion
 
-    return () => clearInterval(interval);
-  }, []);
+  //#region Derived Data
+
+  const item =
+    data?.is_playing && data?.currently_playing_type === "track"
+      ? data.item
+      : null;
 
   //#endregion
 

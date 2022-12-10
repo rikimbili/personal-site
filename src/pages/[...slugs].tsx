@@ -6,13 +6,13 @@ export default function AnySlug() {
   Catch all possible routes and redirect the user to the root slug.
   Any predefined route takes precedence so this won't override them.
 */
-export async function getStaticPaths() {
+export function getStaticPaths() {
   return {
     paths: [],
     fallback: true,
   };
 }
-export async function getStaticProps() {
+export function getStaticProps() {
   return {
     redirect: {
       permanent: false,

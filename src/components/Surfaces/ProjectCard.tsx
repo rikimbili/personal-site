@@ -4,7 +4,7 @@ import {
   useAnimationControls,
   useInView,
 } from "framer-motion";
-import Image from "next/future/image";
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { MdOpenInNew } from "react-icons/md";
 import { SiGithub } from "react-icons/si";
@@ -61,7 +61,7 @@ export default function ProjectCard({
   // Add the anchor tag to the URL and animate the section when it comes into view.
   useEffect(() => {
     if (isInView) {
-      sectionControl.start("visible");
+      void sectionControl.start("visible");
     }
   }, [isInView, sectionControl]);
 
@@ -82,10 +82,6 @@ export default function ProjectCard({
   return (
     <motion.div
       ref={ref}
-      // whileHover={{
-      //   scale: 1.01,
-      //   boxShadow: "0rem 0.5rem 1.2rem rgba(0, 0, 0, 0.4)",
-      // }}
       initial={"initial"}
       animate={sectionControl}
       variants={cardVariants}

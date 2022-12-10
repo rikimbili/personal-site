@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import Image from "next/future/image";
+import Image from "next/image";
 import { MdOpenInNew } from "react-icons/md";
 
 import InlineLink from "./Inputs/InlineLink";
@@ -83,50 +83,3 @@ export default function Hero() {
     </SectionWrapper>
   );
 }
-
-// export default function Hero() {
-//   return (
-//     <SectionWrapper
-//       id="hero"
-//       className={
-//         "flex items-center justify-center sm:h-[22rem] md:h-[32rem] lg:h-[48rem]"
-//       }
-//     >
-//       <div className={"relative -z-10 hidden h-full w-2/5 sm:block"}>
-//         <Image
-//           src={"/images/hero_photo.png"}
-//           alt={"Hero Photo"}
-//           className={"select-none object-contain"}
-//           fill
-//           priority
-//           draggable={false}
-//           sizes="(max-width: 1024px) 40vw,
-//               (max-width: 1400px) 33vw,
-//               25vw"
-//         />
-//       </div>
-//       <div className={"text-lg sm:w-full sm:text-xl md:w-10/12 lg:text-2xl"}>
-//         <h2
-//           className={
-//             "mb-8 select-none text-center text-4xl sm:mb-10 sm:text-5xl lg:mb-14 lg:text-6xl"
-//           }
-//         >
-//           Hey there{" "}
-//           <motion.span
-//             className={"inline-block cursor-grab"}
-//             variants={wavingHandVariants}
-//             whileHover={"waving"}
-//             animate={"wave"}
-//           >
-//             👋
-//           </motion.span>
-//         </h2>
-//         <p className={"text-justify sm:text-center"}>
-//           My name is <b>Raciel</b> Antela Pardo. I specialize in building
-//           responsive web and mobile apps, while using modern development
-//           practices.
-//         </p>
-//       </div>
-//     </SectionWrapper>
-//   );
-// }

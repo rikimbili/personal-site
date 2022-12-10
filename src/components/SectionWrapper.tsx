@@ -38,7 +38,7 @@ export default function SectionWrapper({
   // Add the anchor tag to the URL and animate the section when it comes into view.
   useEffect(() => {
     if (isInView) {
-      sectionControl.start("visible");
+      void sectionControl.start("visible");
     }
   }, [isInView, sectionControl]);
 

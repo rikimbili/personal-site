@@ -5,7 +5,7 @@ interface Props extends HTMLMotionProps<"a"> {
   className?: string;
 }
 
-export default function AnchorLink({ className, ...rest }: Props) {
+export default function AnchorLink({ className = "", ...rest }: Props) {
   return (
     <motion.a
       className={

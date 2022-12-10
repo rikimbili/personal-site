@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "allowJs": true,
-    "composite": false,
     "declaration": true,
     "declarationMap": true,
     "esModuleInterop": true,
@@ -10,12 +9,8 @@
     "inlineSources": false,
     "isolatedModules": true,
     "jsx": "preserve",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "module": "esnext",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "module": "ESNext",
     "moduleResolution": "node",
     "noEmit": true,
     "noUnusedLocals": false,
@@ -24,14 +19,12 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "es5"
+    "target": "es5",
   },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": [
-    "node_modules"
-  ],
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx"
+    "dist",
+    "build",
+    "node_modules",
   ]
 }
