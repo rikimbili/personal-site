@@ -9,11 +9,9 @@ export default function HoverJump({ repeat = Infinity, children }: Props) {
   return (
     <motion.div
       whileHover={{
-        y: [0, -3, 0, -3, 0],
+        y: [0, -4, 0],
         transition: {
-          repeat: repeat,
-          repeatDelay: 0.8,
-          duration: 0.5,
+          duration: 0.3,
         },
       }}
       whileTap={{

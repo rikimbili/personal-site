@@ -84,6 +84,11 @@ export const positionVariants = {
     y: -64,
     opacity: 0,
   },
+  floatingTop: {
+    y: 16,
+    opacity: 1,
+    transition: transitions.springStiff,
+  },
   animate: {
     x: 0,
     y: 0,

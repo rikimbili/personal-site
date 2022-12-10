@@ -1,5 +1,5 @@
 import { ForwardedRef, forwardRef } from "react";
-import { MdEmail } from "react-icons/md";
+import { MdEmail, MdOutlineSubdirectoryArrowRight } from "react-icons/md";
 import { SiGithub, SiLinkedin, SiSpotify } from "react-icons/si";
 
 import HoverJump from "./Animations/HoverJump";
@@ -14,14 +14,12 @@ const Contact = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
       id={"contact"}
       fadeInDelay={0.15}
       className={
-        "scroll-mt-20 text-justify text-lg sm:w-full sm:text-xl lg:text-2xl"
+        "flex scroll-mt-20 flex-col gap-4 text-justify text-lg sm:w-full sm:gap-8 sm:text-xl lg:text-2xl"
       }
     >
       <h2
         ref={ref}
-        className={
-          "group mb-4 w-fit select-none text-3xl sm:mb-8 sm:text-4xl lg:text-5xl"
-        }
+        className={"group w-fit select-none text-3xl sm:text-4xl lg:text-5xl"}
       >
         Contact{" "}
         <AnchorLink
@@ -37,7 +35,8 @@ const Contact = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
         </InlineLink>
         . You can also find me on the following places:
       </p>
-      <div className={"mt-4 flex justify-center gap-6 text-3xl sm:text-4xl"}>
+      <div className={"flex justify-start gap-6 text-4xl sm:gap-8 sm:text-5xl"}>
+        <MdOutlineSubdirectoryArrowRight />
         <HoverJump>
           <ButtonLink href={"https://github.com/Rikimbili"}>
             <SiGithub />

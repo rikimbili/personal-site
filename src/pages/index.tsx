@@ -15,7 +15,7 @@ export default function Home() {
   const projectsRef = useRef<HTMLDivElement>(null);
   const contactRef = useRef<HTMLDivElement>(null);
 
-  const smallWidth = useMediaQuery("(max-width: 319px)");
+  const acceptableWidth = useMediaQuery("(min-width: 320px)");
 
   //#endregion
 
@@ -36,7 +36,7 @@ export default function Home() {
         <meta property="og:url" content="https://raciel.dev" />
         <title>{personal.title}</title>
       </Head>
-      {!smallWidth ? (
+      {acceptableWidth ? (
         <div className="flex min-h-screen flex-col px-4">
           <Header projectsRef={projectsRef} contactRef={contactRef} />
           <main className="mt-28 mb-20 flex grow flex-col gap-16 sm:my-32 sm:gap-24 lg:gap-36">
