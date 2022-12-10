@@ -2,10 +2,9 @@ import { motion } from "framer-motion";
 import { ReactNode } from "react";
 
 interface Props {
-  repeat?: number;
   children: ReactNode;
 }
-export default function HoverJump({ repeat = Infinity, children }: Props) {
+export default function HoverJump({ children }: Props) {
   return (
     <motion.div
       whileHover={{

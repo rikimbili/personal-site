@@ -35,7 +35,11 @@ const Contact = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
         </InlineLink>
         . You can also find me on the following places:
       </p>
-      <div className={"flex justify-start gap-6 text-4xl sm:gap-8 sm:text-5xl"}>
+      <div
+        className={
+          "-mt-2 flex justify-start gap-4 text-3xl sm:gap-6 sm:text-4xl"
+        }
+      >
         <MdOutlineSubdirectoryArrowRight />
         <HoverJump>
           <ButtonLink href={"https://github.com/Rikimbili"}>

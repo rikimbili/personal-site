@@ -11,7 +11,7 @@ export default function Footer() {
         }
       >
         <span className={"select-none text-justify"}>
-          &copy; {new Date().getFullYear()} Raciel Antela Pardo.
+          &copy; {new Date().getFullYear()} Raciel Antela Pardo
         </span>
         <CurrentlyPlaying />
       </div>
