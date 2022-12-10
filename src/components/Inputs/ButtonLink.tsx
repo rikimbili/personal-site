@@ -15,10 +15,8 @@ export default function ButtonLink({
 }: Props) {
   return (
     <Link
-      className={`cursor-pointer transition duration-100 ease-out hover:text-slate-600 active:scale-[96%] active:duration-75
-        dark:hover:text-slate-300 [&>svg]:text-3xl [&>*]:fill-slate-800 [&>*]:transition [&>*]:duration-100 [&>*]:ease-out 
-        [&>*]:hover:fill-slate-600 [&>*]:active:duration-75 dark:[&>*]:fill-slate-50 dark:[&>*]:hover:fill-slate-300 
-        ${className}`}
+      className={`cursor-pointer transition duration-100 ease-out hover:text-indigo-600 active:scale-[96%] active:duration-75
+        dark:hover:text-indigo-300 ${className}`}
       target={target}
       {...rest}
     >

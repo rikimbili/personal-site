@@ -1,7 +1,6 @@
 import { motion, useScroll, useSpring } from "framer-motion";
 import { RefObject, useEffect, useState } from "react";
 import { BiWindows } from "react-icons/bi";
-import { SiGithub, SiLinkedin } from "react-icons/si";
 
 import ResumeDialog from "./Dialogs/ResumeDialog";
 import Button from "./Inputs/Button";
@@ -149,7 +148,7 @@ export default function Header({ projectsRef, contactRef }: Props) {
   return (
     <motion.header
       className={
-        "fixed z-50 flex h-14 w-fit max-w-7xl select-none justify-center self-center px-6 text-xl shadow-weak " +
+        "fixed z-10 flex h-14 w-fit max-w-7xl select-none justify-center self-center px-6 text-xl shadow-weak " +
         "backdrop-blur-md bg-slate-200/80 dark:bg-slate-800/80 sm:w-11/12 sm:justify-between items-center overflow-hidden"
       }
       style={{
@@ -176,12 +175,6 @@ export default function Header({ projectsRef, contactRef }: Props) {
         />
       </div>
       <div className={"flex items-center gap-4"}>
-        <ButtonLink href={"https://github.com/Rikimbili"}>
-          <SiGithub />
-        </ButtonLink>
-        <ButtonLink href={"https://www.linkedin.com/in/racielap"}>
-          <SiLinkedin />
-        </ButtonLink>
         <Button onClick={openResumeDialog}>
           Resume
           <BiWindows />

@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 @layer base {
-  html {
-    @apply scroll-smooth;
+  html, body {
+    scroll-behavior: smooth !important;
   }
 
   body {

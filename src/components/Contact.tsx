@@ -1,7 +1,10 @@
 import { ForwardedRef, forwardRef } from "react";
-import { MdEmail, MdOpenInNew } from "react-icons/md";
+import { MdEmail } from "react-icons/md";
+import { SiGithub, SiLinkedin, SiSpotify } from "react-icons/si";
 
+import HoverJump from "./Animations/HoverJump";
 import AnchorLink from "./Inputs/AnchorLink";
+import ButtonLink from "./Inputs/ButtonLink";
 import InlineLink from "./Inputs/InlineLink";
 import SectionWrapper from "./SectionWrapper";
 
@@ -31,14 +34,30 @@ const Contact = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
         <InlineLink href="mailto:hey@raciel.dev" target={"_self"}>
           hi@raciel.dev
           <MdEmail />
-        </InlineLink>{" "}
-        or shoot me a message on{" "}
-        <InlineLink href="https://www.linkedin.com/in/racielap">
-          LinkedIn
-          <MdOpenInNew />
         </InlineLink>
-        .
+        . You can also find me on the following places:
       </p>
+      <div className={"mt-4 flex justify-center gap-6 text-3xl sm:text-4xl"}>
+        <HoverJump>
+          <ButtonLink href={"https://github.com/Rikimbili"}>
+            <SiGithub />
+          </ButtonLink>
+        </HoverJump>
+        <HoverJump>
+          <ButtonLink href={"https://www.linkedin.com/in/racielap"}>
+            <SiLinkedin />
+          </ButtonLink>
+        </HoverJump>
+        <HoverJump>
+          <ButtonLink
+            href={
+              "https://open.spotify.com/user/hq4b6g53rt66krufjr2pnfqhc?si=035315f5f0d24075"
+            }
+          >
+            <SiSpotify />
+          </ButtonLink>
+        </HoverJump>
+      </div>
     </SectionWrapper>
   );
 });
