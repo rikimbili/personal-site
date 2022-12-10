@@ -1,24 +1,18 @@
-import { HTMLMotionProps, motion } from "framer-motion";
-import { ReactNode } from "react";
+import { ButtonHTMLAttributes, ReactNode } from "react";
 
-interface Props extends HTMLMotionProps<"button"> {
+interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   children: ReactNode;
 }
 
 export default function Button({ className = "", children, ...rest }: Props) {
   return (
-    <motion.button
-      className={
-        "flex select-none items-center gap-2 rounded-md px-3 py-1 bg-slate-300 text-slate-900 transition duration-100 ease-out " +
-        "hover:bg-slate-400 active:duration-75 dark:bg-slate-700 dark:text-slate-50 dark:hover:bg-slate-600 " +
-        className
-      }
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
+    <button
+      className={`flex select-none items-center gap-2 rounded-md bg-slate-300 px-3 py-1 text-slate-900 transition duration-100 
+        ease-out hover:bg-slate-400 active:scale-[98%] active:duration-75 dark:bg-slate-700 dark:text-slate-50 dark:hover:bg-slate-600 ${className}`}
       {...rest}
     >
       {children}
-    </motion.button>
+    </button>
   );
 }
