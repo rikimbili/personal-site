@@ -21,30 +21,29 @@ export default function Header({ projectsRef, contactRef }: Props) {
   const { scrollY } = useScroll();
 
   const [navState, setNavState] = useState<"closed" | "open" | "floating">(
-    "closed"
+    "open"
   );
   const [isResumeDialogOpen, setIsResumeDialogOpen] = useState(false);
 
-  // On any change to the scroll position, updateHiddenState will be called.
-  useEffect(() => scrollY.onChange(updateHiddenState), []);
+  // On any change to the scroll position, update the nav state
+  useEffect(
+    () =>
+      scrollY.onChange(() => {
+        const isScrollingUp = scrollY.get() < scrollY.getPrevious();
+        const isScrollingDown =
+          scrollY.get() > navStartOffset &&
+          scrollY.get() > scrollY.getPrevious();
 
-  //#endregion
-
-  //#region Utility functions
-
-  const updateHiddenState = () => {
-    const isScrollingUp = scrollY.get() < scrollY.getPrevious();
-    const isScrollingDown =
-      scrollY.get() > navStartOffset && scrollY.get() > scrollY.getPrevious();
-
-    if (scrollY.get() < navStartOffset) {
-      setNavState("open");
-    } else if (isScrollingUp) {
-      setNavState("floating");
-    } else if (isScrollingDown) {
-      setNavState("closed");
-    }
-  };
+        if (scrollY.get() < navStartOffset) {
+          setNavState("open");
+        } else if (isScrollingUp) {
+          setNavState("floating");
+        } else if (isScrollingDown) {
+          setNavState("closed");
+        }
+      }),
+    [scrollY]
+  );
 
   //#endregion
 
