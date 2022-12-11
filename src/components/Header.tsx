@@ -6,6 +6,7 @@ import { positionVariants, transitions } from "../styles/motion-definitions";
 import ResumeDialog from "./Dialogs/ResumeDialog";
 import Button from "./Inputs/Button";
 import LinkIconButton from "./Inputs/LinkIconButton";
+import Toggle from "./Theme/Toggle";
 
 interface Props {
   projectsRef: RefObject<HTMLDivElement>;
@@ -88,15 +89,16 @@ export default function Header({ projectsRef, contactRef }: Props) {
         </LinkIconButton>
       </div>
       <div className={"flex items-center gap-4"}>
+        <Toggle />
         <Button onClick={openResumeDialog}>
           Resume
           <BiWindows />
         </Button>
-        <ResumeDialog
-          isDialogOpen={isResumeDialogOpen}
-          closeDialog={closeResumeDialog}
-        />
       </div>
+      <ResumeDialog
+        isDialogOpen={isResumeDialogOpen}
+        closeDialog={closeResumeDialog}
+      />
     </motion.header>
   );
 }

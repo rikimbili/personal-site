@@ -2,12 +2,12 @@ import { type VariantProps, cva } from "class-variance-authority";
 import { ButtonHTMLAttributes, ReactNode } from "react";
 
 const buttonStyles = cva(
-  "flex select-none items-center gap-2 rounded-md px-3 py-1 transition duration-100 ease-out active:scale-[98%] active:duration-75",
+  "flex select-none items-center gap-2 rounded-md px-3 py-1 transition duration-100 ease-out active:scale-[96%] active:duration-75",
   {
     variants: {
       variant: {
         filled:
-          "bg-slate-300 text-slate-900 hover:bg-indigo-500 dark:bg-slate-600 dark:text-slate-50",
+          "bg-slate-300 text-slate-900 hover:bg-indigo-400 dark:bg-slate-600 dark:text-slate-50 dark:hover:bg-indigo-500",
         text: "text-slate-900 dark:text-slate-50 hover:bg-slate-300 dark:hover:bg-slate-600",
       },
       disabled: {

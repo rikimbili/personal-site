@@ -37,15 +37,15 @@ export default function Home() {
         <title>{personal.title}</title>
       </Head>
       {!smallWidth ? (
-        <div className="flex min-h-screen flex-col px-4">
+        <main className="mx-auto flex min-h-screen w-11/12 max-w-7xl flex-col px-4">
           <Header projectsRef={projectsRef} contactRef={contactRef} />
-          <main className="mt-28 mb-20 flex grow flex-col gap-16 sm:my-32 sm:gap-24 lg:gap-36">
+          <div className="mt-28 mb-20 flex grow flex-col gap-16 sm:my-32 sm:gap-24 lg:gap-36">
             <Hero />
             <Projects ref={projectsRef} />
             <Contact ref={contactRef} />
-          </main>
+          </div>
           <Footer />
-        </div>
+        </main>
       ) : (
         <div className="flex h-screen flex-col items-center justify-center">
           <h1 className="text-base">

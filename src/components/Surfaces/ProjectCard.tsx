@@ -111,7 +111,7 @@ export default function ProjectCard({
       className={`flex w-full max-w-xl flex-1 flex-col gap-2 overflow-x-hidden rounded-2xl bg-slate-200 
       pb-8 dark:bg-slate-800 sm:min-w-[24rem] sm:gap-4`}
     >
-      <div className={"group relative"}>
+      <div className={"group relative text-slate-50"}>
         <div
           className={`absolute top-1/2 -left-16 z-10 flex h-full w-16 -translate-y-1/2 items-center bg-gradient-to-l 
               from-transparent to-black text-6xl transition-all duration-300 ${
@@ -229,7 +229,7 @@ export default function ProjectCard({
         )}
         {sourceLink && (
           <Link href={sourceLink} target={"_blank"}>
-            <Button variant={"text"}>
+            <Button variant={visitLink ? "text" : "filled"}>
               Source <SiGithub />
             </Button>
           </Link>
