@@ -4,7 +4,7 @@ import { MdMusicNote, MdMusicOff } from "react-icons/md";
 
 import { CurrentlyPlayingData } from "../../services/spotify";
 import { transitions } from "../../styles/motion-definitions";
-import ButtonLink from "../Inputs/ButtonLink";
+import LinkIconButton from "../Inputs/LinkIconButton";
 
 interface Props {
   className?: string;
@@ -44,7 +44,7 @@ export default function CurrentlyPlaying({ className = "" }: Props) {
             exit={{ y: -40, opacity: 0 }}
             transition={transitions.springStiff}
           >
-            <ButtonLink
+            <LinkIconButton
               href={item.external_urls.spotify}
               className={"flex items-center"}
             >
@@ -65,7 +65,7 @@ export default function CurrentlyPlaying({ className = "" }: Props) {
               <span className="ml-1 max-w-[14rem] overflow-hidden text-ellipsis whitespace-nowrap sm:max-w-xs xl:max-w-sm">
                 {item.artists?.[0]?.name} — {item.name}
               </span>
-            </ButtonLink>
+            </LinkIconButton>
           </motion.div>
         ) : (
           <motion.div

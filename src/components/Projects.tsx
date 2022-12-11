@@ -35,7 +35,7 @@ const Projects = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
           <ProjectCard
             key={index}
             fadeInDelay={0.1 + (index % 2) * 0.1}
-            image={project.image}
+            images={project.images}
             title={project.title}
             description={project.description}
             tags={project.tags}

@@ -57,8 +57,8 @@ export default async function getCurrentlyPlaying(): Promise<CurrentlyPlayingDat
 
   return await response
     .json()
-    .then((data: CurrentlyPlayingData) => {
-      if (!data.item) {
+    .then((data?: CurrentlyPlayingData) => {
+      if (!data?.item) {
         // If the response failed or no body is returned (e.g. no song is playing) return is_playing set to false
         return {
           is_playing: false,
@@ -76,7 +76,6 @@ export default async function getCurrentlyPlaying(): Promise<CurrentlyPlayingDat
       };
     })
     .catch(() => {
-      // If the response failed or no body is returned (e.g. no song is playing) return is_playing set to false
       return {
         is_playing: false,
       };

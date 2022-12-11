@@ -4,8 +4,8 @@ import { SiGithub, SiLinkedin, SiSpotify } from "react-icons/si";
 
 import HoverJump from "./Animations/HoverJump";
 import AnchorLink from "./Inputs/AnchorLink";
-import ButtonLink from "./Inputs/ButtonLink";
 import InlineLink from "./Inputs/InlineLink";
+import LinkIconButton from "./Inputs/LinkIconButton";
 import SectionWrapper from "./SectionWrapper";
 
 const Contact = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
@@ -42,23 +42,23 @@ const Contact = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
       >
         <MdOutlineSubdirectoryArrowRight />
         <HoverJump>
-          <ButtonLink href={"https://github.com/Rikimbili"}>
+          <LinkIconButton href={"https://github.com/Rikimbili"}>
             <SiGithub />
-          </ButtonLink>
+          </LinkIconButton>
         </HoverJump>
         <HoverJump>
-          <ButtonLink href={"https://www.linkedin.com/in/racielap"}>
+          <LinkIconButton href={"https://www.linkedin.com/in/racielap"}>
             <SiLinkedin />
-          </ButtonLink>
+          </LinkIconButton>
         </HoverJump>
         <HoverJump>
-          <ButtonLink
+          <LinkIconButton
             href={
               "https://open.spotify.com/user/hq4b6g53rt66krufjr2pnfqhc?si=035315f5f0d24075"
             }
           >
             <SiSpotify />
-          </ButtonLink>
+          </LinkIconButton>
         </HoverJump>
       </div>
     </SectionWrapper>

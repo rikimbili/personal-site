@@ -7,7 +7,7 @@ interface Props extends LinkProps {
   target?: string;
 }
 
-export default function ButtonLink({
+export default function LinkIconButton({
   children,
   className = "",
   target = "_blank",

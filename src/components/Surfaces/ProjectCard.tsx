@@ -1,16 +1,20 @@
 import {
+  AnimatePresence,
   motion,
   Reorder,
   useAnimationControls,
   useInView,
 } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { MdOpenInNew } from "react-icons/md";
+import { MdNavigateBefore, MdNavigateNext, MdOpenInNew } from "react-icons/md";
 import { SiGithub } from "react-icons/si";
 
 import { useMediaQuery } from "../../hooks/useMediaQuery";
+import { transitions } from "../../styles/motion-definitions";
 import Button from "../Inputs/Button";
+import IconButton from "../Inputs/IconButton";
 
 interface Props {
   title: string;
@@ -18,7 +22,7 @@ interface Props {
   tags?: string[];
   visitLink?: string;
   sourceLink?: string;
-  image: string;
+  images: string[];
   visitTextOverride?: string;
   fadeInDelay?: number;
 }
@@ -44,7 +48,7 @@ export default function ProjectCard({
   tags,
   visitLink,
   sourceLink,
-  image,
+  images,
   visitTextOverride = "Try it out!",
   fadeInDelay = 0,
 }: Props) {
@@ -57,6 +61,9 @@ export default function ProjectCard({
   const sectionControl = useAnimationControls();
 
   const [reorderedTags, setReorderedTags] = useState<string[]>(tags || []);
+  const [currentImageIdx, setCurrentImageIdx] = useState(0);
+
+  const imageDirection = useRef<-1 | 1>(1);
 
   // Add the anchor tag to the URL and animate the section when it comes into view.
   useEffect(() => {
@@ -69,13 +76,26 @@ export default function ProjectCard({
 
   //#region Handlers
 
-  const handleVisitClick = () => {
-    window.open(visitLink, "_blank");
+  const handleChangeImage = (direction: -1 | 1) => {
+    imageDirection.current = direction;
+    setCurrentImageIdx((prev) => {
+      if (
+        (prev === 0 && direction === -1) ||
+        (prev === images.length - 1 && direction === 1)
+      ) {
+        return prev;
+      }
+      return prev + direction;
+    });
   };
 
-  const handleSourceClick = () => {
-    window.open(sourceLink, "_blank");
-  };
+  //#endregion
+
+  //#region Derived State
+
+  const showPrevImageArrow = images.length > 1 && currentImageIdx > 0;
+  const showNextImageArrow =
+    images.length > 1 && currentImageIdx < images.length - 1;
 
   //#endregion
 
@@ -86,24 +106,55 @@ export default function ProjectCard({
       animate={sectionControl}
       variants={cardVariants}
       custom={fadeInDelay}
-      className="flex w-full max-w-xl flex-1 flex-col gap-2 overflow-hidden rounded-2xl bg-slate-200 pb-8 dark:bg-slate-800 sm:min-w-[24rem] sm:gap-4"
+      className={`flex w-full max-w-xl flex-1 flex-col gap-2 overflow-x-hidden rounded-2xl bg-slate-200 
+      pb-8 dark:bg-slate-800 sm:min-w-[24rem] sm:gap-4`}
     >
-      <div
-        className={
-          "relative h-[56vw] w-full sm:h-[58vw] md:h-96 lg:h-[28vw] xl:h-96"
-        }
-      >
-        <Image
-          src={image}
-          alt={title}
-          fill
-          priority
-          className={"select-none object-cover"}
-          draggable={false}
-          sizes="(max-width: 1024px) 90vw,
+      <div className={"group relative"}>
+        <div
+          className={`absolute top-1/2 -left-16 z-10 flex h-full w-16 -translate-y-1/2 items-center bg-gradient-to-l 
+              from-transparent to-black text-6xl transition-all duration-300 ${
+                showPrevImageArrow ? "group-hover:left-0" : ""
+              }`}
+        >
+          <IconButton
+            className={"h-full"}
+            onClick={() => handleChangeImage(-1)}
+          >
+            <MdNavigateBefore />
+          </IconButton>
+        </div>
+        <AnimatePresence mode={"popLayout"} initial={false}>
+          <motion.div
+            key={images[currentImageIdx]}
+            initial={{ x: imageDirection.current * 100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: imageDirection.current * -100, opacity: 0 }}
+            transition={transitions.springStiffer}
+            className={"relative z-0 aspect-[3/2]"}
+          >
+            <Image
+              src={images[currentImageIdx]}
+              alt={title}
+              fill
+              priority
+              className={"select-none object-cover"}
+              draggable={false}
+              sizes="(max-width: 1024px) 90vw,
               (max-width: 1600px) 50vw,
               33vw"
-        />
+            />
+          </motion.div>
+        </AnimatePresence>
+        <div
+          className={`absolute top-1/2 -right-16 z-10 flex h-full w-16 -translate-y-1/2 items-center justify-end bg-gradient-to-r 
+                from-transparent to-black text-6xl transition-all duration-300 ${
+                  showNextImageArrow ? "group-hover:right-0" : ""
+                }`}
+        >
+          <IconButton className={"h-full"} onClick={() => handleChangeImage(1)}>
+            <MdNavigateNext />
+          </IconButton>
+        </div>
       </div>
       <h3 className={"mx-4 text-center text-2xl sm:text-3xl lg:text-4xl"}>
         {title}
@@ -152,14 +203,18 @@ export default function ProjectCard({
         }
       >
         {visitLink && (
-          <Button onClick={handleVisitClick}>
-            {visitTextOverride} <MdOpenInNew />
-          </Button>
+          <Link href={visitLink} target={"_blank"}>
+            <Button>
+              {visitTextOverride} <MdOpenInNew />
+            </Button>
+          </Link>
         )}
         {sourceLink && (
-          <Button onClick={handleSourceClick}>
-            Source <SiGithub />
-          </Button>
+          <Link href={sourceLink} target={"_blank"}>
+            <Button variant={"text"}>
+              Source <SiGithub />
+            </Button>
+          </Link>
         )}
       </div>
     </motion.div>

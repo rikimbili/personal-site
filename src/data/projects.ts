@@ -4,27 +4,33 @@ interface Project {
   tags: string[];
   visitLink?: string;
   sourceLink?: string;
-  image: string;
+  images: string[];
   visitTextOverride?: string;
 }
 
 export default [
   {
-    title: "Keymorph",
+    title: "Daydream",
     description:
-      "Software development collective. Our goal is to create responsive and useful apps under a unified ecosystem.",
-    tags: ["Web Development"],
-    image: "/images/projects/keymorph.png",
-    visitLink: "https://keymorph.com",
-    sourceLink: "https://github.com/keymorph",
-    visitTextOverride: "Visit",
+      "A web app for sharing and creating AI generated images using Stable Diffusion.",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Prisma"],
+    images: [
+      "/images/projects/daydream_1.png",
+      "/images/projects/daydream_2.png",
+      "/images/projects/daydream_3.png",
+      "/images/projects/daydream_4.png",
+      "/images/projects/daydream_5.png",
+    ],
+    visitLink: "https://daydream.wtf",
+    sourceLink: "https://github.com/poop-team/daydream",
+    visitTextOverride: "Try it out!",
   },
   {
     title: "Notes",
     description:
       "Note-taking web app with categories, rich text editing and markdown support.",
     tags: ["Next.js", "MUI", "Framer Motion", "Azure Cosmos DB"],
-    image: "/images/projects/notes.png",
+    images: ["/images/projects/notes.png"],
     visitLink: "https://notes.keymorph.com",
     sourceLink: "https://github.com/Keymorph/notes",
   },
@@ -33,7 +39,7 @@ export default [
     description:
       "Discord chat bot that uses OpenAI's GPT-3 language models to generate reply prompts.",
     tags: ["Discord.js", "TypeScript"],
-    image: "/images/projects/aibud.png",
+    images: ["/images/projects/aibud.png"],
     sourceLink: "https://github.com/Rikimbili/AiBud",
   },
   {
@@ -41,7 +47,7 @@ export default [
     description:
       "Python program to control LED lights with motion detection and schedules.",
     tags: ["Python", "IoT", "Raspberry Pi", "API"],
-    image: "/images/projects/motionled.png",
+    images: ["/images/projects/motionled.png"],
     sourceLink: "https://github.com/Rikimbili/motionLED",
   },
 ] as Project[];

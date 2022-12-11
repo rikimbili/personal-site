@@ -5,7 +5,7 @@ import { BiWindows } from "react-icons/bi";
 import { positionVariants, transitions } from "../styles/motion-definitions";
 import ResumeDialog from "./Dialogs/ResumeDialog";
 import Button from "./Inputs/Button";
-import ButtonLink from "./Inputs/ButtonLink";
+import LinkIconButton from "./Inputs/LinkIconButton";
 
 interface Props {
   projectsRef: RefObject<HTMLDivElement>;
@@ -80,12 +80,12 @@ export default function Header({ projectsRef, contactRef }: Props) {
         } bg-slate-200/80 px-6 text-xl backdrop-blur-md dark:bg-slate-800/80 sm:w-11/12 sm:justify-between`}
     >
       <div className={"hidden gap-4 sm:flex"}>
-        <ButtonLink className={"text-xl"} href={"#projects"} target={""}>
+        <LinkIconButton className={"text-xl"} href={"#projects"} target={""}>
           Projects
-        </ButtonLink>
-        <ButtonLink className={"text-xl"} href={"#contact"} target={""}>
+        </LinkIconButton>
+        <LinkIconButton className={"text-xl"} href={"#contact"} target={""}>
           Contact
-        </ButtonLink>
+        </LinkIconButton>
       </div>
       <div className={"flex items-center gap-4"}>
         <Button onClick={openResumeDialog}>
