@@ -19,10 +19,11 @@ import CustomImage from "./CustomImage";
 interface Props {
   title: string;
   description: string;
+  images: string[];
+  logo?: string;
   tags?: string[];
   visitLink?: string;
   sourceLink?: string;
-  images: string[];
   visitTextOverride?: string;
   fadeInDelay?: number;
 }
@@ -45,10 +46,11 @@ const cardVariants = {
 export default function ProjectCard({
   title,
   description,
+  images,
+  logo,
   tags,
   visitLink,
   sourceLink,
-  images,
   visitTextOverride = "Try it out!",
   fadeInDelay = 0,
 }: Props) {
@@ -156,8 +158,24 @@ export default function ProjectCard({
           </IconButton>
         </div>
       </div>
-      <h3 className={"mx-4 text-center text-2xl sm:text-3xl lg:text-4xl"}>
+      <h3
+        className={
+          "mx-4 flex items-center justify-center text-2xl sm:text-3xl lg:text-4xl"
+        }
+      >
         {title}
+        {logo && (
+          <CustomImage
+            src={logo}
+            alt={title}
+            fill
+            containerClassName={
+              "relative ml-2 sm:ml-4 w-8 h-8 sm:w-10 sm:h-10 inline-flex rounded-lg overflow-hidden"
+            }
+            draggable={false}
+            className={"h-10 w-10 select-none !bg-transparent object-contain"}
+          />
+        )}
       </h3>
       <p className={"mx-2 text-center text-base sm:mx-4 sm:text-lg lg:text-xl"}>
         {description}

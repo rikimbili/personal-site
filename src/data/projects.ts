@@ -1,10 +1,11 @@
 interface Project {
   title: string;
   description: string;
+  images: string[];
   tags: string[];
+  logo?: string;
   visitLink?: string;
   sourceLink?: string;
-  images: string[];
   visitTextOverride?: string;
 }
 
@@ -21,16 +22,18 @@ export default [
       "/images/projects/daydream_4.png",
       "/images/projects/daydream_5.png",
     ],
+    logo: "/images/projects/daydream_logo.png",
     visitLink: "https://daydream.wtf",
     sourceLink: "https://github.com/poop-team/daydream",
     visitTextOverride: "Try it out!",
   },
   {
-    title: "Notes",
+    title: "Keymorph Notes",
     description:
       "Note-taking web app with categories, rich text editing and markdown support.",
     tags: ["Next.js", "MUI", "Framer Motion", "Azure Cosmos DB"],
     images: ["/images/projects/notes.png"],
+    logo: "/images/projects/notes_logo.png",
     visitLink: "https://notes.keymorph.com",
     sourceLink: "https://github.com/Keymorph/notes",
   },
@@ -40,6 +43,7 @@ export default [
       "Discord chat bot that uses OpenAI's GPT-3 language models to generate reply prompts.",
     tags: ["Discord.js", "TypeScript"],
     images: ["/images/projects/aibud.png"],
+    logo: "/images/projects/aibud_logo.png",
     sourceLink: "https://github.com/Rikimbili/AiBud",
   },
   {

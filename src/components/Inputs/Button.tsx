@@ -7,8 +7,8 @@ const buttonStyles = cva(
     variants: {
       variant: {
         filled:
-          "bg-slate-300 text-slate-900 hover:text-slate-50 hover:bg-indigo-700 dark:bg-slate-600 dark:text-slate-50 dark:hover:text-slate-900 dark:hover:bg-indigo-300",
-        text: "text-slate-900 hover:text-slate-100 dark:text-slate-50 dark:hover:text-slate-900 hover:bg-indigo-300 dark:hover:bg-indigo-300",
+          "bg-slate-300 text-slate-900 hover:bg-indigo-500 dark:bg-slate-600 dark:text-slate-50",
+        text: "text-slate-900 dark:text-slate-50 hover:bg-slate-300 dark:hover:bg-slate-600",
       },
       disabled: {
         true: "cursor-not-allowed text-slate-50 bg-indigo-900/80 dark:text-slate-900 dark:bg-indigo-100/80",
