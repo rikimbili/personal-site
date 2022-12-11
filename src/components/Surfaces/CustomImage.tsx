@@ -26,39 +26,28 @@ export default function CustomImage({
 }: Props) {
   //#region Hooks
 
-  const [imageLoading, setImageLoading] = useState(true);
+  const [isReady, setIsReady] = useState(false);
 
   //#endregion
 
   //#region Handlers
 
   const handleImageLoaded = () => {
-    setImageLoading(false);
+    setIsReady(true);
   };
 
   //#endregion
 
-  //#region Styles
-
-  let containerStyles = "bg-slate-300 dark:bg-slate-600 w-full h-full";
-  let imageStyles = "transition duration-200 ease-out";
-  if (imageLoading) {
-    containerStyles += " animate-pulse";
-    imageStyles += " opacity-0";
-  } else {
-    imageStyles += " opacity-100";
-  }
-
-  //#endregion
-
   return (
-    <div className={`${containerStyles} ${containerClassName}`}>
+    <div className={`h-full w-full ${containerClassName}`}>
       <Image
         src={src}
         alt={alt}
-        className={`${imageStyles} ${className}`}
-        onLoadingComplete={handleImageLoaded}
+        className={`bg-slate-400 transition duration-100 ease-out dark:bg-slate-600 ${
+          isReady ? "scale-100 blur-0" : "scale-105 animate-pulse blur-2xl"
+        } ${className}`}
         {...rest}
+        onLoadingComplete={handleImageLoaded}
       />
     </div>
   );

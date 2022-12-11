@@ -5,7 +5,6 @@ import {
   useAnimationControls,
   useInView,
 } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { MdNavigateBefore, MdNavigateNext, MdOpenInNew } from "react-icons/md";
@@ -15,6 +14,7 @@ import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { transitions } from "../../styles/motion-definitions";
 import Button from "../Inputs/Button";
 import IconButton from "../Inputs/IconButton";
+import CustomImage from "./CustomImage";
 
 interface Props {
   title: string;
@@ -132,7 +132,7 @@ export default function ProjectCard({
             transition={transitions.springStiffer}
             className={"relative z-0 aspect-[3/2]"}
           >
-            <Image
+            <CustomImage
               src={images[currentImageIdx]}
               alt={title}
               fill
