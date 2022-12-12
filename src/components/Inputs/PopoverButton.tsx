@@ -9,6 +9,7 @@ import { Popover } from "@headlessui/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Fragment, ReactNode, useState } from "react";
 
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { transitionVariants } from "../../styles/motion-definitions";
 
 interface Props {
@@ -28,6 +29,8 @@ export default function PopoverButton({
 }: Props) {
   //#region Hooks
 
+  const isTouchCapable = useMediaQuery("(hover: none)");
+
   const { x, y, refs, floating, strategy } = useFloating<HTMLDivElement>({
     strategy: "absolute",
     placement: popoverPlacement,
@@ -43,7 +46,8 @@ export default function PopoverButton({
   const handleHoverPanelOpen = (open: boolean) => {
     if (!openOnHover) return;
     if (panelTimeout) clearTimeout(panelTimeout);
-    if (!open) {
+    if (!open && !isTouchCapable) {
+      // Only click if the device is not touch capable, prevents infinite state loop
       refs.reference.current?.click();
     }
   };
@@ -57,6 +61,8 @@ export default function PopoverButton({
       }, 300)
     );
   };
+
+  //#endregion
 
   return (
     <Popover className={`group relative select-none ${className}`}>
