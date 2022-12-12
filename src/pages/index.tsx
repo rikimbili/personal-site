@@ -12,6 +12,8 @@ import { useMediaQuery } from "../hooks/useMediaQuery";
 export default function Home() {
   //#region Hooks
 
+  const name = "Raciel";
+
   const projectsRef = useRef<HTMLDivElement>(null);
   const contactRef = useRef<HTMLDivElement>(null);
 
