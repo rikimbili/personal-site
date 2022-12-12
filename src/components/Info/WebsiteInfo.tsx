@@ -33,7 +33,7 @@ export default function WebsiteInfo({ className = "" }: Props) {
       className={className}
     >
       {(close) => (
-        <div className={"max-w-lg flex-col text-center"}>
+        <div className={"max-w-xl flex-col text-center"}>
           <p className="">
             Built with{" "}
             {technologies.map((technology, index) => (
