@@ -1,4 +1,4 @@
-# Portfolio - [raciel.dev](https://raciel.dev)
+# Personal Website - [raciel.dev](https://raciel.dev)
 
 ## **About** ℹ️
-> Portfolio website built with Next.js and Tailwind CSS to showcase my projects and skills.
+> Built with Next.js and Tailwind CSS.

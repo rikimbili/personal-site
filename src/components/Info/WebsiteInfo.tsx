@@ -50,7 +50,7 @@ export default function WebsiteInfo({ className = "" }: Props) {
           <div className="my-2 mx-12 rounded-full border-t-2 border-slate-900/20 dark:border-slate-50/20 sm:mx-24" />
           <p className="">
             The source code is available on{" "}
-            <InlineLink href={"https://github.com/Rikimbili/portfolio"}>
+            <InlineLink href={"https://github.com/Rikimbili/personal-site"}>
               GitHub <SiGithub />
             </InlineLink>
           </p>

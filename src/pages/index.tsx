@@ -51,8 +51,8 @@ export default function Home() {
       ) : (
         <div className="flex h-screen flex-col items-center justify-center">
           <h1 className="text-base">
-            Your screen width is too low to view my portfolio. If you have a
-            foldable device, please unfold it &#128516;.
+            Your screen width is too low to view my site. If you have a foldable
+            device, please unfold it &#128516;.
           </h1>
         </div>
       )}
