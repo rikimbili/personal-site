@@ -74,7 +74,7 @@ export default function Header({ projectsRef, contactRef }: Props) {
         (navState === "floating" && "floatingTop")
       }
       transition={transitions.easeOut}
-      className={`fixed z-10 flex h-14 w-fit max-w-7xl select-none items-center justify-center self-center overflow-hidden 
+      className={`fixed z-20 flex h-14 w-fit max-w-7xl select-none items-center justify-center self-center overflow-hidden 
         ${
           navState === "floating" ? "rounded-2xl" : "rounded-b-2xl"
         } bg-slate-200/80 px-6 text-xl backdrop-blur-md dark:bg-slate-800/80 sm:w-11/12 sm:justify-between`}

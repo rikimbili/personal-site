@@ -1,8 +1,8 @@
+"use client";
+
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { MdOpenInNew } from "react-icons/md";
 
-import InlineLink from "./Inputs/InlineLink";
 import SectionWrapper from "./SectionWrapper";
 
 const wavingHandVariants = {
@@ -27,7 +27,7 @@ export default function Hero() {
       id={"hero"}
       fadeInDelay={0.05}
       className={
-        "flex flex-col-reverse items-center gap-8 text-justify text-lg sm:w-full sm:flex-row sm:text-xl md:gap-16 lg:text-2xl"
+        "z-10 flex flex-col-reverse items-center gap-8 text-justify text-lg sm:w-full sm:flex-row sm:text-xl md:gap-16 lg:text-2xl"
       }
     >
       <div>
@@ -49,35 +49,30 @@ export default function Hero() {
         <p>
           My name is <b>Raciel</b> Antela Pardo. I specialize in building
           responsive apps, while using modern development practices. Currently
-          working as a Software Engineer Intern at{" "}
-          <InlineLink href={"https://careerfairplus.com"}>
-            Career Fair Plus
-            <MdOpenInNew />
-          </InlineLink>
-          . Expecting to get my Bachelor&apos;s in Computer Science at the
-          University of Central Florida by May, 2024.
+          working as a Software Engineer Intern at Career Fair Plus. Expecting
+          to get my Bachelor&apos;s in Computer Science at the University of
+          Central Florida by May, 2024.
         </p>
       </div>
       <motion.div
         drag
         dragSnapToOrigin
         whileHover={{ cursor: "grab" }}
-        whileDrag={{ scale: 1.1, cursor: "grabbing", zIndex: 1 }}
+        whileDrag={{ scale: 1.1, cursor: "grabbing" }}
         dragTransition={{ bounceStiffness: 300, bounceDamping: 25 }}
-        className={
-          "relative h-32 w-32 shrink-0 overflow-hidden rounded-full bg-slate-400/70 shadow-xl outline outline-4 outline-offset-4 outline-slate-400/70 backdrop-blur-sm dark:bg-slate-600/70 dark:outline-slate-600/70 md:h-36 md:w-36 lg:h-40 lg:w-40"
-        }
+        className={`relative h-32 w-32 shrink-0 overflow-hidden rounded-full bg-slate-400/70 shadow-xl outline outline-4 
+        outline-offset-4 outline-slate-400/70 backdrop-blur-sm dark:bg-slate-600/70 dark:outline-slate-600/70 md:h-36 md:w-36 lg:h-40 lg:w-40`}
       >
         <Image
           src={"/images/headshot.png"}
           alt={"Headshot Photo"}
-          className={"select-none object-cover"}
           fill
           priority
           draggable={false}
           sizes="(max-width: 1024px) 30vw,
                      (max-width: 1400px) 20vw,
                      15vw"
+          className={"select-none"}
         />
       </motion.div>
     </SectionWrapper>

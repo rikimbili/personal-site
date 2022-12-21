@@ -93,7 +93,7 @@ export default function ProjectCard({
       animate={sectionControl}
       variants={spawnVariants}
       custom={fadeInDelay}
-      className={`flex w-full max-w-xl flex-1 flex-col gap-2 overflow-x-hidden rounded-2xl bg-slate-200 
+      className={`flex w-full max-w-xl flex-1 flex-col gap-2 overflow-hidden rounded-2xl bg-slate-200 
       pb-8 dark:bg-slate-800 sm:min-w-[24rem] sm:gap-4`}
     >
       <div className={"group relative text-slate-50"}>
