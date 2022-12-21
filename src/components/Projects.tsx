@@ -36,7 +36,7 @@ const Projects = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
       >
         Projects{" "}
         <AnchorLink
-          href={"#projects"}
+          id={"projects"}
           className={"opacity-0 group-hover:opacity-100"}
         />
       </h2>

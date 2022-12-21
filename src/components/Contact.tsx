@@ -23,7 +23,7 @@ const Contact = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
       >
         Contact{" "}
         <AnchorLink
-          href={"#contact"}
+          id={"contact"}
           className={"opacity-0 group-hover:opacity-100"}
         />
       </h2>
