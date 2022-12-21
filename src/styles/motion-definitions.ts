@@ -96,35 +96,23 @@ export const positionVariants = {
   },
 };
 
-export const iconVariants = {
-  hidden: {
+export const spawnVariants = {
+  initial: {
     opacity: 0,
-    scale: 0.6,
-    transition: { duration: 0.1, ease: "easeOut" },
+    y: -20,
   },
-  shown: {
+  visible: (delay: number) => ({
     opacity: 1,
-    scale: 1,
-    transition: { duration: 0.1, ease: "easeOut" },
-  },
-};
-
-export const staggerContainerVariants = {
-  show: {
-    opacity: 1,
+    y: 0,
     transition: {
-      staggerChildren: 0.02,
+      opacity: {
+        ...transitions.easeOut,
+        delay,
+      },
+      y: {
+        ...transitions.spring,
+        delay,
+      },
     },
-  },
-  hidden: {
-    opacity: 0,
-    transition: {
-      duration: 0.2,
-    },
-  },
-};
-
-export const staggerItemVariants = {
-  hidden: { scale: 0.9, y: -12, opacity: 0 },
-  show: { scale: 1, y: 0, opacity: 1 },
+  }),
 };

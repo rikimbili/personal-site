@@ -11,7 +11,7 @@ import { MdNavigateBefore, MdNavigateNext, MdOpenInNew } from "react-icons/md";
 import { SiGithub } from "react-icons/si";
 
 import { useMediaQuery } from "../../hooks/useMediaQuery";
-import { transitions } from "../../styles/motion-definitions";
+import { spawnVariants, transitions } from "../../styles/motion-definitions";
 import Button from "../Inputs/Button";
 import IconButton from "../Inputs/IconButton";
 import CustomImage from "./CustomImage";
@@ -27,21 +27,6 @@ interface Props {
   visitTextOverride?: string;
   fadeInDelay?: number;
 }
-
-const cardVariants = {
-  initial: {
-    boxShadow: "0rem 0.2rem 0.6rem rgba(0, 0, 0, 0.4)",
-    opacity: 0,
-    y: -20,
-  },
-  visible: (delay: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay,
-    },
-  }),
-};
 
 export default function ProjectCard({
   title,
@@ -106,7 +91,7 @@ export default function ProjectCard({
       ref={ref}
       initial={"initial"}
       animate={sectionControl}
-      variants={cardVariants}
+      variants={spawnVariants}
       custom={fadeInDelay}
       className={`flex w-full max-w-xl flex-1 flex-col gap-2 overflow-x-hidden rounded-2xl bg-slate-200 
       pb-8 dark:bg-slate-800 sm:min-w-[24rem] sm:gap-4`}

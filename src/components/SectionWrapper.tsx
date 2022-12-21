@@ -1,6 +1,8 @@
 import { motion, useAnimationControls, useInView } from "framer-motion";
 import { ReactNode, RefObject, useEffect, useRef } from "react";
 
+import { spawnVariants } from "../styles/motion-definitions";
+
 interface Props {
   ref?: RefObject<HTMLDivElement>;
   className?: string;
@@ -8,20 +10,6 @@ interface Props {
   fadeInDelay?: number;
   id: string;
 }
-
-const sectionVariants = {
-  hidden: {
-    opacity: 0,
-    y: -20,
-  },
-  visible: (delay: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay,
-    },
-  }),
-};
 
 export default function SectionWrapper({
   id,
@@ -48,9 +36,9 @@ export default function SectionWrapper({
     <motion.section
       ref={ref}
       id={id}
-      initial={"hidden"}
+      initial={"initial"}
       animate={sectionControl}
-      variants={sectionVariants}
+      variants={spawnVariants}
       className={className}
       custom={fadeInDelay}
     >
