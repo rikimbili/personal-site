@@ -25,7 +25,7 @@ export default function ResumeDialog({ isDialogOpen, closeDialog }: Props) {
         >
           Resume
         </Dialog.Title>
-        <Card className={"h-full w-full"}>
+        <div className={"h-full w-full rounded-2xl"}>
           <object
             aria-label={"Resume Preview"}
             data={personal.resumeLink}
@@ -39,7 +39,7 @@ export default function ResumeDialog({ isDialogOpen, closeDialog }: Props) {
               <MdOpenInNew />
             </InlineLink>
           </object>
-        </Card>
+        </div>
         <Button
           className={"absolute top-3 right-3 text-2xl"}
           onClick={closeDialog}
