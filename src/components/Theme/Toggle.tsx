@@ -34,7 +34,7 @@ export default function Toggle() {
       }}
       className={"relative text-3xl"}
     >
-      <AnimatePresence initial={false} mode={"popLayout"}>
+      <AnimatePresence mode={"popLayout"}>
         {theme === "light" ? (
           <motion.div
             key={"light"}
