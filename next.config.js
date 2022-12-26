@@ -1,7 +1,5 @@
-const isDev = process.env.NODE_ENV !== 'production'
-
 const contentSecurityPolicy = `
-  default-src 'self';
+  default-src 'self' https://vitals.vercel-insights.com/v1/vitals;
   script-src 'self' 'unsafe-eval' 'unsafe-inline';
   child-src 'self';
   style-src 'self' 'unsafe-inline';
@@ -15,7 +13,7 @@ const headers = [
     value: contentSecurityPolicy.replace(/\s{2,}/g, ' ').trim()
   },
   {
-    key: "referrer-policy",
+    key: "Referrer-Policy",
     value: "strict-origin-when-cross-origin",
   },
   {
