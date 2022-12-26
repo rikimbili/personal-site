@@ -4,5 +4,6 @@
 
 html, body {
   scroll-behavior: smooth !important;
+  scrollbar-gutter: stable;
 }
 
