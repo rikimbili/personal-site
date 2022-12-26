@@ -12,7 +12,11 @@ const roboto = Roboto_Flex({ subsets: ["latin"] });
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className={"bg-slate-100 dark:bg-slate-900"}>
+      <body
+        className={
+          "bg-slate-100 transition duration-200 ease-out dark:bg-slate-900"
+        }
+      >
         <Providers>
           <main
             className={`bg-light-background-pattern text-slate-900 transition duration-200 ease-out 

@@ -52,6 +52,8 @@ export default function Header() {
   const isPortfolio = pathname === "/";
   const isBlog = pathname?.includes("/blog");
 
+  //#endregion
+
   return (
     <motion.header
       variants={positionVariants}
@@ -64,7 +66,7 @@ export default function Header() {
       className={`fixed z-20 flex h-14 max-w-7xl select-none items-center self-center overflow-hidden 
         ${
           navState === "floating" ? "rounded-2xl" : "rounded-b-2xl"
-        } w-11/12 justify-between bg-slate-200/80 px-6 text-xl backdrop-blur-md dark:bg-slate-800/80`}
+        } w-11/12 justify-between bg-slate-200/80 px-6 text-xl backdrop-blur-md transition duration-200 ease-out dark:bg-slate-800/80`}
     >
       <div className={"flex gap-2 text-lg sm:text-xl"}>
         {isPortfolio && (
