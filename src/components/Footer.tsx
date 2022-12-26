@@ -1,10 +1,12 @@
+"use client";
+
 import WebsiteInfo from "./Info/WebsiteInfo";
 import CurrentlyPlaying from "./Widgets/CurrentlyPlaying";
 
 export default function Footer() {
   return (
     <footer
-      className={`z-20 flex w-full flex-col items-center gap-4 self-center rounded-t-2xl bg-slate-200/80 px-8 
+      className={`z-20 mt-auto flex w-full flex-col items-center gap-4 self-center rounded-t-2xl bg-slate-200/80 px-8 
     pt-2 pb-4 text-base backdrop-blur-md dark:bg-slate-800/80 sm:gap-6 sm:pt-4 sm:pb-6 sm:text-xl`}
     >
       <WebsiteInfo className={"lg:-mb-14"} />

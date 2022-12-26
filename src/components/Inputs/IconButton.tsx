@@ -12,8 +12,8 @@ export default function IconButton({
 }: Props) {
   return (
     <button
-      className={`cursor-pointer transition duration-100 ease-out hover:text-indigo-600 active:scale-[96%] active:duration-75
-        dark:hover:text-indigo-300 ${className}`}
+      className={`cursor-pointer transition duration-100 ease-out hover:text-indigo-500 active:scale-[96%] active:duration-75
+        dark:hover:text-indigo-400 ${className}`}
       {...rest}
     >
       {children}

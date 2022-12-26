@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
+import { MdOpenInNew } from "react-icons/md";
 
+import Button from "./Inputs/Button";
 import SectionWrapper from "./SectionWrapper";
 
 const wavingHandVariants = {
@@ -28,7 +31,7 @@ export default function Hero() {
         "z-10 flex flex-col-reverse items-center gap-8 text-justify text-lg sm:w-full sm:flex-row sm:text-xl md:gap-16 lg:text-2xl"
       }
     >
-      <div>
+      <div className={"flex flex-col"}>
         <h2
           className={
             "group mb-4 w-fit select-none text-3xl sm:mb-8 sm:text-4xl lg:text-5xl"
@@ -51,6 +54,14 @@ export default function Hero() {
           to get my Bachelor&apos;s in Computer Science at the University of
           Central Florida by May, 2024.
         </p>
+        <div className={"w-fit self-center sm:self-start"}>
+          <Link href={"/docs/resume.pdf"} target={"_blank"}>
+            <Button className={"mt-8"}>
+              Resume
+              <MdOpenInNew />
+            </Button>
+          </Link>
+        </div>
       </div>
       <motion.div
         drag

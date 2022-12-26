@@ -12,7 +12,7 @@ const variants = {
   whileTap: { scale: 0.95, rotate: 15 },
 };
 
-export default function Toggle() {
+export default function Toggle({ className }: { className?: string }) {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
@@ -32,7 +32,7 @@ export default function Toggle() {
         }
         return setTheme("light");
       }}
-      className={"relative text-3xl"}
+      className={`relative ${className}`}
     >
       <AnimatePresence mode={"popLayout"}>
         {theme === "light" ? (

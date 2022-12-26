@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   darkMode: "class",
   content: [
@@ -6,6 +8,10 @@ module.exports = {
     "./src/components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    screens: {
+      'xs': '320px',
+      ...defaultTheme.screens,
+    },
     extend: {
       aspectRatio: {
         tall: "2 / 3",

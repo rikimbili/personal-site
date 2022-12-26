@@ -1,6 +1,7 @@
-import { HTMLProps, ReactNode } from "react";
+import Link, { LinkProps } from "next/link";
+import { ReactNode } from "react";
 
-interface Props extends HTMLProps<HTMLAnchorElement> {
+interface Props extends LinkProps {
   children: ReactNode;
   className?: string;
   rel?: string;
@@ -15,7 +16,7 @@ export default function InlineLink({
   ...rest
 }: Props) {
   return (
-    <a
+    <Link
       target={target}
       rel={rel}
       className={
@@ -25,6 +26,6 @@ export default function InlineLink({
       {...rest}
     >
       {children}
-    </a>
+    </Link>
   );
 }

@@ -1,6 +1,8 @@
 import Link, { LinkProps } from "next/link";
 import { ReactNode } from "react";
 
+import IconButton from "./IconButton";
+
 interface Props extends LinkProps {
   children: ReactNode;
   className?: string;
@@ -14,13 +16,8 @@ export default function LinkIconButton({
   ...rest
 }: Props) {
   return (
-    <Link
-      className={`cursor-pointer transition duration-100 ease-out hover:text-indigo-600 active:scale-[96%] active:duration-75
-        dark:hover:text-indigo-300 ${className}`}
-      target={target}
-      {...rest}
-    >
-      {children}
+    <Link target={target} {...rest}>
+      <IconButton className={className}>{children}</IconButton>
     </Link>
   );
 }

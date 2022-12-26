@@ -41,7 +41,7 @@ export default function WebsiteInfo({ className = "" }: Props) {
                 {index > 0 && index < technologies.length - 2 && ", "}
                 {index === technologies.length - 2 && " and "}
                 {index === technologies.length - 1 && ". Hosted on "}
-                <InlineLink href={technology.link}>
+                <InlineLink href={encodeURI(technology.link)}>
                   {technology.name} {technology.icon}
                 </InlineLink>
               </span>
