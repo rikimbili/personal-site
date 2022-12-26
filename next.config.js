@@ -1,18 +1,15 @@
 const isDev = process.env.NODE_ENV !== 'production'
 
-const contentSecurityPolicy = isDev ? '' : `
+const contentSecurityPolicy = `
   default-src 'self';
-  script-src 'self';
+  script-src 'self' 'unsafe-eval' 'unsafe-inline';
   child-src 'self';
-  style-src 'self';
+  style-src 'self' 'unsafe-inline';
+  img-src 'self' data:;
   font-src 'self';
 `;
 
 const headers = [
-  {
-    key: "X-DNS-Prefetch-Control",
-    value: "on",
-  },
   {
     key: "Content-Security-Policy",
     value: contentSecurityPolicy.replace(/\s{2,}/g, ' ').trim()
@@ -35,7 +32,7 @@ const headers = [
   },
   {
     key: "Cross-Origin-Resource-Policy",
-    value: "cross-origin",
+    value: "same-origin",
   },
   {
     key: "X-Frame-Options", // Prevents clickjacking through iframes
