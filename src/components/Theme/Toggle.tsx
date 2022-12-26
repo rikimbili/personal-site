@@ -12,7 +12,7 @@ const variants = {
   whileTap: { scale: 0.95, rotate: 15 },
 };
 
-export default function Toggle({ className }: { className?: string }) {
+export default function Toggle({ className = "" }: { className?: string }) {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 

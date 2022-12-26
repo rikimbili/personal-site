@@ -3,7 +3,7 @@ const isDev = process.env.NODE_ENV !== 'production'
 const contentSecurityPolicy = isDev ? '' : `
   default-src 'self';
   script-src 'self';
-  child-src 'google.com';
+  child-src 'self';
   style-src 'self';
   font-src 'self';
 `;
