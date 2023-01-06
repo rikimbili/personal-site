@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { ForwardedRef, forwardRef } from "react";
 import { MdOpenInNew } from "react-icons/md";
 
 import Button from "./Inputs/Button";
@@ -22,9 +23,10 @@ const wavingHandVariants = {
   },
 };
 
-export default function Hero() {
+const Hero = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
   return (
     <SectionWrapper
+      ref={ref}
       id={"hero"}
       fadeInDelay={0.05}
       className={
@@ -86,4 +88,6 @@ export default function Hero() {
       </motion.div>
     </SectionWrapper>
   );
-}
+});
+Hero.displayName = "Hero";
+export default Hero;

@@ -11,6 +11,7 @@ import SectionWrapper from "./SectionWrapper";
 const Contact = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
   return (
     <SectionWrapper
+      ref={ref}
       id={"contact"}
       fadeInDelay={0.15}
       className={
@@ -18,7 +19,6 @@ const Contact = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
       }
     >
       <h2
-        ref={ref}
         className={"group w-fit select-none text-3xl sm:text-4xl lg:text-5xl"}
       >
         Contact{" "}

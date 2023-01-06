@@ -22,6 +22,7 @@ const Projects = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
 
   return (
     <SectionWrapper
+      ref={ref}
       id={"projects"}
       fadeInDelay={0.1}
       className={
@@ -29,7 +30,6 @@ const Projects = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
       }
     >
       <h2
-        ref={ref}
         className={
           "group mb-4 w-fit select-none text-3xl sm:mb-8 sm:text-4xl lg:text-5xl"
         }

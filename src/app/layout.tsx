@@ -4,7 +4,6 @@ import { Roboto_Flex } from "@next/font/google";
 import { ReactNode } from "react";
 
 import Footer from "../components/Footer";
-import Header from "../components/Header";
 import Providers from "./Providers";
 
 const roboto = Roboto_Flex({ subsets: ["latin"] });
@@ -27,7 +26,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 "mx-auto hidden min-h-screen w-11/12 max-w-7xl flex-col px-4 xs:flex"
               }
             >
-              <Header />
               {children}
               <Footer />
             </div>
