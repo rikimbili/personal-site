@@ -9,7 +9,7 @@ import { Popover } from "@headlessui/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Fragment, ReactNode, useState } from "react";
 
-import { useMediaQuery } from "../../hooks/useMediaQuery";
+import useIsTouchCapable from "../../hooks/useIsTouchCapable";
 import { transitionVariants } from "../../styles/motion-definitions";
 
 interface Props {
@@ -29,7 +29,7 @@ export default function PopoverButton({
 }: Props) {
   //#region Hooks
 
-  const isTouchCapable = useMediaQuery("(hover: none)");
+  const isTouchCapable = useIsTouchCapable();
 
   const { x, y, refs, floating, strategy } = useFloating<HTMLDivElement>({
     strategy: "absolute",
