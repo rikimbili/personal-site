@@ -51,10 +51,9 @@ const Hero = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
         </h2>
         <p>
           My name is <b>Raciel</b> Antela Pardo. I specialize in building
-          responsive apps, while using modern development practices. Currently
-          working as a Software Engineer Intern at Career Fair Plus. Expecting
-          to get my Bachelor&apos;s in Computer Science at the University of
-          Central Florida by May, 2024.
+          responsive apps using modern development practices. Expecting to get
+          my Bachelor&apos;s in Computer Science at the University of Central
+          Florida by May, 2024.
         </p>
         <div className={"w-fit self-center sm:self-start"}>
           <Link href={"/docs/resume.pdf"} target={"_blank"}>
