@@ -21,7 +21,7 @@ export default function useScrollSpy({
   const handle = throttle(throttleMs, () => {
     let currentSectionId = activeSection;
     for (let i = 0; i < sectionElementRefs.length; i += 1) {
-      const section = sectionElementRefs[i].current;
+      const section = sectionElementRefs[i]?.current;
       // Needs to be a valid DOM Element
       if (!section || !(section instanceof Element)) continue;
       // GetBoundingClientRect returns values relative to viewport

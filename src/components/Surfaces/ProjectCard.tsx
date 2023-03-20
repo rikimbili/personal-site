@@ -1,3 +1,5 @@
+import { useMediaQuery } from "@hooks/useMediaQuery";
+import { spawnVariants, transitions } from "@styles/motion-definitions";
 import {
   AnimatePresence,
   motion,
@@ -10,8 +12,6 @@ import { useEffect, useRef, useState } from "react";
 import { MdNavigateBefore, MdNavigateNext, MdOpenInNew } from "react-icons/md";
 import { SiGithub } from "react-icons/si";
 
-import { useMediaQuery } from "../../hooks/useMediaQuery";
-import { spawnVariants, transitions } from "../../styles/motion-definitions";
 import Button from "../Inputs/Button";
 import IconButton from "../Inputs/IconButton";
 import CustomImage from "./CustomImage";
@@ -120,7 +120,7 @@ export default function ProjectCard({
             className={"relative z-0 aspect-[3/2]"}
           >
             <CustomImage
-              src={images[currentImageIdx]}
+              src={images[currentImageIdx] || ""}
               alt={title}
               fill
               priority

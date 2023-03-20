@@ -25,7 +25,7 @@ export default function Header({ sectionRefs }: Props) {
   const { scrollY } = useScroll();
 
   const [navState, setNavState] = useState<"closed" | "open">("open");
-  const [headerTitle, setHeaderTitle] = useState(sectionRefs[0].name);
+  const [headerTitle, setHeaderTitle] = useState(sectionRefs[0]?.name);
 
   useEffect(
     () =>
