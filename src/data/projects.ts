@@ -41,7 +41,7 @@ export default [
     title: "AiBud",
     description:
       "Discord chat bot that uses OpenAI's GPT-3 language models to generate reply prompts.",
-    tags: ["Discord.js", "TypeScript"],
+    tags: ["GPT-3", "Discord.js", "TypeScript"],
     images: ["/images/projects/aibud.png"],
     logo: "/images/projects/aibud_logo.png",
     sourceLink: "https://github.com/Rikimbili/AiBud",

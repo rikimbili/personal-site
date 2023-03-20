@@ -1,7 +1,7 @@
 import "../styles/globals.css";
 
-import { Roboto_Flex } from "@next/font/google";
-import { ReactNode } from "react";
+import { Roboto_Flex } from "next/font/google";
+import { type ReactNode } from "react";
 
 import Footer from "../components/Footer";
 import Providers from "./Providers";
