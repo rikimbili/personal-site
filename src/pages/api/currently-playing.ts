@@ -1,5 +1,5 @@
 // import next js request types
-import { NextApiRequest, NextApiResponse } from "next";
+import { type NextApiRequest, type NextApiResponse } from "next";
 
 import getCurrentlyPlaying from "../../services/spotify";
 

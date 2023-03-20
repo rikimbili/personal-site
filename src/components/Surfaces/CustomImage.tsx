@@ -1,4 +1,4 @@
-import Image, { ImageProps } from "next/image";
+import Image, { type ImageProps } from "next/image";
 import { useState } from "react";
 
 interface Props extends ImageProps {

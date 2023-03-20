@@ -1,4 +1,4 @@
-import Link, { LinkProps } from "next/link";
+import Link, { type LinkProps } from "next/link";
 import { FaHashtag } from "react-icons/fa";
 
 interface Props extends LinkProps {

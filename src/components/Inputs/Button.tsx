@@ -1,5 +1,5 @@
-import { type VariantProps, cva } from "class-variance-authority";
-import { ButtonHTMLAttributes, ReactNode } from "react";
+import { cva,type VariantProps } from "class-variance-authority";
+import { type ButtonHTMLAttributes, type ReactNode } from "react";
 
 const buttonStyles = cva(
   "flex select-none items-center gap-2 rounded-md px-3 py-1 transition duration-100 ease-out active:scale-[96%] active:duration-75",

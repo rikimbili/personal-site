@@ -1,13 +1,13 @@
 import {
-  type Placement,
   flip,
   offset,
+  type Placement,
   shift,
   useFloating,
 } from "@floating-ui/react-dom";
 import { Popover } from "@headlessui/react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Fragment, ReactNode, useState } from "react";
+import { Fragment, type ReactNode, useState } from "react";
 
 import useIsTouchCapable from "../../hooks/useIsTouchCapable";
 import { transitionVariants } from "../../styles/motion-definitions";

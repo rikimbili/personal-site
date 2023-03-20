@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion, useScroll } from "framer-motion";
-import { RefObject, useEffect, useState } from "react";
+import { type RefObject, useEffect, useState } from "react";
 
 import {
   positionVariants,

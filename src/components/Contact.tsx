@@ -1,4 +1,4 @@
-import { ForwardedRef, forwardRef } from "react";
+import { type ForwardedRef, forwardRef } from "react";
 import { MdEmail, MdOutlineSubdirectoryArrowRight } from "react-icons/md";
 import { SiGithub, SiLinkedin, SiSpotify } from "react-icons/si";
 

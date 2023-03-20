@@ -1,6 +1,6 @@
 import { Dialog } from "@headlessui/react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ReactNode } from "react";
+import { type ReactNode } from "react";
 
 import { transitionVariants } from "../../styles/motion-definitions";
 

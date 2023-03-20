@@ -1,9 +1,9 @@
 import { motion, useAnimationControls, useInView } from "framer-motion";
 import {
-  ForwardedRef,
+  type ForwardedRef,
   forwardRef,
-  ReactNode,
-  RefObject,
+  type ReactNode,
+  type RefObject,
   useEffect,
 } from "react";
 

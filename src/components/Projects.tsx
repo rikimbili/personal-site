@@ -1,4 +1,4 @@
-import { ForwardedRef, forwardRef, useState } from "react";
+import { type ForwardedRef, forwardRef, useState } from "react";
 import { MdExpandLess, MdExpandMore } from "react-icons/md";
 
 import projects from "../data/projects";

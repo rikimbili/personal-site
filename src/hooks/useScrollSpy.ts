@@ -1,5 +1,6 @@
 import throttle from "lodash/fp/throttle";
-import React, { useEffect, useState } from "react";
+import type React from "react";
+import { useEffect, useState } from "react";
 
 export interface useScrollSpyParams {
   activeSectionDefault?: number;

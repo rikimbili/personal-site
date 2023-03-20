@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { AnimatePresence, motion } from "framer-motion";
 import { MdMusicNote, MdMusicOff } from "react-icons/md";
 
-import { CurrentlyPlayingData } from "../../services/spotify";
+import { type CurrentlyPlayingData } from "../../services/spotify";
 import { transitions } from "../../styles/motion-definitions";
 import LinkIconButton from "../Inputs/LinkIconButton";
 
