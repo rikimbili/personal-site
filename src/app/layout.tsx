@@ -1,5 +1,6 @@
 import "../styles/globals.css";
 
+import { Analytics } from "@vercel/analytics/react";
 import { Roboto_Flex } from "next/font/google";
 import { type ReactNode } from "react";
 
@@ -35,6 +36,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             </div>
           </main>
         </Providers>
+        <Analytics />
       </body>
     </html>
   );
