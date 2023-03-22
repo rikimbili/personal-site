@@ -10,7 +10,7 @@ const contentSecurityPolicy = `
 const headers = [
   {
     key: "Content-Security-Policy",
-    value: contentSecurityPolicy.replace(/\s{2,}/g, ' ').trim()
+    value: contentSecurityPolicy.replace(/\s{2,}/g, " ").trim(),
   },
   {
     key: "Referrer-Policy",
@@ -43,7 +43,7 @@ const headers = [
   {
     key: "X-Permitted-Cross-Domain-Policies",
     value: "none",
-  }
+  },
 ];
 
 module.exports = {
@@ -59,6 +59,16 @@ module.exports = {
         destination: "/docs/resume.pdf",
         permanent: true,
       },
+      {
+        source: "/notes",
+        destination: "https://notes.keymorph.com",
+        permanent: true,
+      },
+      {
+        source: "/daydream",
+        destination: "https://daydream.wtf",
+        permanent: true,
+      },
     ];
   },
   async headers() {
@@ -67,6 +77,6 @@ module.exports = {
         source: "/:path*", // Matches all paths
         headers: headers,
       },
-    ]
-  }
+    ];
+  },
 };
