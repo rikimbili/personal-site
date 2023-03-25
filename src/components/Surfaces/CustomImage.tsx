@@ -44,7 +44,7 @@ export default function CustomImage({
         src={src}
         alt={alt}
         className={`bg-slate-400 transition duration-100 ease-out dark:bg-slate-600 ${
-          isReady ? "scale-100 blur-0" : "scale-105 animate-pulse blur-lg"
+          isReady ? "scale-100 blur-0" : "scale-[102%] animate-pulse blur-sm"
         } ${className}`}
         {...rest}
         onLoadingComplete={handleImageLoaded}
