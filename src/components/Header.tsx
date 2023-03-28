@@ -29,7 +29,7 @@ export default function Header({ sectionRefs }: Props) {
 
   useEffect(
     () =>
-      scrollY.onChange(() => {
+      scrollY.on("change", () => {
         const isScrollingUp = scrollY.get() < scrollY.getPrevious();
         const isScrollingDown =
           scrollY.get() > navStartOffset &&

@@ -1,16 +1,8 @@
-import { motion, useAnimationControls, useInView } from "framer-motion";
-import {
-  type ForwardedRef,
-  forwardRef,
-  type ReactNode,
-  type RefObject,
-  useEffect,
-} from "react";
-
-import { spawnVariants } from "../styles/motion-definitions";
+import { spawnVariants } from "@styles/motion-definitions";
+import { motion } from "framer-motion";
+import { type ForwardedRef, forwardRef, type ReactNode } from "react";
 
 interface Props {
-  ref?: RefObject<HTMLDivElement>;
   className?: string;
   children: ReactNode;
   fadeInDelay?: number;
@@ -22,26 +14,15 @@ const SectionWrapper = forwardRef(
     { id, children, fadeInDelay = 0, className = "" }: Props,
     ref: ForwardedRef<HTMLDivElement>
   ) => {
-    //#region Hooks
-
-    const isInView = useInView(ref as RefObject<Element>, { margin: "-5%" });
-    const sectionControl = useAnimationControls();
-
-    // Add the anchor tag to the URL and animate the section when it comes into view.
-    useEffect(() => {
-      if (isInView) {
-        void sectionControl.start("visible");
-      }
-    }, [isInView, sectionControl]);
-
-    //#endregion
-
     return (
       <motion.section
         ref={ref}
         id={id}
         initial={"initial"}
-        animate={sectionControl}
+        whileInView={"visible"}
+        viewport={{
+          once: true,
+        }}
         variants={spawnVariants}
         className={className}
         custom={fadeInDelay}

@@ -1,14 +1,8 @@
 import { useMediaQuery } from "@hooks/useMediaQuery";
 import { spawnVariants, transitions } from "@styles/motion-definitions";
-import {
-  AnimatePresence,
-  motion,
-  Reorder,
-  useAnimationControls,
-  useInView,
-} from "framer-motion";
+import { AnimatePresence, motion, Reorder } from "framer-motion";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { MdNavigateBefore, MdNavigateNext, MdOpenInNew } from "react-icons/md";
 import { SiGithub } from "react-icons/si";
 
@@ -43,21 +37,10 @@ export default function ProjectCard({
 
   const xl = useMediaQuery("(min-width: 1280px)");
 
-  const ref = useRef(null);
-  const isInView = useInView(ref, { margin: "-15%" });
-  const sectionControl = useAnimationControls();
-
   const [reorderedTags, setReorderedTags] = useState<string[]>(tags || []);
   const [currentImageIdx, setCurrentImageIdx] = useState(0);
 
   const imageDirection = useRef<-1 | 1>(1);
-
-  // Add the anchor tag to the URL and animate the section when it comes into view.
-  useEffect(() => {
-    if (isInView) {
-      void sectionControl.start("visible");
-    }
-  }, [isInView, sectionControl]);
 
   //#endregion
 
@@ -88,17 +71,19 @@ export default function ProjectCard({
 
   return (
     <motion.div
-      ref={ref}
       initial={"initial"}
-      animate={sectionControl}
+      whileInView={"visible"}
+      viewport={{
+        once: true,
+      }}
       variants={spawnVariants}
       custom={fadeInDelay}
-      className={`flex w-full max-w-xl flex-1 flex-col gap-2 overflow-hidden rounded-2xl bg-slate-200 
+      className={`relative flex w-full max-w-xl flex-1 flex-col gap-2 overflow-hidden rounded-2xl bg-slate-200 
       pb-8 dark:bg-slate-800 sm:min-w-[24rem] sm:gap-4`}
     >
       <div className={"group relative text-slate-50"}>
         <div
-          className={`absolute top-1/2 -left-16 z-10 flex h-full w-16 -translate-y-1/2 items-center bg-gradient-to-l 
+          className={`absolute -left-16 top-1/2 z-10 flex h-full w-16 -translate-y-1/2 items-center bg-gradient-to-l 
               from-transparent to-black text-6xl transition-all duration-300 ${
                 showPrevImageArrow ? "group-hover:left-0" : ""
               }`}
@@ -133,7 +118,7 @@ export default function ProjectCard({
           </motion.div>
         </AnimatePresence>
         <div
-          className={`absolute top-1/2 -right-16 z-10 flex h-full w-16 -translate-y-1/2 items-center justify-end bg-gradient-to-r 
+          className={`absolute -right-16 top-1/2 z-10 flex h-full w-16 -translate-y-1/2 items-center justify-end bg-gradient-to-r 
                 from-transparent to-black text-6xl transition-all duration-300 ${
                   showNextImageArrow ? "group-hover:right-0" : ""
                 }`}
@@ -145,7 +130,7 @@ export default function ProjectCard({
       </div>
       <h3
         className={
-          "mx-4 flex items-center justify-center text-2xl sm:text-3xl lg:text-4xl"
+          "flex w-full items-center justify-center text-2xl sm:text-3xl lg:text-4xl"
         }
       >
         {title}
@@ -154,11 +139,14 @@ export default function ProjectCard({
             src={logo}
             alt={title}
             fill
-            containerClassName={
-              "relative ml-2 sm:ml-4 w-8 h-8 sm:w-10 sm:h-10 inline-flex rounded-lg overflow-hidden"
-            }
             draggable={false}
-            className={"h-10 w-10 select-none !bg-transparent object-contain"}
+            containerClassName={
+              "relative ml-2 sm:ml-4 w-7 h-7 sm:w-10 sm:h-10 rounded-lg overflow-hidden"
+            }
+            className={
+              "h-full w-full select-none !bg-transparent object-contain"
+            }
+            sizes={"(max-width: 1024px) 4rem, 5rem"}
           />
         )}
       </h3>
