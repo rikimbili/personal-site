@@ -28,7 +28,7 @@ export default [
     visitTextOverride: "Try it out!",
   },
   {
-    title: "Keymorph Notes",
+    title: "Notes",
     description:
       "Note-taking web app with categories, rich text editing and markdown support.",
     tags: ["Next.js", "MUI", "Framer Motion", "Azure Cosmos DB"],

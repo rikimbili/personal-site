@@ -39,7 +39,7 @@ export default function CustomImage({
   //#endregion
 
   return (
-    <div className={`h-full w-full ${containerClassName}`}>
+    <div className={containerClassName}>
       <Image
         src={src}
         alt={alt}

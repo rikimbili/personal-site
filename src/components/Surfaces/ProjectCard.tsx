@@ -130,10 +130,10 @@ export default function ProjectCard({
       </div>
       <h3
         className={
-          "flex w-full items-center justify-center text-2xl sm:text-3xl lg:text-4xl"
+          "flex w-full items-center justify-center gap-2 text-2xl sm:text-3xl lg:text-4xl"
         }
       >
-        {title}
+        <span>{title}</span>
         {logo && (
           <CustomImage
             src={logo}
@@ -141,7 +141,7 @@ export default function ProjectCard({
             fill
             draggable={false}
             containerClassName={
-              "relative ml-2 sm:ml-4 w-7 h-7 sm:w-10 sm:h-10 rounded-lg overflow-hidden"
+              "relative w-8 h-8 sm:w-10 sm:h-10 rounded-lg overflow-hidden"
             }
             className={
               "h-full w-full select-none !bg-transparent object-contain"
