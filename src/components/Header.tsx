@@ -67,7 +67,7 @@ export default function Header({ sectionRefs }: Props) {
       }
       transition={transitions.easeOut}
       className={`fixed z-20 flex h-14 w-11/12 max-w-7xl select-none items-center justify-between self-center
-        overflow-hidden rounded-b-2xl bg-slate-200/80 px-6 text-xl backdrop-blur-md transition duration-200 ease-out dark:bg-slate-800/80`}
+        overflow-hidden rounded-b-2xl bg-slate-200/90 px-6 text-xl backdrop-blur-md transition duration-200 ease-out dark:bg-slate-800/80`}
     >
       <AnimatePresence mode={"wait"}>
         <m.div
