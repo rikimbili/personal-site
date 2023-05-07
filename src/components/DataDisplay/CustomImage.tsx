@@ -43,11 +43,14 @@ export default function CustomImage({
       <Image
         src={src}
         alt={alt}
-        className={`bg-slate-400 transition duration-100 ease-out dark:bg-slate-600 ${
-          isReady ? "scale-100 blur-0" : "scale-[102%] animate-pulse blur-md"
+        className={`transition duration-100 ease-out ${
+          isReady
+            ? "opacity-100"
+            : "animate-pulse bg-slate-400 opacity-0 dark:bg-slate-700"
         } ${className}`}
         {...rest}
         onLoadingComplete={handleImageLoaded}
+        onError={handleImageLoaded}
       />
     </div>
   );

@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
-import Image from "next/image";
+import CustomImage from "@components/DataDisplay/CustomImage";
+import { m } from "framer-motion";
 import Link from "next/link";
 import { type ForwardedRef, forwardRef } from "react";
 import { MdOpenInNew } from "react-icons/md";
@@ -40,14 +40,14 @@ const Hero = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
           }
         >
           Hey there{" "}
-          <motion.span
+          <m.span
             className={"inline-block cursor-grab"}
             variants={wavingHandVariants}
             whileHover={"waving"}
             animate={"wave"}
           >
             👋
-          </motion.span>
+          </m.span>
         </h2>
         <p>
           My name is <b>Raciel</b> Antela Pardo. I specialize in building
@@ -64,16 +64,14 @@ const Hero = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
           </Link>
         </div>
       </div>
-      <motion.div
+      <m.div
         drag
         dragSnapToOrigin
         whileHover={{ cursor: "grab" }}
         whileDrag={{ scale: 1.1, cursor: "grabbing" }}
         dragTransition={{ bounceStiffness: 300, bounceDamping: 25 }}
-        className={`relative h-32 w-32 shrink-0 overflow-hidden rounded-full bg-slate-400/70 shadow-xl outline outline-4 
-        outline-offset-4 outline-slate-400/70 backdrop-blur-sm dark:bg-slate-600/70 dark:outline-slate-600/70 md:h-36 md:w-36 lg:h-40 lg:w-40`}
       >
-        <Image
+        <CustomImage
           src={"/images/headshot.png"}
           alt={"Headshot Photo"}
           fill
@@ -82,9 +80,11 @@ const Hero = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
           sizes="(max-width: 1024px) 30vw,
                      (max-width: 1400px) 20vw,
                      15vw"
-          className={"select-none"}
+          containerClassName={`relative h-32 w-32 shrink-0 overflow-hidden rounded-full bg-slate-300/70 outline outline-4 
+        outline-offset-4 outline-slate-300/70 backdrop-blur-sm dark:bg-slate-700/70 dark:outline-slate-700/70 md:h-36 md:w-36 lg:h-40 lg:w-40`}
+          className={"select-none object-contain"}
         />
-      </motion.div>
+      </m.div>
     </SectionWrapper>
   );
 });

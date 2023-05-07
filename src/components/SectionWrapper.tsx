@@ -1,5 +1,5 @@
 import { spawnVariants } from "@styles/motion-definitions";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { type ForwardedRef, forwardRef, type ReactNode } from "react";
 
 interface Props {
@@ -15,7 +15,7 @@ const SectionWrapper = forwardRef(
     ref: ForwardedRef<HTMLDivElement>
   ) => {
     return (
-      <motion.section
+      <m.section
         ref={ref}
         id={id}
         initial={"initial"}
@@ -28,7 +28,7 @@ const SectionWrapper = forwardRef(
         custom={fadeInDelay}
       >
         {children}
-      </motion.section>
+      </m.section>
     );
   }
 );

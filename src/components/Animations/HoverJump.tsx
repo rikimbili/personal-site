@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { type ReactNode } from "react";
 
 interface Props {
@@ -6,7 +6,7 @@ interface Props {
 }
 export default function HoverJump({ children }: Props) {
   return (
-    <motion.div
+    <m.div
       whileHover={{
         y: [0, -4, 0],
         transition: {
@@ -22,6 +22,6 @@ export default function HoverJump({ children }: Props) {
       }}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }

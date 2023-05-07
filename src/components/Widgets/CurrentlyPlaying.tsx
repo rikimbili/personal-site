@@ -1,9 +1,10 @@
+import { transitions } from "@styles/motion-definitions";
 import { useQuery } from "@tanstack/react-query";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { MdMusicNote, MdMusicOff } from "react-icons/md";
 
-import { type CurrentlyPlayingData } from "../../services/spotify";
-import { transitions } from "../../styles/motion-definitions";
+import { type CurrentlyPlayingData } from "~/services/spotify";
+
 import LinkIconButton from "../Inputs/LinkIconButton";
 
 interface Props {
@@ -37,7 +38,7 @@ export default function CurrentlyPlaying({ className = "" }: Props) {
     <div className={"flex items-center " + className}>
       <AnimatePresence mode={"popLayout"} initial={false}>
         {item ? (
-          <motion.div
+          <m.div
             key={item.name}
             initial={{ y: 40, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -48,7 +49,7 @@ export default function CurrentlyPlaying({ className = "" }: Props) {
               href={item.external_urls.spotify}
               className={"flex items-center"}
             >
-              <motion.div
+              <m.div
                 animate={{
                   rotate: [10, 0, -10],
                   y: [-5, 0, -5],
@@ -61,14 +62,14 @@ export default function CurrentlyPlaying({ className = "" }: Props) {
                 }}
               >
                 <MdMusicNote className={"text-2xl"} />
-              </motion.div>
+              </m.div>
               <span className="ml-1 max-w-[14rem] overflow-hidden text-ellipsis whitespace-nowrap sm:max-w-xs xl:max-w-sm">
                 {item.artists?.[0]?.name} — {item.name}
               </span>
             </LinkIconButton>
-          </motion.div>
+          </m.div>
         ) : (
-          <motion.div
+          <m.div
             key={"not-playing"}
             initial={{ y: 40, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -77,7 +78,7 @@ export default function CurrentlyPlaying({ className = "" }: Props) {
           >
             <MdMusicOff className={"inline-block text-2xl"} />
             <span className="ml-1">Not playing — Spotify</span>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </div>

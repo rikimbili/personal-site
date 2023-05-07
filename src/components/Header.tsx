@@ -1,14 +1,14 @@
 "use client";
 
-import { AnimatePresence, motion, useScroll } from "framer-motion";
-import { type RefObject, useEffect, useState } from "react";
-
 import {
   positionVariants,
   transitions,
   transitionVariants,
-} from "../styles/motion-definitions";
-import Toggle from "./Theme/Toggle";
+} from "@styles/motion-definitions";
+import { AnimatePresence, m, useScroll } from "framer-motion";
+import { type RefObject, useEffect, useState } from "react";
+
+import ToggleButton from "./Inputs/ToggleButton";
 
 interface Props {
   sectionRefs: {
@@ -59,7 +59,7 @@ export default function Header({ sectionRefs }: Props) {
   //#endregion
 
   return (
-    <motion.header
+    <m.header
       variants={positionVariants}
       animate={
         (navState === "open" && "animate") ||
@@ -70,7 +70,7 @@ export default function Header({ sectionRefs }: Props) {
         overflow-hidden rounded-b-2xl bg-slate-200/80 px-6 text-xl backdrop-blur-md transition duration-200 ease-out dark:bg-slate-800/80`}
     >
       <AnimatePresence mode={"wait"}>
-        <motion.div
+        <m.div
           key={headerTitle}
           className={"flex gap-2 text-lg sm:text-xl"}
           initial={"growOut"}
@@ -79,11 +79,11 @@ export default function Header({ sectionRefs }: Props) {
           variants={transitionVariants}
         >
           {headerTitle}
-        </motion.div>
+        </m.div>
       </AnimatePresence>
       <div className={"flex items-center gap-4 text-2xl sm:text-3xl"}>
-        <Toggle />
+        <ToggleButton />
       </div>
-    </motion.header>
+    </m.header>
   );
 }

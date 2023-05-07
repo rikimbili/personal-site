@@ -4,7 +4,7 @@ import { SiGithub, SiLinkedin, SiSpotify } from "react-icons/si";
 
 import HoverJump from "./Animations/HoverJump";
 import AnchorLink from "./Inputs/AnchorLink";
-import InlineLink from "./Inputs/InlineLink";
+import ExternalLink from "./Inputs/ExternalLink";
 import LinkIconButton from "./Inputs/LinkIconButton";
 import SectionWrapper from "./SectionWrapper";
 
@@ -29,10 +29,10 @@ const Contact = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
       </h2>
       <p>
         Feel free to reach out to me via email at{" "}
-        <InlineLink href="mailto:hey@raciel.dev" target={"_self"}>
+        <ExternalLink href="mailto:hey@raciel.dev" target={"_self"}>
           hi@raciel.dev
           <MdEmail />
-        </InlineLink>
+        </ExternalLink>
         . You can also find me on the following places:
       </p>
       <div

@@ -3,8 +3,8 @@ import { SiGithub } from "react-icons/si";
 
 import TECHNOLOGIES from "../../data/technologies";
 import Button from "../Inputs/Button";
-import InlineLink from "../Inputs/InlineLink";
-import PopoverButton from "../Inputs/PopoverButton";
+import CustomPopover from "../Inputs/CustomPopover";
+import ExternalLink from "../Inputs/ExternalLink";
 
 interface Props {
   className?: string;
@@ -21,11 +21,11 @@ const technologies = [
 
 export default function WebsiteInfo({ className = "" }: Props) {
   return (
-    <PopoverButton
-      button={
+    <CustomPopover
+      trigger={
         <Button variant={"text"} className={"cursor-help"}>
           <span className="ml-1">Website Info</span>
-          <MdOutlineInfo className={"inline-block text-2xl"} />
+          <MdOutlineInfo className={"text-2xl"} />
         </Button>
       }
       popoverPlacement={"top"}
@@ -33,7 +33,7 @@ export default function WebsiteInfo({ className = "" }: Props) {
       className={className}
     >
       {(close) => (
-        <div className={"max-w-xl flex-col text-center"}>
+        <div className={"max-w-xl flex-col text-center sm:text-lg"}>
           <p className="">
             Built with{" "}
             {technologies.map((technology, index) => (
@@ -41,21 +41,21 @@ export default function WebsiteInfo({ className = "" }: Props) {
                 {index > 0 && index < technologies.length - 2 && ", "}
                 {index === technologies.length - 2 && " and "}
                 {index === technologies.length - 1 && ". Hosted on "}
-                <InlineLink href={encodeURI(technology.link)}>
+                <ExternalLink href={encodeURI(technology.link)}>
                   {technology.name} {technology.icon}
-                </InlineLink>
+                </ExternalLink>
               </span>
             ))}
           </p>
-          <div className="my-2 mx-12 rounded-full border-t-2 border-slate-900/20 dark:border-slate-50/20 sm:mx-24" />
+          <div className="mx-12 my-2 rounded-full border-t-2 border-slate-900/20 dark:border-slate-50/20 sm:mx-24" />
           <p className="">
             The source code is available on{" "}
-            <InlineLink href={"https://github.com/Rikimbili/personal-site"}>
+            <ExternalLink href={"https://github.com/Rikimbili/personal-site"}>
               GitHub <SiGithub />
-            </InlineLink>
+            </ExternalLink>
           </p>
         </div>
       )}
-    </PopoverButton>
+    </CustomPopover>
   );
 }

@@ -1,14 +1,13 @@
-import { type HTMLMotionProps, motion } from "framer-motion";
+import { transitionVariants } from "@styles/motion-definitions";
+import { type HTMLMotionProps, m } from "framer-motion";
 import { type ReactNode } from "react";
-
-import { transitionVariants } from "../../styles/motion-definitions";
 
 interface Props extends HTMLMotionProps<"div"> {
   children: ReactNode;
 }
 export default function Fade({ children, ...rest }: Props) {
   return (
-    <motion.div
+    <m.div
       initial={"fadeOut"}
       animate={"fadeIn"}
       exit={"fadeOut"}
@@ -16,6 +15,6 @@ export default function Fade({ children, ...rest }: Props) {
       {...rest}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }

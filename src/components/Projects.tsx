@@ -2,10 +2,10 @@ import { type ForwardedRef, forwardRef, useState } from "react";
 import { MdExpandLess, MdExpandMore } from "react-icons/md";
 
 import projects from "../data/projects";
+import ProjectCard from "./DataDisplay/ProjectCard";
 import AnchorLink from "./Inputs/AnchorLink";
 import Button from "./Inputs/Button";
 import SectionWrapper from "./SectionWrapper";
-import ProjectCard from "./Surfaces/ProjectCard";
 
 const Projects = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
   //#region Hooks

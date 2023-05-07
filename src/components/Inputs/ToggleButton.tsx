@@ -1,10 +1,10 @@
-import { AnimatePresence, motion } from "framer-motion";
+import { transitions } from "@styles/motion-definitions";
+import { AnimatePresence, m } from "framer-motion";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
 
-import { transitions } from "../../styles/motion-definitions";
-import IconButton from "../Inputs/IconButton";
+import IconButton from "./IconButton";
 
 const variants = {
   initial: { scale: 0, rotate: 90 },
@@ -12,7 +12,11 @@ const variants = {
   whileTap: { scale: 0.95, rotate: 15 },
 };
 
-export default function Toggle({ className = "" }: { className?: string }) {
+export default function ToggleButton({
+  className = "",
+}: {
+  className?: string;
+}) {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
@@ -36,7 +40,7 @@ export default function Toggle({ className = "" }: { className?: string }) {
     >
       <AnimatePresence mode={"popLayout"}>
         {theme === "light" ? (
-          <motion.div
+          <m.div
             key={"light"}
             initial={"initial"}
             animate={"animate"}
@@ -46,9 +50,9 @@ export default function Toggle({ className = "" }: { className?: string }) {
             transition={transitions.spring}
           >
             <MdDarkMode />
-          </motion.div>
+          </m.div>
         ) : (
-          <motion.div
+          <m.div
             key={"dark"}
             initial={"initial"}
             animate={"animate"}
@@ -58,7 +62,7 @@ export default function Toggle({ className = "" }: { className?: string }) {
             transition={transitions.spring}
           >
             <MdLightMode />
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </IconButton>

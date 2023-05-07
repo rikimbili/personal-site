@@ -1,13 +1,13 @@
 import { useMediaQuery } from "@hooks/useMediaQuery";
-import { spawnVariants, transitions } from "@styles/motion-definitions";
-import { AnimatePresence, motion, Reorder } from "framer-motion";
+import { spawnVariants } from "@styles/motion-definitions";
+import useEmblaCarousel from "embla-carousel-react";
+import { m, Reorder } from "framer-motion";
 import Link from "next/link";
-import { useRef, useState } from "react";
-import { MdNavigateBefore, MdNavigateNext, MdOpenInNew } from "react-icons/md";
+import { useState } from "react";
+import { MdOpenInNew } from "react-icons/md";
 import { SiGithub } from "react-icons/si";
 
 import Button from "../Inputs/Button";
-import IconButton from "../Inputs/IconButton";
 import CustomImage from "./CustomImage";
 
 interface Props {
@@ -37,40 +37,14 @@ export default function ProjectCard({
 
   const xl = useMediaQuery("(min-width: 1280px)");
 
+  const [emblaRef] = useEmblaCarousel();
+
   const [reorderedTags, setReorderedTags] = useState<string[]>(tags || []);
-  const [currentImageIdx, setCurrentImageIdx] = useState(0);
-
-  const imageDirection = useRef<-1 | 1>(1);
-
-  //#endregion
-
-  //#region Handlers
-
-  const handleChangeImage = (direction: -1 | 1) => {
-    imageDirection.current = direction;
-    setCurrentImageIdx((prev) => {
-      if (
-        (prev === 0 && direction === -1) ||
-        (prev === images.length - 1 && direction === 1)
-      ) {
-        return prev;
-      }
-      return prev + direction;
-    });
-  };
-
-  //#endregion
-
-  //#region Derived State
-
-  const showPrevImageArrow = images.length > 1 && currentImageIdx > 0;
-  const showNextImageArrow =
-    images.length > 1 && currentImageIdx < images.length - 1;
 
   //#endregion
 
   return (
-    <motion.div
+    <m.div
       initial={"initial"}
       whileInView={"visible"}
       viewport={{
@@ -81,51 +55,28 @@ export default function ProjectCard({
       className={`relative flex w-full max-w-xl flex-1 flex-col gap-2 overflow-hidden rounded-2xl bg-slate-200 
       pb-8 dark:bg-slate-800 sm:min-w-[24rem] sm:gap-4`}
     >
-      <div className={"group relative text-slate-50"}>
-        <div
-          className={`absolute -left-16 top-1/2 z-10 flex h-full w-16 -translate-y-1/2 items-center bg-gradient-to-l 
-              from-transparent to-black text-6xl transition-all duration-300 ${
-                showPrevImageArrow ? "group-hover:left-0" : ""
-              }`}
-        >
-          <IconButton
-            className={"h-full"}
-            onClick={() => handleChangeImage(-1)}
-          >
-            <MdNavigateBefore />
-          </IconButton>
-        </div>
-        <AnimatePresence mode={"popLayout"} initial={false}>
-          <motion.div
-            key={images[currentImageIdx]}
-            initial={{ x: imageDirection.current * 100, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: imageDirection.current * -100, opacity: 0 }}
-            transition={transitions.springStiffer}
-            className={"relative z-0 aspect-[3/2]"}
-          >
+      <div
+        ref={images.length > 1 ? emblaRef : null}
+        className={`group relative overflow-hidden text-slate-50 ${
+          images.length > 1 ? "cursor-grab active:cursor-grabbing" : ""
+        }`}
+      >
+        <div className={"z-0 flex aspect-[3/2]"}>
+          {images.map((image, index) => (
             <CustomImage
-              src={images[currentImageIdx] || ""}
+              key={index}
+              src={image}
               alt={title}
               fill
               priority
-              className={"select-none object-cover"}
               draggable={false}
               sizes="(max-width: 1024px) 90vw,
               (max-width: 1600px) 50vw,
               33vw"
+              containerClassName={"relative grow-0 shrink-0 basis-full min-w-0"}
+              className={"select-none object-cover"}
             />
-          </motion.div>
-        </AnimatePresence>
-        <div
-          className={`absolute -right-16 top-1/2 z-10 flex h-full w-16 -translate-y-1/2 items-center justify-end bg-gradient-to-r 
-                from-transparent to-black text-6xl transition-all duration-300 ${
-                  showNextImageArrow ? "group-hover:right-0" : ""
-                }`}
-        >
-          <IconButton className={"h-full"} onClick={() => handleChangeImage(1)}>
-            <MdNavigateNext />
-          </IconButton>
+          ))}
         </div>
       </div>
       <h3
@@ -208,6 +159,6 @@ export default function ProjectCard({
           </Link>
         )}
       </div>
-    </motion.div>
+    </m.div>
   );
 }
