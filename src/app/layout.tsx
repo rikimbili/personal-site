@@ -6,10 +6,49 @@ import { Analytics } from "@vercel/analytics/react";
 import { IBM_Plex_Sans } from "next/font/google";
 import { type ReactNode } from "react";
 
+import personal from "~/data/personal";
+
 import Footer from "../components/Footer";
-import Providers from "./Providers";
+import PageWrapper from "./PageWrapper";
 
 const roboto = IBM_Plex_Sans({ weight: "400", subsets: ["latin"] });
+
+export const metadata = {
+  title: personal.portfolioTitle,
+  description: personal.portfolioDescription,
+  icons: [
+    {
+      rel: "icon",
+      type: "image/x-icon",
+      url: "/favicon-dark.ico?v=1",
+    },
+  ],
+  viewport: {
+    initialScale: 1,
+    width: "device-width",
+  },
+  twitter: {
+    title: personal.portfolioTitle,
+    description: personal.portfolioDescription,
+    card: "summary_large_image",
+    images: [
+      {
+        url: "/images/banner.png",
+      },
+    ],
+  },
+  openGraph: {
+    title: personal.portfolioTitle,
+    description: personal.portfolioDescription,
+    type: "website",
+    url: "https://raciel.dev",
+    images: [
+      {
+        url: "/images/banner.png",
+      },
+    ],
+  },
+};
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
@@ -18,7 +57,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         className={`bg-slate-50 transition duration-200 ease-out before:[filter:url(#mainBgNoise)] dark:bg-slate-950`}
       >
         <Noise filterId={"mainBgNoise"} />
-        <Providers>
+        <PageWrapper>
           <main
             className={`text-slate-950 transition duration-200 ease-out dark:text-slate-50 ${roboto.className}`}
           >
@@ -39,7 +78,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               foldable device, please unfold it &#128516;.
             </div>
           </main>
-        </Providers>
+        </PageWrapper>
         <Analytics />
       </body>
     </html>
