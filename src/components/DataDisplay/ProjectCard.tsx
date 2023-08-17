@@ -115,7 +115,7 @@ export default function ProjectCard({
         {reorderedTags?.map((tag) => (
           <Reorder.Item
             drag={xl}
-            key={tag}
+            key={title + tag}
             value={tag}
             whileHover={{ cursor: xl ? "grab" : "default" }}
             whileDrag={{
