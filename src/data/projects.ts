@@ -23,7 +23,7 @@ export default [
       "/images/projects/daydream_5.png",
     ],
     logo: "/images/projects/daydream_logo.png",
-    visitLink: "https://daydream.wtf",
+    // visitLink: "https://daydream.wtf",
     sourceLink: "https://github.com/poop-team/daydream",
     visitTextOverride: "Try it out!",
   },
