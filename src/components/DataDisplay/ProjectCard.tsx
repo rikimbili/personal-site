@@ -52,8 +52,8 @@ export default function ProjectCard({
       }}
       variants={spawnVariants}
       custom={fadeInDelay}
-      className={`relative flex w-full max-w-xl flex-1 flex-col gap-2 overflow-hidden rounded-2xl bg-slate-200 
-      pb-8 dark:bg-slate-800 sm:min-w-[24rem] sm:gap-4`}
+      className={`relative flex w-full max-w-xl flex-1 flex-col gap-2 overflow-hidden rounded-xl bg-slate-300 pb-8 
+      shadow-2xl dark:bg-slate-800 sm:min-w-[24rem] sm:gap-4`}
     >
       <div
         ref={images.length > 1 ? emblaRef : null}

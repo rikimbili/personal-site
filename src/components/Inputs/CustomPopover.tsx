@@ -61,7 +61,7 @@ export default function CustomPopover({
     setPanelTimeout(
       setTimeout(() => {
         close();
-      }, 300)
+      }, 300),
     );
   };
 
@@ -98,7 +98,7 @@ export default function CustomPopover({
                     top: y ?? 0,
                     left: x ?? 0,
                   }}
-                  className={`z-50 w-max max-w-[90vw] rounded-lg bg-slate-200/90 p-2 text-base 
+                  className={`z-50 w-max max-w-[90vw] rounded-lg bg-slate-300/90 p-2 text-base 
                   font-medium text-slate-950 shadow-lg ring-1 ring-slate-300/80 backdrop-blur-lg 
                   transition-colors duration-200 dark:bg-slate-800/90 dark:text-slate-50 dark:ring-slate-700/80`}
                 >

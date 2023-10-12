@@ -57,7 +57,10 @@ const Hero = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
         drag
         dragSnapToOrigin
         whileHover={{ cursor: "grab" }}
-        whileDrag={{ scale: 1.1, cursor: "grabbing" }}
+        whileDrag={{
+          scale: 1.1,
+          cursor: "grabbing",
+        }}
         dragTransition={{ bounceStiffness: 300, bounceDamping: 25 }}
       >
         <CustomImage
