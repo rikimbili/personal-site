@@ -1,18 +1,9 @@
 /** @type {import("eslint").Linter.Config} */
 const config = {
-  root: true,
   parser: "@typescript-eslint/parser",
-  overrides: [
-    {
-      extends: [
-        "plugin:@typescript-eslint/recommended-requiring-type-checking",
-      ],
-      files: ["*.ts", "*.tsx"],
-      parserOptions: {
-        project: "tsconfig.json",
-      },
-    },
-  ],
+  parserOptions: {
+    project: true,
+  },
   plugins: [
     "react",
     "tailwindcss",
@@ -26,8 +17,9 @@ const config = {
     "plugin:react/recommended",
     "plugin:tailwindcss/recommended",
     "plugin:import/recommended",
-    "plugin:@typescript-eslint/recommended",
-    "prettier"
+    "plugin:@typescript-eslint/recommended-type-checked",
+    "plugin:@typescript-eslint/stylistic-type-checked",
+    "prettier",
   ],
   rules: {
     "@typescript-eslint/consistent-type-imports": [
@@ -42,10 +34,9 @@ const config = {
     "react/react-in-jsx-scope": "off",
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
-    "@typescript-eslint/no-unused-vars": "warn",
+    "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
     "@typescript-eslint/no-empty-function": "warn",
     "react/prop-types": "off",
   },
 };
-
 module.exports = config;

@@ -4,10 +4,7 @@ interface Props extends SVGMotionProps<SVGElement> {
   className?: string;
 }
 
-export default function CircularIndeterminate({
-  className = "",
-  ...rest
-}: Props) {
+export default function CircularIndeterminate({ className = "" }: Props) {
   return (
     <div role="status">
       <svg
