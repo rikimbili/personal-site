@@ -18,7 +18,7 @@ export default function CurrentlyPlaying({ className = "" }: Props) {
     queryKey: ["currently-playing"],
     queryFn: () =>
       fetch("/api/currently-playing").then((res) =>
-        res.json()
+        res.json(),
       ) as Promise<CurrentlyPlayingData>,
     refetchInterval: 1000 * 20,
   });
@@ -63,7 +63,7 @@ export default function CurrentlyPlaying({ className = "" }: Props) {
               >
                 <MdMusicNote className={"text-2xl"} />
               </m.div>
-              <span className="ml-1 max-w-[14rem] overflow-hidden text-ellipsis whitespace-nowrap sm:max-w-xs xl:max-w-sm">
+              <span className="ml-1 max-w-[14rem] truncate sm:max-w-xs xl:max-w-sm">
                 {item.artists?.[0]?.name} — {item.name}
               </span>
             </LinkIconButton>

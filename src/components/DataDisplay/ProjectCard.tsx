@@ -39,7 +39,7 @@ export default function ProjectCard({
 
   const [emblaRef] = useEmblaCarousel();
 
-  const [reorderedTags, setReorderedTags] = useState<string[]>(tags || []);
+  const [reorderedTags, setReorderedTags] = useState<string[]>(tags ?? []);
 
   //#endregion
 
@@ -114,8 +114,8 @@ export default function ProjectCard({
       >
         {reorderedTags?.map((tag) => (
           <Reorder.Item
-            drag={xl}
             key={title + tag}
+            drag={xl}
             value={tag}
             whileHover={{ cursor: xl ? "grab" : "default" }}
             whileDrag={{

@@ -14,6 +14,7 @@ import PageWrapper from "./PageWrapper";
 const roboto = IBM_Plex_Sans({ weight: "400", subsets: ["latin"] });
 
 export const metadata = {
+  metadataBase: new URL("https://raciel.dev"),
   title: personal.portfolioTitle,
   description: personal.portfolioDescription,
   icons: [

@@ -32,7 +32,7 @@ export default function WebsiteInfo({ className = "" }: Props) {
       openOnHover={true}
       className={className}
     >
-      {(close) => (
+      {() => (
         <div className={"max-w-xl flex-col text-center sm:text-lg"}>
           <p className="">
             Built with{" "}

@@ -17,10 +17,10 @@ export interface CurrentlyPlayingData {
 
 async function getNewAccessTokenFromRefreshToken(): Promise<void> {
   const params = new URLSearchParams({
-    client_id: process.env.SPOTIFY_CLIENT_ID as string,
-    client_secret: process.env.SPOTIFY_CLIENT_SECRET as string,
+    client_id: process.env.SPOTIFY_CLIENT_ID!,
+    client_secret: process.env.SPOTIFY_CLIENT_SECRET!,
     grant_type: "refresh_token",
-    refresh_token: process.env.SPOTIFY_REFRESH_TOKEN as string,
+    refresh_token: process.env.SPOTIFY_REFRESH_TOKEN!,
   });
 
   const response = await fetch("https://accounts.spotify.com/api/token", {
@@ -30,7 +30,7 @@ async function getNewAccessTokenFromRefreshToken(): Promise<void> {
   const data = (await response.json()) as CurrentlyPlayingData;
 
   if (response.ok) {
-    process.env.SPOTIFY_ACCESS_TOKEN = data.access_token as string;
+    process.env.SPOTIFY_ACCESS_TOKEN = data.access_token!;
   } else {
     console.error(data);
     throw new Error("Failed to get new access token from refresh token");
@@ -44,9 +44,9 @@ export default async function getCurrentlyPlaying(): Promise<CurrentlyPlayingDat
     "https://api.spotify.com/v1/me/player/currently-playing",
     {
       headers: {
-        Authorization: `Bearer ${process.env.SPOTIFY_ACCESS_TOKEN as string}`,
+        Authorization: `Bearer ${process.env.SPOTIFY_ACCESS_TOKEN!}`,
       },
-    }
+    },
   );
 
   if (response.status === 401) {
