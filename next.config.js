@@ -55,11 +55,6 @@ module.exports = {
   async redirects() {
     return [
       {
-        source: "/resume",
-        destination: "/docs/resume.pdf",
-        permanent: true,
-      },
-      {
         source: "/notes",
         destination: "https://notes.keymorph.com",
         permanent: true,

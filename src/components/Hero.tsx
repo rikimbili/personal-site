@@ -1,10 +1,7 @@
 import CustomImage from "@components/DataDisplay/CustomImage";
 import { m } from "framer-motion";
-import Link from "next/link";
 import { type ForwardedRef, forwardRef } from "react";
-import { MdOpenInNew } from "react-icons/md";
 
-import Button from "./Inputs/Button";
 import SectionWrapper from "./SectionWrapper";
 
 const wavingHandVariants = {
@@ -55,14 +52,6 @@ const Hero = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
           my Bachelor&apos;s in Computer Science at the University of Central
           Florida by May, 2024.
         </p>
-        <div className={"w-fit self-center sm:self-start"}>
-          <Link href={"/docs/resume.pdf"} target={"_blank"}>
-            <Button className={"mt-8"}>
-              Resume
-              <MdOpenInNew />
-            </Button>
-          </Link>
-        </div>
       </div>
       <m.div
         drag
