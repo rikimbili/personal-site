@@ -35,7 +35,7 @@ export default function CurrentlyPlaying({ className = "" }: Props) {
   //#endregion
 
   return (
-    <div className={"flex items-center " + className}>
+    <div className={"flex items-center justify-center " + className}>
       <AnimatePresence mode={"popLayout"} initial={false}>
         {item ? (
           <m.div
