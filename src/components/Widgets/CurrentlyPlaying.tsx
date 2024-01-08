@@ -48,7 +48,7 @@ export default function CurrentlyPlaying({ className = "" }: Props) {
           >
             <CustomLink
               href={item.external_urls.spotify}
-              className={"flex w-full items-center"}
+              className={"flex w-full items-center justify-center"}
             >
               <m.div
                 animate={{
