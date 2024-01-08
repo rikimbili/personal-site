@@ -1,14 +1,14 @@
-import { type SVGProps } from "react";
+import { type SVGProps, useId } from "react";
 
 interface Props extends SVGProps<SVGFilterElement> {
-  filterId: string;
   className?: string;
 }
 
-export default function Noise({ filterId, className = "", ...rest }: Props) {
+export default function Noise({ className = "", ...rest }: Props) {
+  const id = useId();
   return (
     <svg className={"hidden"}>
-      <filter id={filterId} className={className} {...rest}>
+      <filter id={id} className={className} {...rest}>
         <feTurbulence
           type="fractalNoise"
           baseFrequency="0.6"
