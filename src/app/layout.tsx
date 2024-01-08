@@ -9,7 +9,7 @@ import { type ReactNode } from "react";
 import personal from "~/data/personal";
 
 import Footer from "../components/Footer";
-import PageWrapper from "./PageWrapper";
+import Providers from "./Providers";
 
 const roboto = IBM_Plex_Sans({ weight: "400", subsets: ["latin"] });
 
@@ -20,8 +20,15 @@ export const metadata = {
   icons: [
     {
       rel: "icon",
-      type: "image/x-icon",
-      url: "/favicon-dark.ico?v=1",
+      type: "image/png",
+      sizes: "16x16",
+      url: "/favicon-16x16.png",
+    },
+    {
+      rel: "icon",
+      type: "image/png",
+      sizes: "32x32",
+      url: "/favicon-32x32.png",
     },
   ],
   viewport: {
@@ -57,8 +64,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body
         className={`bg-slate-50 transition duration-200 ease-out before:[filter:url(#mainBgNoise)] dark:bg-slate-950`}
       >
-        <Noise filterId={"mainBgNoise"} />
-        <PageWrapper>
+        <Noise />
+        <Providers>
           <main
             className={`text-slate-950 transition duration-200 ease-out dark:text-slate-50 ${roboto.className}`}
           >
@@ -70,16 +77,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               <Blob className={"left-1/2 h-10 w-full -translate-x-1/2"} />
               {children}
               <Footer />
-              <Blob
-                className={"bottom-0 left-1/2 h-10 w-full -translate-x-1/2"}
-              />
             </div>
-            <div className="flex h-screen flex-col items-center justify-center px-2 xs:hidden">
+            <div className="flex h-screen flex-col items-center justify-center px-2 text-sm xs:hidden">
               Your screen width is too low to view my site. If you have a
               foldable device, please unfold it &#128516;.
             </div>
           </main>
-        </PageWrapper>
+        </Providers>
         <Analytics />
       </body>
     </html>

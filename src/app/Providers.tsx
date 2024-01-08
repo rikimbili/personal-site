@@ -5,7 +5,7 @@ import { domMax, LazyMotion } from "framer-motion";
 import { ThemeProvider } from "next-themes";
 import { type ReactNode, useState } from "react";
 
-export default function PageWrapper({ children }: { children: ReactNode }) {
+export default function Providers({ children }: { children: ReactNode }) {
   const [queryClient] = useState(() => new QueryClient());
 
   return (
