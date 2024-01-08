@@ -5,7 +5,7 @@ import { MdMusicNote, MdMusicOff } from "react-icons/md";
 
 import { type CurrentlyPlayingData } from "~/services/spotify";
 
-import LinkIconButton from "../Inputs/LinkIconButton";
+import CustomLink from "../Inputs/CustomLink";
 
 interface Props {
   className?: string;
@@ -44,10 +44,11 @@ export default function CurrentlyPlaying({ className = "" }: Props) {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -40, opacity: 0 }}
             transition={transitions.springStiff}
+            className={"w-full"}
           >
-            <LinkIconButton
+            <CustomLink
               href={item.external_urls.spotify}
-              className={"flex items-center"}
+              className={"flex w-full items-center"}
             >
               <m.div
                 animate={{
@@ -63,10 +64,10 @@ export default function CurrentlyPlaying({ className = "" }: Props) {
               >
                 <MdMusicNote className={"text-2xl"} />
               </m.div>
-              <span className="ml-1 max-w-[14rem] truncate sm:max-w-xs xl:max-w-sm">
+              <span className="ml-1 truncate xl:max-w-sm">
                 {item.artists?.[0]?.name} — {item.name}
               </span>
-            </LinkIconButton>
+            </CustomLink>
           </m.div>
         ) : (
           <m.div

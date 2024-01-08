@@ -27,12 +27,12 @@ export default function NotFound() {
 
   return (
     <div className="flex h-screen flex-col items-center justify-center">
-      <h1 className={"text-3xl"}>
+      <h1 className={"text-xl"}>
         The page <strong>{pathname}</strong> does not exist :(
       </h1>
-      <h2 className={"mt-4 text-xl"}>
+      <span className={"mt-4"}>
         Redirecting back to home in {count} seconds...
-      </h2>
+      </span>
     </div>
   );
 }

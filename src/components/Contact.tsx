@@ -4,8 +4,8 @@ import { SiGithub, SiLinkedin, SiSpotify } from "react-icons/si";
 
 import HoverJump from "./Animations/HoverJump";
 import AnchorLink from "./Inputs/AnchorLink";
+import CustomLink from "./Inputs/CustomLink";
 import ExternalLink from "./Inputs/ExternalLink";
-import LinkIconButton from "./Inputs/LinkIconButton";
 import SectionWrapper from "./SectionWrapper";
 
 const Contact = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
@@ -15,11 +15,13 @@ const Contact = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
       id={"contact"}
       fadeInDelay={0.15}
       className={
-        "flex scroll-mt-20 flex-col gap-4 text-justify text-lg sm:w-full sm:gap-8 sm:text-xl lg:text-2xl"
+        "flex scroll-mt-20 flex-col gap-4 text-pretty sm:w-full sm:gap-8"
       }
     >
       <h2
-        className={"group w-fit select-none text-3xl sm:text-4xl lg:text-5xl"}
+        className={
+          "group flex w-fit select-none items-center gap-2 text-center text-2xl sm:text-3xl"
+        }
       >
         Contact{" "}
         <AnchorLink
@@ -27,39 +29,39 @@ const Contact = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
           className={"opacity-0 group-hover:opacity-100"}
         />
       </h2>
-      <p>
-        Feel free to reach out to me via email at{" "}
-        <ExternalLink href="mailto:hey@raciel.dev" target={"_self"}>
-          hi@raciel.dev
-          <MdEmail />
-        </ExternalLink>
-        . You can also find me on the following places:
-      </p>
-      <div
-        className={
-          "-mt-2 flex justify-start gap-4 text-3xl sm:gap-6 sm:text-4xl"
-        }
-      >
-        <MdOutlineSubdirectoryArrowRight />
-        <HoverJump>
-          <LinkIconButton href={"https://github.com/Rikimbili"}>
-            <SiGithub />
-          </LinkIconButton>
-        </HoverJump>
-        <HoverJump>
-          <LinkIconButton href={"https://www.linkedin.com/in/racielap"}>
-            <SiLinkedin />
-          </LinkIconButton>
-        </HoverJump>
-        <HoverJump>
-          <LinkIconButton
-            href={
-              "https://open.spotify.com/user/hq4b6g53rt66krufjr2pnfqhc?si=035315f5f0d24075"
-            }
-          >
-            <SiSpotify />
-          </LinkIconButton>
-        </HoverJump>
+      <div className={"flex flex-col gap-2 sm:gap-4"}>
+        <p>
+          Feel free to reach out to me via email at{" "}
+          <ExternalLink href="mailto:hey@raciel.dev" target={"_self"}>
+            hi@raciel.dev
+            <MdEmail />
+          </ExternalLink>
+          . You can also find me on the following places:
+        </p>
+        <div
+          className={"flex justify-start gap-4 text-3xl sm:gap-6 sm:text-4xl"}
+        >
+          <MdOutlineSubdirectoryArrowRight />
+          <HoverJump>
+            <CustomLink href={"https://github.com/Rikimbili"}>
+              <SiGithub />
+            </CustomLink>
+          </HoverJump>
+          <HoverJump>
+            <CustomLink href={"https://www.linkedin.com/in/racielap"}>
+              <SiLinkedin />
+            </CustomLink>
+          </HoverJump>
+          <HoverJump>
+            <CustomLink
+              href={
+                "https://open.spotify.com/user/hq4b6g53rt66krufjr2pnfqhc?si=035315f5f0d24075"
+              }
+            >
+              <SiSpotify />
+            </CustomLink>
+          </HoverJump>
+        </div>
       </div>
     </SectionWrapper>
   );

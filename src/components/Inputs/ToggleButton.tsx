@@ -49,7 +49,7 @@ export default function ToggleButton({
             variants={variants}
             transition={transitions.spring}
           >
-            <MdDarkMode />
+            <MdDarkMode className={"size-full"} />
           </m.div>
         ) : (
           <m.div
@@ -61,7 +61,7 @@ export default function ToggleButton({
             variants={variants}
             transition={transitions.spring}
           >
-            <MdLightMode />
+            <MdLightMode className={"size-full"} />
           </m.div>
         )}
       </AnimatePresence>

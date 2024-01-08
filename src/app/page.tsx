@@ -20,12 +20,12 @@ export default function Index() {
     <>
       <Header
         sectionRefs={[
-          { ref: heroRef, name: "Raciel" },
+          { ref: heroRef, name: "Welcome!" },
           { ref: projectsRef, name: "Projects" },
           { ref: contactRef, name: "Contact" },
         ]}
       />
-      <div className="mb-20 mt-28 flex grow flex-col gap-16 sm:my-32 sm:gap-24 lg:gap-36">
+      <div className="my-20 flex grow flex-col gap-16 sm:my-32 sm:gap-28">
         <Hero ref={heroRef} />
         <Projects ref={projectsRef} />
         <Contact ref={contactRef} />

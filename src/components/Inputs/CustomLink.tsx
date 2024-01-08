@@ -1,23 +1,25 @@
 import Link, { type LinkProps } from "next/link";
 import { type ReactNode } from "react";
 
-import IconButton from "./IconButton";
-
 interface Props extends LinkProps {
   children: ReactNode;
   className?: string;
   target?: string;
 }
 
-export default function LinkIconButton({
+export default function CustomLink({
   children,
   className = "",
   target = "_blank",
   ...rest
 }: Props) {
   return (
-    <Link target={target} {...rest}>
-      <IconButton className={className}>{children}</IconButton>
+    <Link
+      target={target}
+      {...rest}
+      className={`transition duration-100 ease-out hover:text-indigo-500 dark:hover:text-indigo-400 ${className}`}
+    >
+      {children}
     </Link>
   );
 }

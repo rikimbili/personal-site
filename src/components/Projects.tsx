@@ -1,3 +1,5 @@
+import { spawnVariants } from "@styles/motion-definitions";
+import { m } from "framer-motion";
 import { type ForwardedRef, forwardRef, useState } from "react";
 import { MdExpandLess, MdExpandMore } from "react-icons/md";
 
@@ -12,8 +14,6 @@ const Projects = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
 
   const [showAll, setShowAll] = useState(false);
 
-  //#endregion
-
   //#region Derived State
 
   const projectsToShow = showAll ? projects : projects.slice(0, 4);
@@ -26,40 +26,46 @@ const Projects = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
       id={"projects"}
       fadeInDelay={0.1}
       className={
-        "scroll-mt-20 text-justify text-lg sm:w-full sm:text-xl lg:text-2xl"
+        "flex scroll-mt-20 flex-col gap-4 text-pretty sm:w-full sm:gap-6"
       }
     >
       <h2
         className={
-          "group mb-4 w-fit select-none text-3xl sm:mb-8 sm:text-4xl lg:text-5xl"
+          "group flex w-fit select-none items-center gap-2 text-center text-2xl sm:text-3xl"
         }
       >
-        Projects{" "}
+        Projects
         <AnchorLink
           href={"#projects"}
           className={"opacity-0 group-hover:opacity-100"}
         />
       </h2>
-      <div
-        className={
-          "flex flex-col flex-wrap items-center justify-center gap-8 sm:gap-16 lg:flex-row"
-        }
-      >
+      <ul className={"grid w-full grid-cols-1 gap-8 sm:gap-12 md:grid-cols-2"}>
         {projectsToShow.map((project, idx) => (
-          <ProjectCard
+          <m.li
             key={idx}
-            fadeInDelay={0.1 + (idx % 2) * 0.1}
-            title={project.title}
-            description={project.description}
-            images={project.images}
-            logo={project.logo}
-            tags={project.tags}
-            visitLink={project.visitLink}
-            sourceLink={project.sourceLink}
-            visitTextOverride={project.visitTextOverride}
-          />
+            initial={"initial"}
+            whileInView={"visible"}
+            viewport={{
+              once: true,
+            }}
+            variants={spawnVariants}
+            custom={0.1 + (idx % 2) * 0.1}
+          >
+            <ProjectCard
+              key={idx}
+              title={project.title}
+              description={project.description}
+              images={project.images}
+              logo={project.logo}
+              tags={project.tags}
+              visitLink={project.visitLink}
+              sourceLink={project.sourceLink}
+              visitTextOverride={project.visitTextOverride}
+            />
+          </m.li>
         ))}
-      </div>
+      </ul>
       {projects.length > 4 && (
         <Button
           className={"group mx-auto mt-8"}

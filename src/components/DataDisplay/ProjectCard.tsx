@@ -1,9 +1,6 @@
-import { useMediaQuery } from "@hooks/useMediaQuery";
-import { spawnVariants } from "@styles/motion-definitions";
+import SpotlightCard from "@components/Surfaces/SpotlightCard";
 import useEmblaCarousel from "embla-carousel-react";
-import { m, Reorder } from "framer-motion";
 import Link from "next/link";
-import { useState } from "react";
 import { MdOpenInNew } from "react-icons/md";
 import { SiGithub } from "react-icons/si";
 
@@ -14,12 +11,11 @@ interface Props {
   title: string;
   description: string;
   images: string[];
-  logo?: string;
-  tags?: string[];
-  visitLink?: string;
-  sourceLink?: string;
-  visitTextOverride?: string;
-  fadeInDelay?: number;
+  logo: string | undefined;
+  tags: string[] | undefined;
+  visitLink: string | undefined;
+  sourceLink: string | undefined;
+  visitTextOverride: string | undefined;
 }
 
 export default function ProjectCard({
@@ -31,37 +27,24 @@ export default function ProjectCard({
   visitLink,
   sourceLink,
   visitTextOverride = "Try it out!",
-  fadeInDelay = 0,
 }: Props) {
   //#region Hooks
 
-  const xl = useMediaQuery("(min-width: 1280px)");
-
   const [emblaRef] = useEmblaCarousel();
-
-  const [reorderedTags, setReorderedTags] = useState<string[]>(tags ?? []);
 
   //#endregion
 
   return (
-    <m.div
-      initial={"initial"}
-      whileInView={"visible"}
-      viewport={{
-        once: true,
-      }}
-      variants={spawnVariants}
-      custom={fadeInDelay}
-      className={`relative flex w-full max-w-xl flex-1 flex-col gap-2 overflow-hidden rounded-xl bg-slate-300 pb-8 
-      shadow-2xl dark:bg-slate-800 sm:min-w-[24rem] sm:gap-4`}
+    <SpotlightCard
+      className={`relative flex w-full flex-col gap-2 pb-8 sm:gap-4`}
     >
       <div
         ref={images.length > 1 ? emblaRef : null}
-        className={`group relative overflow-hidden text-slate-50 ${
+        className={`group relative h-fit overflow-x-hidden rounded-t-xl text-slate-50 ${
           images.length > 1 ? "cursor-grab active:cursor-grabbing" : ""
         }`}
       >
-        <div className={"z-0 flex aspect-[3/2]"}>
+        <div className={"flex"}>
           {images.map((image, index) => (
             <CustomImage
               key={index}
@@ -73,92 +56,62 @@ export default function ProjectCard({
               sizes="(max-width: 1024px) 90vw,
               (max-width: 1600px) 50vw,
               33vw"
-              containerClassName={"relative grow-0 shrink-0 basis-full min-w-0"}
+              containerClassName={
+                "relative grow-0 shrink-0 basis-full min-w-0 aspect-[3/2]"
+              }
               className={"select-none object-cover"}
             />
           ))}
         </div>
       </div>
-      <h3
-        className={
-          "flex w-full items-center justify-center gap-2 text-2xl sm:text-3xl lg:text-4xl"
-        }
-      >
-        <span>{title}</span>
-        {logo && (
-          <CustomImage
-            src={logo}
-            alt={title}
-            fill
-            draggable={false}
-            containerClassName={
-              "relative w-8 h-8 sm:w-10 sm:h-10 rounded-lg overflow-hidden"
-            }
-            className={
-              "h-full w-full select-none !bg-transparent object-contain"
-            }
-            sizes={"(max-width: 1024px) 4rem, 5rem"}
-          />
-        )}
-      </h3>
-      <p className={"mx-2 text-center text-base sm:mx-4 sm:text-lg lg:text-xl"}>
-        {description}
-      </p>
-      <Reorder.Group
-        values={reorderedTags}
-        axis={"x"}
-        onReorder={setReorderedTags}
-        className={
-          "mx-2 flex select-none flex-wrap justify-center gap-2 sm:mx-4"
-        }
-      >
-        {reorderedTags?.map((tag) => (
-          <Reorder.Item
-            key={title + tag}
-            drag={xl}
-            value={tag}
-            whileHover={{ cursor: xl ? "grab" : "default" }}
-            whileDrag={{
-              cursor: "grabbing",
-              rotate: [0, 2, 0, -2],
-              transition: {
-                duration: 0.4,
-                repeat: Infinity,
-                repeatType: "loop",
-              },
-            }}
-            dragTransition={{
-              bounceStiffness: 500,
-              bounceDamping: 30,
-            }}
-            className={
-              "rounded-full bg-slate-300 px-2 py-1 text-sm font-bold text-slate-700 dark:bg-slate-700 dark:text-slate-100 md:text-base lg:text-lg"
-            }
-          >
-            {tag}
-          </Reorder.Item>
-        ))}
-      </Reorder.Group>
-      <div
-        className={
-          "mx-2 mt-4 flex justify-evenly gap-4 whitespace-nowrap sm:mx-4"
-        }
-      >
-        {visitLink && (
-          <Link href={visitLink} target={"_blank"}>
-            <Button>
-              {visitTextOverride} <MdOpenInNew />
-            </Button>
-          </Link>
-        )}
-        {sourceLink && (
-          <Link href={sourceLink} target={"_blank"}>
-            <Button variant={visitLink ? "text" : "filled"}>
-              Source <SiGithub />
-            </Button>
-          </Link>
-        )}
+      <div className={"flex grow flex-col gap-4 px-4 sm:px-6"}>
+        <div className={"flex w-full items-center justify-center gap-2"}>
+          <h3 className={"text-xl font-semibold sm:text-2xl"}>{title}</h3>
+          {logo && (
+            <CustomImage
+              src={logo}
+              alt={title}
+              fill
+              draggable={false}
+              containerClassName={
+                "relative size-6 sm:size-8 rounded-lg overflow-hidden"
+              }
+              className={"size-full select-none !bg-transparent object-contain"}
+              sizes={"(max-width: 1024px) 4rem, 5rem"}
+            />
+          )}
+        </div>
+        <p className={"text-center"}>{description}</p>
+        <ul className={"flex select-none flex-wrap justify-center gap-2"}>
+          {tags?.map((tag) => (
+            <li
+              key={title + tag}
+              className={
+                "rounded-full bg-slate-300 px-3 py-1.5 text-slate-700 dark:bg-slate-700 dark:text-slate-100 " +
+                "ring-indigo-500 hover:ring-1 ring-0 transition duration-200 ease-out"
+              }
+            >
+              {tag}
+            </li>
+          ))}
+        </ul>
+        <div className={"mt-auto flex justify-evenly gap-4 whitespace-nowrap"}>
+          {visitLink && (
+            <Link href={visitLink} target={"_blank"}>
+              <Button>
+                {visitTextOverride} <MdOpenInNew />
+              </Button>
+            </Link>
+          )}
+          {sourceLink && (
+            <Link href={sourceLink} target={"_blank"}>
+              <Button variant={visitLink ? "text" : "filled"}>
+                Source <SiGithub />
+              </Button>
+            </Link>
+          )}
+        </div>
       </div>
-    </m.div>
+    </SpotlightCard>
   );
 }

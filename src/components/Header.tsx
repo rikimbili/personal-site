@@ -66,13 +66,13 @@ export default function Header({ sectionRefs }: Props) {
         (navState === "closed" && "initialTop")
       }
       transition={transitions.easeOut}
-      className={`fixed z-20 flex h-14 w-11/12 max-w-7xl select-none items-center justify-between self-center overflow-hidden
-        rounded-b-2xl bg-slate-300/90 px-6 text-xl shadow-md backdrop-blur-md transition duration-200 ease-out dark:bg-slate-800/80`}
+      className={`fixed z-20 flex h-14 w-11/12 max-w-7xl select-none items-center justify-between self-center overflow-hidden 
+      rounded-b-2xl border-x border-b border-slate-300 bg-slate-200/90 px-6 backdrop-blur-md transition duration-200 ease-out dark:border-slate-700 dark:bg-slate-800/80`}
     >
       <AnimatePresence mode={"wait"}>
         <m.div
           key={headerTitle}
-          className={"flex gap-2 text-lg sm:text-xl"}
+          className={"flex gap-2"}
           initial={"growOut"}
           animate={"growIn"}
           exit={"growOut"}
@@ -81,9 +81,7 @@ export default function Header({ sectionRefs }: Props) {
           {headerTitle}
         </m.div>
       </AnimatePresence>
-      <div className={"flex items-center gap-4 text-2xl sm:text-3xl"}>
-        <ToggleButton />
-      </div>
+      <ToggleButton />
     </m.header>
   );
 }

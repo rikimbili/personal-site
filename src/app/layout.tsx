@@ -62,7 +62,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body
-        className={`bg-slate-50 transition duration-200 ease-out before:[filter:url(#mainBgNoise)] dark:bg-slate-950`}
+        className={`bg-slate-50 text-base transition duration-200 ease-out before:[filter:url(#mainBgNoise)] dark:bg-slate-950 sm:text-lg`}
       >
         <Noise />
         <Providers>
