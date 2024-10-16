@@ -1,4 +1,5 @@
 import CustomImage from "@components/DataDisplay/CustomImage";
+import CustomLink from "@components/Inputs/CustomLink";
 import { m } from "framer-motion";
 import { type ForwardedRef, forwardRef } from "react";
 
@@ -43,9 +44,15 @@ const Hero = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
           </m.span>
         </h2>
         <p>
-          My name is Raciel. I specialize in building responsive apps using
-          modern development practices. Expecting to get my Bachelor&apos;s in
-          Computer Science at the University of Central Florida by May, 2024.
+          My name is Raciel. I enjoy building things and learning along the way.
+          Currently, I&apos;m working full-time as a backend software engineer
+          at Oracle.
+        </p>
+        <p>
+          I&apos;ll be updating this site soon with some of my recent projects
+          such as <CustomLink href={"https://docures.ai"}>Docures</CustomLink>{" "}
+          and{" "}
+          <CustomLink href={"https://knightlife.fyi"}>KnightLife</CustomLink>.
         </p>
       </div>
       <m.div
