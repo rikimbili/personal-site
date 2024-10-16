@@ -1,7 +1,5 @@
 "use client";
 
-import CurrentlyPlaying from "./Widgets/CurrentlyPlaying";
-
 export default function Footer() {
   return (
     <footer
@@ -11,7 +9,6 @@ export default function Footer() {
       <span className={"w-fit select-none text-nowrap"}>
         &copy; 2022-{new Date().getFullYear()} Raciel Antela Pardo
       </span>
-      <CurrentlyPlaying className={"w-full sm:w-fit sm:truncate"} />
     </footer>
   );
 }
