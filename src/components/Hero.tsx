@@ -1,5 +1,5 @@
 import CustomImage from "@components/DataDisplay/CustomImage";
-import CustomLink from "@components/Inputs/CustomLink";
+import ExternalLink from "@components/Inputs/ExternalLink";
 import { m } from "framer-motion";
 import { type ForwardedRef, forwardRef } from "react";
 
@@ -50,9 +50,12 @@ const Hero = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
         </p>
         <p>
           I&apos;ll be updating this site soon with some of my recent projects
-          such as <CustomLink href={"https://docures.ai"}>Docures</CustomLink>{" "}
-          and{" "}
-          <CustomLink href={"https://knightlife.fyi"}>KnightLife</CustomLink>.
+          such as{" "}
+          <ExternalLink href={"https://docures.ai"}>Docures</ExternalLink> and{" "}
+          <ExternalLink href={"https://knightlife.fyi"}>
+            KnightLife
+          </ExternalLink>
+          .
         </p>
       </div>
       <m.div

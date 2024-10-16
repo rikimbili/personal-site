@@ -9,6 +9,15 @@ export default function Footer() {
       <span className={"w-fit select-none text-nowrap"}>
         &copy; 2022-{new Date().getFullYear()} Raciel Antela Pardo
       </span>
+      {/*  Easter egg button that rick rolls you */}
+      <button
+        onClick={() => {
+          window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank");
+        }}
+        className={"flex items-center gap-1 text-slate-50 hover:text-slate-100"}
+      >
+        <span>{"Found a bug? Click me!"}</span>
+      </button>
     </footer>
   );
 }
