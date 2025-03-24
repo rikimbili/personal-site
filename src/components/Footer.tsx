@@ -14,7 +14,9 @@ export default function Footer() {
         onClick={() => {
           window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank");
         }}
-        className={"flex items-center gap-1 text-slate-50 hover:text-slate-100"}
+        className={
+          "flex items-center gap-1 text-slate-700 hover:text-slate-900 dark:text-slate-50 dark:hover:text-slate-100"
+        }
       >
         <span>{"Found a bug? Click me!"}</span>
       </button>

@@ -9,6 +9,8 @@ import AnchorLink from "./Inputs/AnchorLink";
 import Button from "./Inputs/Button";
 import SectionWrapper from "./SectionWrapper";
 
+const PROJECTS_TO_SHOW = 6;
+
 const Projects = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
   //#region Hooks
 
@@ -16,7 +18,9 @@ const Projects = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
 
   //#region Derived State
 
-  const projectsToShow = showAll ? projects : projects.slice(0, 4);
+  const projectsToShow = showAll
+    ? projects
+    : projects.slice(0, PROJECTS_TO_SHOW);
 
   //#endregion
 
@@ -66,7 +70,7 @@ const Projects = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
           </m.li>
         ))}
       </ul>
-      {projects.length > 4 && (
+      {projects.length > PROJECTS_TO_SHOW && (
         <Button
           className={"group mx-auto mt-8"}
           variant={"text"}

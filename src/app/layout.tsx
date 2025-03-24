@@ -1,7 +1,6 @@
 import "../styles/globals.css";
 
 import Blob from "@components/Surfaces/Blob";
-import Noise from "@components/Surfaces/Noise";
 import { Analytics } from "@vercel/analytics/react";
 import { IBM_Plex_Sans } from "next/font/google";
 import { type ReactNode } from "react";
@@ -64,11 +63,17 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body
         className={`bg-slate-50 text-base transition duration-200 ease-out before:[filter:url(#mainBgNoise)] dark:bg-slate-950 sm:text-lg`}
       >
-        <Noise />
         <Providers>
           <main
-            className={`text-slate-950 transition duration-200 ease-out dark:text-slate-50 ${roboto.className}`}
+            className={`relative text-slate-950 transition duration-200 ease-out dark:text-slate-50 ${roboto.className}`}
           >
+            <div
+              className={
+                "absolute size-full opacity-0 blur-[2px] transition duration-200 ease-out dark:opacity-100"
+              }
+            >
+              <div className={"rain-container -z-50"} />
+            </div>
             <div
               className={
                 "relative mx-auto hidden min-h-screen w-11/12 max-w-7xl flex-col px-4 xs:flex"

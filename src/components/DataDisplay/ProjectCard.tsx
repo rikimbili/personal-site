@@ -1,8 +1,11 @@
+import CustomVideo from "@components/DataDisplay/CustomVideo";
 import SpotlightCard from "@components/Surfaces/SpotlightCard";
 import useEmblaCarousel from "embla-carousel-react";
+import { AnimatePresence, m } from "framer-motion";
 import Link from "next/link";
-import { MdOpenInNew } from "react-icons/md";
+import { MdOpenInNew, MdSwipeLeft } from "react-icons/md";
 import { SiGithub } from "react-icons/si";
+import { useLocalStorage } from "usehooks-ts";
 
 import Button from "../Inputs/Button";
 import CustomImage from "./CustomImage";
@@ -32,11 +35,13 @@ export default function ProjectCard({
 
   const [emblaRef] = useEmblaCarousel();
 
+  const [hasSeenHint, setHasSeenHint] = useLocalStorage("swipe-hint", false);
+
   //#endregion
 
   return (
     <SpotlightCard
-      className={`relative flex w-full flex-col gap-2 pb-8 sm:gap-4`}
+      className={`relative flex size-full flex-col gap-2 pb-4 sm:gap-4`}
     >
       <div
         ref={images.length > 1 ? emblaRef : null}
@@ -44,24 +49,58 @@ export default function ProjectCard({
           images.length > 1 ? "cursor-grab active:cursor-grabbing" : ""
         }`}
       >
+        <AnimatePresence>
+          {!hasSeenHint && images.length > 1 && (
+            <m.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              onTouchStart={() => setHasSeenHint(true)}
+              onMouseDown={() => setHasSeenHint(true)}
+              className={
+                "absolute z-10 flex size-full items-center justify-center bg-slate-800/50"
+              }
+            >
+              <m.span
+                animate={{
+                  rotate: [0, 20, -20, 0, 20, -20, 0],
+                  x: [0, 50, -50, 0, 50, -50, 0],
+                }}
+                transition={{ duration: 3 }}
+                onAnimationComplete={() => setHasSeenHint(true)}
+              >
+                <MdSwipeLeft className={"text-6xl text-slate-50"} />
+              </m.span>
+            </m.div>
+          )}
+        </AnimatePresence>
         <div className={"flex"}>
-          {images.map((image, index) => (
-            <CustomImage
-              key={index}
-              src={image}
-              alt={title}
-              fill
-              priority
-              draggable={false}
-              sizes="(max-width: 1024px) 90vw,
+          {images.map((image, index) =>
+            image.includes(".mp4") ? (
+              <CustomVideo
+                key={index}
+                src={image}
+                containerClassName={"shrink-0 basis-full"}
+              />
+            ) : (
+              <CustomImage
+                key={index}
+                src={image}
+                alt={title}
+                fill
+                priority
+                draggable={false}
+                sizes="(max-width: 1024px) 90vw,
               (max-width: 1600px) 50vw,
               33vw"
-              containerClassName={
-                "relative grow-0 shrink-0 basis-full min-w-0 aspect-[3/2]"
-              }
-              className={"select-none object-cover"}
-            />
-          ))}
+                containerClassName={
+                  "relative grow-0 shrink-0 basis-full min-w-0 aspect-[3/2]"
+                }
+                className={"select-none object-cover"}
+              />
+            ),
+          )}
         </div>
       </div>
       <div className={"flex grow flex-col gap-4 px-4 sm:px-6"}>
@@ -87,7 +126,7 @@ export default function ProjectCard({
             <li
               key={title + tag}
               className={
-                "rounded-full bg-slate-300 px-3 py-1.5 text-slate-700 dark:bg-slate-700 dark:text-slate-100 " +
+                "rounded-full text-base font-light bg-slate-300 px-3 py-1.5 text-slate-700 dark:bg-slate-700 dark:text-slate-100 " +
                 "ring-indigo-500 hover:ring-1 ring-0 transition duration-200 ease-out"
               }
             >
@@ -95,18 +134,20 @@ export default function ProjectCard({
             </li>
           ))}
         </ul>
-        <div className={"mt-auto flex justify-evenly gap-4 whitespace-nowrap"}>
-          {visitLink && (
-            <Link href={visitLink} target={"_blank"}>
-              <Button>
-                {visitTextOverride} <MdOpenInNew />
-              </Button>
-            </Link>
-          )}
+        <div
+          className={"mt-auto flex justify-center gap-4 whitespace-nowrap pt-4"}
+        >
           {sourceLink && (
             <Link href={sourceLink} target={"_blank"}>
               <Button variant={visitLink ? "text" : "filled"}>
                 Source <SiGithub />
+              </Button>
+            </Link>
+          )}
+          {visitLink && (
+            <Link href={visitLink} target={"_blank"}>
+              <Button>
+                {visitTextOverride} <MdOpenInNew />
               </Button>
             </Link>
           )}

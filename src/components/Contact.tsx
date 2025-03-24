@@ -1,6 +1,6 @@
 import { type ForwardedRef, forwardRef } from "react";
 import { MdEmail, MdOutlineSubdirectoryArrowRight } from "react-icons/md";
-import { SiGithub, SiLinkedin, SiSpotify } from "react-icons/si";
+import { SiGithub, SiLinkedin } from "react-icons/si";
 
 import HoverJump from "./Animations/HoverJump";
 import AnchorLink from "./Inputs/AnchorLink";
@@ -50,15 +50,6 @@ const Contact = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
           <HoverJump>
             <CustomLink href={"https://www.linkedin.com/in/racielap"}>
               <SiLinkedin />
-            </CustomLink>
-          </HoverJump>
-          <HoverJump>
-            <CustomLink
-              href={
-                "https://open.spotify.com/user/hq4b6g53rt66krufjr2pnfqhc?si=035315f5f0d24075"
-              }
-            >
-              <SiSpotify />
             </CustomLink>
           </HoverJump>
         </div>

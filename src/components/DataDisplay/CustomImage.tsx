@@ -1,3 +1,5 @@
+"use client";
+
 import Image, { type ImageProps } from "next/image";
 import { useState } from "react";
 
@@ -49,7 +51,7 @@ export default function CustomImage({
             : "animate-pulse bg-slate-400 opacity-0 dark:bg-slate-700"
         } ${className}`}
         {...rest}
-        onLoadingComplete={handleImageLoaded}
+        onLoad={handleImageLoaded}
         onError={handleImageLoaded}
       />
     </div>
