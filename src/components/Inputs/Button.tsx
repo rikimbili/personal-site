@@ -42,7 +42,7 @@ const buttonStyles = cva(
     defaultVariants: {
       variant: "filled",
     },
-  }
+  },
 );
 
 interface Props
@@ -56,7 +56,7 @@ interface Props
 
 export default forwardRef<HTMLButtonElement, Props>(function Button(
   { disabled, loading, variant, className = "", children, ...rest },
-  ref
+  ref,
 ) {
   return (
     <button
@@ -77,7 +77,7 @@ export default forwardRef<HTMLButtonElement, Props>(function Button(
             exit={{ opacity: 0, marginRight: "-1.5rem" }}
             transition={transitions.springStiff}
           >
-            <CircularIndeterminate className={"h-4 w-4"} />
+            <CircularIndeterminate className={"size-4"} />
           </m.div>
         )}
       </AnimatePresence>

@@ -5,7 +5,6 @@ export default function Head() {
     <>
       <link rel="icon" type="image/x-icon" href="/images/favicon.png" />
       <title>{personal.blogTitle}</title>
-      <meta name="viewport" content="initial-scale=1, width=device-width" />
       <meta name="twitter:card" content="summary_large_image" />
       {/* TODO: Add large banner for embeds */}
       <meta name="twitter:title" content={personal.blogTitle} />

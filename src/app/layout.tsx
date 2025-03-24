@@ -2,6 +2,7 @@ import "../styles/globals.css";
 
 import Blob from "@components/Surfaces/Blob";
 import { Analytics } from "@vercel/analytics/react";
+import { type Viewport } from "next";
 import { IBM_Plex_Sans } from "next/font/google";
 import { type ReactNode } from "react";
 
@@ -30,10 +31,6 @@ export const metadata = {
       url: "/favicon-32x32.png",
     },
   ],
-  viewport: {
-    initialScale: 1,
-    width: "device-width",
-  },
   twitter: {
     title: personal.portfolioTitle,
     description: personal.portfolioDescription,
@@ -55,6 +52,11 @@ export const metadata = {
       },
     ],
   },
+};
+
+export const viewport: Viewport = {
+  initialScale: 1,
+  width: "device-width",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

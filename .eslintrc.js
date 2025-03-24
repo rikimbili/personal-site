@@ -29,6 +29,12 @@ const config = {
         fixStyle: "inline-type-imports",
       },
     ],
+    "@typescript-eslint/unbound-method": [
+      "error",
+      {
+        ignoreStatic: true,
+      },
+    ],
     semi: "error",
     "prefer-const": "error",
     "react/react-in-jsx-scope": "off",
