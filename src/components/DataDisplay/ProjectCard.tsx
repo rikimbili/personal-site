@@ -67,7 +67,7 @@ export default function ProjectCard({
                   rotate: [0, 20, -20, 0, 20, -20, 0],
                   x: [0, 50, -50, 0, 50, -50, 0],
                 }}
-                transition={{ duration: 3 }}
+                transition={{ duration: 4 }}
                 onAnimationComplete={() => setHasSeenHint(true)}
               >
                 <MdSwipeLeft className={"text-6xl text-slate-50"} />
