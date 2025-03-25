@@ -121,7 +121,11 @@ export default function ProjectCard({
           )}
         </div>
         <p className={"text-center"}>{description}</p>
-        <ul className={"flex select-none flex-wrap justify-center gap-2"}>
+        <ul
+          className={
+            "flex h-10 select-none flex-wrap justify-center gap-2 overflow-hidden pt-0.5 sm:h-auto sm:overflow-visible sm:pt-0"
+          }
+        >
           {tags?.map((tag) => (
             <li
               key={title + tag}
