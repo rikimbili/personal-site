@@ -1,3 +1,5 @@
+"use client";
+
 import { type HTMLProps, type ReactNode } from "react";
 
 interface Props extends HTMLProps<HTMLAnchorElement> {

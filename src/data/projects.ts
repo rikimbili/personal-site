@@ -12,7 +12,8 @@ interface Project {
 export default [
   {
     title: "Docures",
-    description: "Get swift answers with sources from your academic documents.",
+    description:
+      "App that delivers precise answers, supported by references from uploaded documents.",
     tags: ["Next.js", "PostgreSQL", "Vector DB", "RAG", "OCR"],
     images: ["/images/projects/docures_1.jpeg", "/images/projects/docures.mp4"],
     logo: "/images/projects/docures_logo.png",
@@ -21,7 +22,8 @@ export default [
   },
   {
     title: "KnightLife",
-    description: "One-stop shop for all events and activities at UCF.",
+    description:
+      "Hub for discovering and engaging with all events and activities at the University of Central Florida.",
     tags: ["SvelteKit", "Orama", "SQLite", "PWA", "Offline-First"],
     images: [
       "/images/projects/knightlife_1.jpeg",

@@ -1,3 +1,5 @@
+"use client";
+
 import { spawnVariants } from "@styles/motion-definitions";
 import { m } from "framer-motion";
 import { type ForwardedRef, forwardRef, type ReactNode } from "react";
@@ -12,7 +14,7 @@ interface Props {
 const SectionWrapper = forwardRef(
   (
     { id, children, fadeInDelay = 0, className = "" }: Props,
-    ref: ForwardedRef<HTMLDivElement>
+    ref: ForwardedRef<HTMLDivElement>,
   ) => {
     return (
       <m.section
@@ -30,7 +32,7 @@ const SectionWrapper = forwardRef(
         {children}
       </m.section>
     );
-  }
+  },
 );
 SectionWrapper.displayName = "SectionWrapper";
 

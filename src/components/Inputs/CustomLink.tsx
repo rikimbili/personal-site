@@ -17,7 +17,7 @@ export default function CustomLink({
     <Link
       target={target}
       {...rest}
-      className={`transition duration-100 ease-out hover:text-indigo-500 dark:hover:text-indigo-400 ${className}`}
+      className={`transition duration-100 ease-out hover:text-indigo-800 dark:hover:text-indigo-200 ${className}`}
     >
       {children}
     </Link>

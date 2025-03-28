@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body {
-  scroll-behavior: smooth !important;
-  scrollbar-gutter: stable;
- }
-
 body::before,
 body::after {
   position: fixed;
@@ -22,5 +17,18 @@ body::after {
 @layer base {
   ::selection {
     @apply bg-indigo-400 dark:bg-indigo-600;
+  }
+
+  #bookViewer > div > div {
+    @apply !bg-transparent !border-0;
+  }
+
+  #bookViewer > div > div:nth-child(2),
+  #bookViewer > div > div > div:nth-child(2)  {
+    @apply !hidden;
+  }
+
+  #bookViewer > div {
+    @apply !border-0;
   }
 }

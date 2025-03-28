@@ -1,5 +1,6 @@
 import "../styles/globals.css";
 
+import Header from "@components/Header";
 import Blob from "@components/Surfaces/Blob";
 import { Analytics } from "@vercel/analytics/react";
 import { type Viewport } from "next";
@@ -74,6 +75,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 "relative mx-auto hidden min-h-screen w-11/12 max-w-7xl flex-col px-4 xs:flex"
               }
             >
+              <Header />
               <Blob className={"left-1/2 h-10 w-full -translate-x-1/2"} />
               {children}
               <Footer />

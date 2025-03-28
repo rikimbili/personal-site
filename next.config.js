@@ -1,9 +1,9 @@
 const contentSecurityPolicy = `
   default-src 'self' https://vitals.vercel-insights.com/v1/vitals;
-  script-src 'self' 'unsafe-eval' 'unsafe-inline';
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' https://books.google.com https://www.google.com https://va.vercel-scripts.com;
   child-src 'self';
   style-src 'self' 'unsafe-inline';
-  img-src 'self' data:;
+  img-src 'self' data: https://books.google.com https://www.google.com http://www.google.com;
   font-src 'self';
 `;
 
@@ -22,7 +22,7 @@ const headers = [
   },
   {
     key: "Cross-Origin-Embedder-Policy",
-    value: "require-corp",
+    value: "unsafe-none",
   },
   {
     key: "Cross-Origin-Opener-Policy",
@@ -30,7 +30,7 @@ const headers = [
   },
   {
     key: "Cross-Origin-Resource-Policy",
-    value: "same-origin",
+    value: "cross-origin",
   },
   {
     key: "X-Frame-Options", // Prevents clickjacking through iframes
@@ -48,6 +48,9 @@ const headers = [
 
 module.exports = {
   reactStrictMode: true,
+  images: {
+    domains: ["books.google.com"],
+  },
   async redirects() {
     return [
       {

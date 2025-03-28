@@ -1,3 +1,5 @@
+"use client";
+
 import CustomImage from "@components/DataDisplay/CustomImage";
 import { m } from "framer-motion";
 import { type ForwardedRef, forwardRef } from "react";
@@ -43,12 +45,12 @@ const Hero = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
           </m.span>
         </h2>
         <p>
-          My name is Raciel, and I enjoy building things and learning throughout
-          the process. Whether it&apos;s developing software or solving
-          technical challenges, I take pride in creating practical solutions and
-          expanding my expertise along the way. You could say I&apos;m like a
-          curious raccoon—always tinkering with something shiny and figuring out
-          how it works (minus the scavenging through trash, of course).
+          My name is Raciel, and I enjoy the process of building things. Whether
+          it&apos;s developing software or solving technical challenges, I take
+          pride in creating practical solutions and expanding my expertise along
+          the way. You could say I&apos;m like a curious raccoon—always
+          tinkering with something shiny and figuring out how it works (minus
+          the scavenging through trash, of course).
         </p>
       </div>
       <m.div

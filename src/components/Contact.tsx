@@ -1,3 +1,5 @@
+"use client";
+
 import { type ForwardedRef, forwardRef } from "react";
 import { MdEmail, MdOutlineSubdirectoryArrowRight } from "react-icons/md";
 import { SiGithub, SiLinkedin } from "react-icons/si";

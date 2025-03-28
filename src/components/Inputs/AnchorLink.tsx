@@ -1,3 +1,5 @@
+"use client";
+
 import Link, { type LinkProps } from "next/link";
 import { FaHashtag } from "react-icons/fa";
 

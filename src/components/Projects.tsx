@@ -1,3 +1,6 @@
+"use client";
+
+import Button from "@components/Inputs/Button";
 import { spawnVariants } from "@styles/motion-definitions";
 import { m } from "framer-motion";
 import { type ForwardedRef, forwardRef, useState } from "react";
@@ -6,7 +9,6 @@ import { MdExpandLess, MdExpandMore } from "react-icons/md";
 import projects from "../data/projects";
 import ProjectCard from "./DataDisplay/ProjectCard";
 import AnchorLink from "./Inputs/AnchorLink";
-import Button from "./Inputs/Button";
 import SectionWrapper from "./SectionWrapper";
 
 const PROJECTS_TO_SHOW = 6;

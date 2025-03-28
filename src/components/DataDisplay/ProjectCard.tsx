@@ -1,8 +1,9 @@
+"use client";
+
 import CustomVideo from "@components/DataDisplay/CustomVideo";
 import SpotlightCard from "@components/Surfaces/SpotlightCard";
 import useEmblaCarousel from "embla-carousel-react";
 import { AnimatePresence, m } from "framer-motion";
-import Link from "next/link";
 import { MdOpenInNew, MdSwipeLeft } from "react-icons/md";
 import { SiGithub } from "react-icons/si";
 import { useLocalStorage } from "usehooks-ts";
@@ -142,18 +143,18 @@ export default function ProjectCard({
           className={"mt-auto flex justify-center gap-4 whitespace-nowrap pt-4"}
         >
           {sourceLink && (
-            <Link href={sourceLink} target={"_blank"}>
-              <Button variant={visitLink ? "text" : "filled"}>
-                Source <SiGithub />
-              </Button>
-            </Link>
+            <Button
+              href={sourceLink}
+              target="_blank"
+              variant={visitLink ? "text" : "filled"}
+            >
+              <SiGithub /> Source
+            </Button>
           )}
           {visitLink && (
-            <Link href={visitLink} target={"_blank"}>
-              <Button>
-                {visitTextOverride} <MdOpenInNew />
-              </Button>
-            </Link>
+            <Button href={visitLink} target="_blank" variant={"filled"}>
+              {visitTextOverride} <MdOpenInNew />
+            </Button>
           )}
         </div>
       </div>

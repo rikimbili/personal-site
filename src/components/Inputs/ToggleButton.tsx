@@ -1,3 +1,5 @@
+"use client";
+
 import { transitions } from "@styles/motion-definitions";
 import { AnimatePresence, m } from "framer-motion";
 import { useTheme } from "next-themes";
@@ -49,7 +51,7 @@ export default function ToggleButton({
             variants={variants}
             transition={transitions.spring}
           >
-            <MdDarkMode className={"size-full"} />
+            <MdLightMode className={"size-full"} />
           </m.div>
         ) : (
           <m.div
@@ -61,7 +63,8 @@ export default function ToggleButton({
             variants={variants}
             transition={transitions.spring}
           >
-            <MdLightMode className={"size-full"} />
+            {/* Set color to amber */}
+            <MdDarkMode className={"size-full"} />
           </m.div>
         )}
       </AnimatePresence>
