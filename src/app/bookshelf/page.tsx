@@ -34,7 +34,10 @@ export default async function Bookshelf() {
   return (
     <>
       <Script type={"text/javascript"} src="/google-books-preview-api.js" />
-      <Script type={"text/javascript"} src="/initialize-google-books-api.js" />
+      <Script
+        type={"text/javascript"}
+        src="/initialize-google-books-api.1.js"
+      />
       <div className={"mb-16 mt-24 flex flex-col gap-10"}>
         {readingBooks.length === 0 &&
           toReadBooks.length === 0 &&

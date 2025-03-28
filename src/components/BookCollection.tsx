@@ -49,11 +49,15 @@ const BookViewer = ({ id }: { id: string }) => {
 
   useEffect(() => {
     if (canvasRef.current && isGoogleBooksApiReady) {
-      // @ts-expect-error google global is not recognized
-      // eslint-disable-next-line
-      const viewer = new window.google.books.DefaultViewer(canvasRef.current);
-      // eslint-disable-next-line
-      viewer.load(id);
+      try {
+        // @ts-expect-error google global is not recognized
+        // eslint-disable-next-line
+        const viewer = new window.google.books.DefaultViewer(canvasRef.current);
+        // eslint-disable-next-line
+        viewer.load(id);
+      } catch (error) {
+        console.error("Failed to load the book viewer:", error);
+      }
     }
   }, [id, isGoogleBooksApiReady]);
 
