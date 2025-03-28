@@ -13,7 +13,7 @@ export default [
   {
     title: "Docures",
     description:
-      "App that delivers precise answers, supported by references from uploaded documents.",
+      "Platform that delivers precise answers, supported by references from uploaded documents.",
     tags: ["Next.js", "PostgreSQL", "Vector DB", "RAG", "OCR"],
     images: ["/images/projects/docures_1.jpeg", "/images/projects/docures.mp4"],
     logo: "/images/projects/docures_logo.png",
