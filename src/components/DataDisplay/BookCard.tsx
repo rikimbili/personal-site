@@ -26,7 +26,7 @@ export default function BookCard({
     <Card
       onClick={() => setPreviewId(id)}
       className={
-        "group relative flex w-full max-w-72 flex-col gap-2 overflow-hidden ring-0 duration-200 ease-in " +
+        "group select-none relative flex w-full max-w-72 flex-col gap-2 overflow-hidden ring-0 duration-200 ease-in " +
         "hover:-translate-y-1 hover:shadow-lg hover:ease-out dark:ring-indigo-300 dark:hover:ring-2 sm:gap-4"
       }
     >
@@ -37,7 +37,7 @@ export default function BookCard({
         priority
         draggable={false}
         sizes="(max-width: 800px) 50vw,
-              (max-width: 1600px) 33vw,
+              (max-width: 1300px) 33vw,
               20vw"
         containerClassName={"relative aspect-[2/3]"}
         className={"select-none object-cover"}
