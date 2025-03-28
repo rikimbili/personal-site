@@ -1,10 +1,14 @@
-google.books.load();
+function waitForGoogleApi(attempts = 20) {
+  if (attempts <= 0) {
+    console.error("Google API script failed to load.");
+    return;
+  }
 
-function initializeGoogleBooksApi() {
-  var viewer = new google.books.DefaultViewer(
-    document.getElementById("viewerCanvas"),
-  );
-  viewer.load("ISBN:0738531367");
+  if (window.google && window.google.books) {
+    google.books.load();
+  } else {
+    setTimeout(() => waitForGoogleApi(attempts - 1), 500);
+  }
 }
 
-google.books.setOnLoadCallback(initializeGoogleBooksApi);
+waitForGoogleApi();
