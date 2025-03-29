@@ -32,16 +32,6 @@ export const metadata = {
       url: "/favicon-32x32.png",
     },
   ],
-  twitter: {
-    title: personal.portfolioTitle,
-    description: personal.portfolioDescription,
-    card: "summary_large_image",
-    images: [
-      {
-        url: "/images/banner.png",
-      },
-    ],
-  },
   openGraph: {
     title: personal.portfolioTitle,
     description: personal.portfolioDescription,
