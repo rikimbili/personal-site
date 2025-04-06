@@ -3,16 +3,21 @@ import Script from "next/script";
 
 import { type Book } from "~/types/books.type";
 
+const REVALIDATE_TIME = 86400;
+
 async function getBooks() {
   const [currentlyReadingData, toReadData, ReadData] = await Promise.all([
     fetch(
       "https://content-books.googleapis.com/books/v1/users/111625777314060457672/bookshelves/3/volumes",
+      { next: { revalidate: REVALIDATE_TIME } },
     ),
     fetch(
       "https://content-books.googleapis.com/books/v1/users/111625777314060457672/bookshelves/2/volumes",
+      { next: { revalidate: REVALIDATE_TIME } },
     ),
     fetch(
       "https://content-books.googleapis.com/books/v1/users/111625777314060457672/bookshelves/4/volumes",
+      { next: { revalidate: REVALIDATE_TIME } },
     ),
   ]);
   const { items: readingBooks } = (await currentlyReadingData.json()) as {
