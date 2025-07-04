@@ -48,9 +48,9 @@ const Hero = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
           My name is Raciel, and I enjoy the process of building things. Whether
           it&apos;s developing software or solving technical challenges, I take
           pride in creating practical solutions and expanding my expertise along
-          the way. You could say I&apos;m like a curious raccoon—always
+          the way. You could say I&apos;m like a curious raccoon, always
           tinkering with something shiny and figuring out how it works (minus
-          the scavenging through trash, of course).
+          the scavenging through trash, of course 😅).
         </p>
       </div>
       <m.div

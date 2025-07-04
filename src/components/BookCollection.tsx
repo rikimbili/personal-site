@@ -11,8 +11,7 @@ import { type Book } from "~/types/books.type";
 
 interface Props {
   readingBooks: Book[];
-  toReadBooks: Book[];
-  readBooks: Book[];
+  allBooks: Book[];
 }
 
 function increaseCoverRes(image: string) {
@@ -64,11 +63,7 @@ const BookViewer = ({ id }: { id: string }) => {
   return <div id={"bookViewer"} ref={canvasRef} className={"size-full"}></div>;
 };
 
-export default function BookCollection({
-  readingBooks,
-  toReadBooks,
-  readBooks,
-}: Props) {
+export default function BookCollection({ readingBooks, allBooks }: Props) {
   const isGoogleBooksApiReady = useIsGoogleBooksApiReady();
 
   const [previewBookId, setPreviewBookId] = useState<string | null>(null);
@@ -77,11 +72,10 @@ export default function BookCollection({
     if (!previewBookId) return null;
     return (
       readingBooks.find((book) => book.id === previewBookId) ??
-      toReadBooks.find((book) => book.id === previewBookId) ??
-      readBooks.find((book) => book.id === previewBookId) ??
+      allBooks.find((book) => book.id === previewBookId) ??
       null
     );
-  }, [previewBookId, readingBooks, toReadBooks, readBooks]);
+  }, [previewBookId, readingBooks, allBooks]);
 
   return (
     <>
@@ -110,7 +104,7 @@ export default function BookCollection({
           </div>
         </section>
       )}
-      {(toReadBooks.length > 0 || readBooks.length > 0) && (
+      {allBooks.length > 0 && (
         <section className={"flex w-full flex-col gap-4"}>
           <h2 className={"text-xl"}>My Collection</h2>
           <div
@@ -118,7 +112,7 @@ export default function BookCollection({
               "grid w-full grid-cols-2 gap-4 sm:gap-8 md:grid-cols-3 xl:grid-cols-4"
             }
           >
-            {readBooks.map((book) => (
+            {allBooks.map((book) => (
               <BookCard
                 key={book.id}
                 id={book.id}
@@ -131,20 +125,6 @@ export default function BookCollection({
                 description={book.volumeInfo.description}
                 setPreviewId={setPreviewBookId}
                 read
-              />
-            ))}
-            {toReadBooks.map((book) => (
-              <BookCard
-                key={book.id}
-                id={book.id}
-                title={book.volumeInfo.title}
-                author={book.volumeInfo.authors?.[0]}
-                cover={increaseCoverRes(
-                  book.volumeInfo.imageLinks?.thumbnail ?? "",
-                )}
-                genre={book.volumeInfo.categories?.[0]}
-                description={book.volumeInfo.description}
-                setPreviewId={setPreviewBookId}
               />
             ))}
           </div>
