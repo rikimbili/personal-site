@@ -134,7 +134,7 @@ export default function BookCollection({ readingBooks, allBooks }: Props) {
         isOpen={!!previewBookId}
         onClose={() => setPreviewBookId(null)}
         title={bookToPreview?.volumeInfo.title}
-        className={"size-full"}
+        className={"size-full max-w-[44rem]"}
       >
         {bookToPreview?.accessInfo.viewability === "NO_PAGES" ? (
           <div
@@ -166,13 +166,14 @@ export default function BookCollection({ readingBooks, allBooks }: Props) {
           </div>
         )}
         <Button
-          href={bookToPreview?.volumeInfo.canonicalVolumeLink}
+          href={bookToPreview?.volumeInfo.previewLink}
           target="_blank"
           rel="noopener noreferrer"
           className={"ml-auto mr-4 w-fit"}
           variant="outlined"
         >
-          Go to book <MdOpenInNew />
+          View on Google Books
+          <MdOpenInNew />
         </Button>
       </CustomDialog>
     </>
