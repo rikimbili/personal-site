@@ -9,10 +9,7 @@ const REVALIDATE_TIME = 60 * 60; // 1 hour in seconds
 const endpoint = "https://www.googleapis.com/books/v1/volumes/{id}";
 
 async function getBooks() {
-  const readingBooks: Book[] = [];
-  const allBooks: Book[] = [];
-
-  await Promise.all(
+  const results = await Promise.all(
     books.map(async (book) => {
       const response = await fetch(endpoint.replace("{id}", book.volumeId), {
         next: { revalidate: REVALIDATE_TIME },
@@ -25,10 +22,12 @@ async function getBooks() {
         allowedTags: [],
         allowedAttributes: {},
       });
-      if (book.reading) readingBooks.push(data);
-      else allBooks.push(data);
+      return { ...data, reading: book.reading };
     }),
   );
+
+  const readingBooks = results.filter((book) => book.reading);
+  const allBooks = results.filter((book) => !book.reading);
 
   return { readingBooks, allBooks };
 }
