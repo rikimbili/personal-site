@@ -45,12 +45,12 @@ const Hero = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
           </m.span>
         </h2>
         <p>
-          My name is Raciel, and I enjoy the process of building things. Whether
-          it&apos;s developing software or solving technical challenges, I take
-          pride in creating practical solutions and expanding my expertise along
-          the way. You could say I&apos;m like a curious raccoon, always
-          tinkering with something shiny and figuring out how it works (minus
-          the scavenging through trash, of course 😅).
+          My name is Raciel. I&apos;m a software engineer who enjoys building
+          practical and efficient digital solutions. My passion lies in
+          full-stack development, from designing user-friendly interfaces to
+          architecting scalable cloud infrastructure. I love the challenge of
+          turning complex problems into simple, useful tools, a drive that led me
+          to start Docures.
         </p>
       </div>
       <m.div
