@@ -2,7 +2,9 @@
   Framer Motion Animations, Transitions, and Variants definitions
  */
 
-export const transitions = {
+import { type Transition, type Variants } from "motion-dom";
+
+export const transitions: Record<string, Transition> = {
   spring: {
     type: "spring",
     damping: 20,
@@ -30,18 +32,19 @@ export const transitions = {
   },
 };
 
-export const transitionVariants = {
+export const transitionVariants: Variants = {
+  // Fix ESLint: Unsafe assignment of an `any` value. (@typescript-eslint/no-unsafe-assignment) for duration parameter
   fadeIn: (duration = 0.2) => ({
     opacity: 1,
     transition: {
-      duration: duration,
+      duration: duration as number,
       ease: "easeOut",
     },
   }),
   fadeOut: (duration = 0.2) => ({
     opacity: 0,
     transition: {
-      duration: duration,
+      duration: duration as number,
       ease: "easeIn",
     },
   }),
@@ -49,7 +52,7 @@ export const transitionVariants = {
     scale: 1,
     opacity: 1,
     transition: {
-      duration: duration,
+      duration: duration as number,
       ease: "easeOut",
     },
   }),
@@ -57,7 +60,7 @@ export const transitionVariants = {
     scale: 0.9,
     opacity: 0,
     transition: {
-      duration: duration,
+      duration: duration as number,
       ease: "easeIn",
     },
   }),
@@ -71,7 +74,7 @@ export const transitionVariants = {
   },
 };
 
-export const positionVariants = {
+export const positionVariants: Variants = {
   initialLeft: {
     x: -64,
     opacity: 0,
@@ -96,7 +99,7 @@ export const positionVariants = {
   },
 };
 
-export const spawnVariants = {
+export const spawnVariants: Variants = {
   initial: {
     opacity: 0,
     y: -20,
