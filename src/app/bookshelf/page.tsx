@@ -8,7 +8,7 @@ import { type Book } from "~/types/books.type";
 const REVALIDATE_TIME = 60 * 60; // 1 hour in seconds
 const endpoint = "https://www.googleapis.com/books/v1/volumes/{id}";
 
-async function getBooks() {
+async function getBooks(sorted = true) {
   const results = await Promise.all(
     books.map(async (book) => {
       const response = await fetch(endpoint.replace("{id}", book.volumeId), {
@@ -22,20 +22,27 @@ async function getBooks() {
         allowedTags: [],
         allowedAttributes: {},
       });
-      return { ...data, reading: book.reading };
+      return data;
     }),
   );
 
-  const readingBooks = results.filter((book) => book.reading);
-  const allBooks = results.filter((book) => !book.reading);
+  if (sorted) {
+    results.sort((a, b) => {
+      const titleA = a.volumeInfo.title.toUpperCase();
+      const titleB = b.volumeInfo.title.toUpperCase();
+      if (titleA < titleB) return -1;
+      if (titleA > titleB) return 1;
+      return 0;
+    });
+  }
 
-  return { readingBooks, allBooks };
+  return results;
 }
 
 export default async function Bookshelf() {
-  const { readingBooks, allBooks } = await getBooks().catch((err) => {
+  const books = await getBooks().catch((err) => {
     console.error(err);
-    return { readingBooks: [], allBooks: [] };
+    return [];
   });
 
   return (
@@ -46,10 +53,10 @@ export default async function Bookshelf() {
         src="/initialize-google-books-api.1.js"
       />
       <div className={"mb-16 mt-24 flex flex-col gap-10"}>
-        {readingBooks.length === 0 && allBooks.length === 0 && (
+        {books.length === 0 && books.length === 0 && (
           <h1 className={"text-center text-xl"}>No books to show 😢</h1>
         )}
-        <BookCollection readingBooks={readingBooks} allBooks={allBooks} />
+        <BookCollection books={books} />
       </div>
     </>
   );

@@ -27,7 +27,7 @@ const Hero = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
     <SectionWrapper
       ref={ref}
       id={"hero"}
-      fadeInDelay={0.05}
+      fadeInDelay={0.04}
       className={
         "z-10 flex flex-col-reverse items-center gap-8 text-pretty sm:w-full sm:flex-row sm:gap-16"
       }
@@ -49,8 +49,8 @@ const Hero = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
           practical and efficient digital solutions. My passion lies in
           full-stack development, from designing user-friendly interfaces to
           architecting scalable cloud infrastructure. I love the challenge of
-          turning complex problems into simple, useful tools, a drive that led me
-          to start Docures.
+          turning complex problems into simple, useful tools, a drive that led
+          me to start Docures.
         </p>
       </div>
       <m.div

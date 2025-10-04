@@ -54,7 +54,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body
-        className={`bg-slate-50 bg-custom-pattern-light text-base transition duration-200 ease-out dark:bg-slate-950 dark:bg-custom-pattern-dark sm:text-lg`}
+        className={`bg-slate-50 text-base transition duration-200 ease-out dark:bg-slate-950 sm:text-lg`}
       >
         <Providers>
           <main

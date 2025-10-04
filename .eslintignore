@@ -1,4 +1,4 @@
 .eslintrc.js
 postcss.config.js
-next.config.js
+next.config.mjs
 tailwind.config.js

@@ -44,6 +44,7 @@ export default function Header() {
   const isPage = {
     home: pathname === "/",
     bookshelf: pathname === "/bookshelf",
+    writing: pathname?.includes("/writing"),
   };
 
   return (
@@ -61,6 +62,12 @@ export default function Header() {
           icon={<MdHouse />}
           isCurrentPage={isPage.home}
         />
+        {/*<NavbarLink*/}
+        {/*  href={"/writing"}*/}
+        {/*  label={"Writings"}*/}
+        {/*  icon={<MdArticle />}*/}
+        {/*  isCurrentPage={isPage.writing}*/}
+        {/*/>*/}
         <NavbarLink
           href={"/bookshelf"}
           label={"Bookshelf"}

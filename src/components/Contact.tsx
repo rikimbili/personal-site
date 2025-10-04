@@ -15,7 +15,7 @@ const Contact = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
     <SectionWrapper
       ref={ref}
       id={"contact"}
-      fadeInDelay={0.15}
+      fadeInDelay={0.12}
       className={
         "flex scroll-mt-20 flex-col gap-4 text-pretty sm:w-full sm:gap-8"
       }

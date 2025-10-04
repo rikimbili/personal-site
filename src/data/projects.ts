@@ -58,7 +58,7 @@ export default [
     tags: ["Next.js", "MUI", "Framer Motion", "Azure Cosmos DB"],
     images: ["/images/projects/notes.png"],
     logo: "/images/projects/notes_logo.png",
-    visitLink: "https://notes.keymorph.com",
+    visitLink: "https://notes.raciel.dev",
     sourceLink: "https://github.com/Keymorph/notes",
   },
   {

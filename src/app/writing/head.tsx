@@ -12,7 +12,7 @@ export default function Head() {
       <meta property="og:title" content={personal.writingTitle} />
       <meta property="og:description" content={personal.writingDescription} />
       <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://raciel.dev/blog" />
+      <meta property="og:url" content="https://raciel.dev/writing" />
     </>
   );
 }

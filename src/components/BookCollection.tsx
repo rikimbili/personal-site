@@ -4,14 +4,16 @@ import BookCard from "@components/DataDisplay/BookCard";
 import CustomDialog from "@components/Dialog/CustomDialog";
 import CircularIndeterminate from "@components/Feedback/CircularIndeterminate";
 import Button from "@components/Inputs/Button";
+import SectionWrapper from "@components/SectionWrapper";
+import { spawnVariants } from "@styles/motion-definitions";
+import { m } from "framer-motion";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { MdErrorOutline, MdOpenInNew, MdWebAssetOff } from "react-icons/md";
 
 import { type Book } from "~/types/books.type";
 
 interface Props {
-  readingBooks: Book[];
-  allBooks: Book[];
+  books: Book[];
 }
 
 function increaseCoverRes(image: string) {
@@ -63,72 +65,60 @@ const BookViewer = ({ id }: { id: string }) => {
   return <div id={"bookViewer"} ref={canvasRef} className={"size-full"}></div>;
 };
 
-export default function BookCollection({ readingBooks, allBooks }: Props) {
+export default function BookCollection({ books }: Props) {
   const isGoogleBooksApiReady = useIsGoogleBooksApiReady();
 
   const [previewBookId, setPreviewBookId] = useState<string | null>(null);
 
   const bookToPreview = useMemo(() => {
     if (!previewBookId) return null;
-    return (
-      readingBooks.find((book) => book.id === previewBookId) ??
-      allBooks.find((book) => book.id === previewBookId) ??
-      null
-    );
-  }, [previewBookId, readingBooks, allBooks]);
+    return books.find((book) => book.id === previewBookId) ?? null;
+  }, [previewBookId, books]);
 
   return (
     <>
-      {readingBooks.length > 0 && (
-        <section className={"flex w-full flex-col gap-4"}>
-          <h2 className={"text-xl"}>Currently Reading</h2>
-          <div
+      {books.length > 0 && (
+        <SectionWrapper
+          id={"contact"}
+          fadeInDelay={0.04}
+          className={
+            "flex scroll-mt-20 flex-col gap-4 text-pretty sm:w-full sm:gap-8"
+          }
+        >
+          <h2 className={"text-xl"}>My Book Collection</h2>
+          <ul
             className={
               "grid w-full grid-cols-2 gap-4 sm:gap-8 md:grid-cols-3 xl:grid-cols-4"
             }
           >
-            {readingBooks.map((book) => (
-              <BookCard
+            {books.map((book, idx) => (
+              <m.li
                 key={book.id}
-                id={book.id}
-                title={book.volumeInfo.title}
-                author={book.volumeInfo.authors?.[0]}
-                cover={increaseCoverRes(
-                  book.volumeInfo.imageLinks?.thumbnail ?? "",
-                )}
-                genre={book.volumeInfo.categories?.[0]}
-                description={book.volumeInfo.description}
-                setPreviewId={setPreviewBookId}
-              />
+                initial={"initial"}
+                whileInView={"visible"}
+                viewport={{
+                  once: true,
+                }}
+                variants={spawnVariants}
+                custom={0.04 + (idx % 4) * 0.04}
+              >
+                <BookCard
+                  key={book.id}
+                  id={book.id}
+                  title={book.volumeInfo.title}
+                  author={book.volumeInfo.authors?.[0]}
+                  cover={increaseCoverRes(
+                    book.volumeInfo.imageLinks?.thumbnail ?? "",
+                  )}
+                  genre={book.volumeInfo.categories?.[0]}
+                  description={book.volumeInfo.description}
+                  setPreviewId={setPreviewBookId}
+                  read
+                />
+              </m.li>
             ))}
-          </div>
-        </section>
-      )}
-      {allBooks.length > 0 && (
-        <section className={"flex w-full flex-col gap-4"}>
-          <h2 className={"text-xl"}>My Collection</h2>
-          <div
-            className={
-              "grid w-full grid-cols-2 gap-4 sm:gap-8 md:grid-cols-3 xl:grid-cols-4"
-            }
-          >
-            {allBooks.map((book) => (
-              <BookCard
-                key={book.id}
-                id={book.id}
-                title={book.volumeInfo.title}
-                author={book.volumeInfo.authors?.[0]}
-                cover={increaseCoverRes(
-                  book.volumeInfo.imageLinks?.thumbnail ?? "",
-                )}
-                genre={book.volumeInfo.categories?.[0]}
-                description={book.volumeInfo.description}
-                setPreviewId={setPreviewBookId}
-                read
-              />
-            ))}
-          </div>
-        </section>
+          </ul>
+        </SectionWrapper>
       )}
       <CustomDialog
         isOpen={!!previewBookId}

@@ -1,3 +1,5 @@
+import nextMDX from "@next/mdx";
+
 const contentSecurityPolicy = `
   default-src 'self' https://vitals.vercel-insights.com/v1/vitals;
   script-src 'self' 'unsafe-eval' 'unsafe-inline' https://books.google.com https://www.google.com https://va.vercel-scripts.com;
@@ -46,7 +48,11 @@ const headers = [
   },
 ];
 
-module.exports = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  // Configure `pageExtensions` to include MDX files
+  pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
+  transpilePackages: ["next-mdx-remote"],
   reactStrictMode: true,
   images: {
     domains: ["books.google.com"],
@@ -74,3 +80,6 @@ module.exports = {
     ];
   },
 };
+
+const withMDX = nextMDX();
+export default withMDX(nextConfig);

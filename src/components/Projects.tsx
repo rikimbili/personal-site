@@ -30,7 +30,7 @@ const Projects = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
     <SectionWrapper
       ref={ref}
       id={"projects"}
-      fadeInDelay={0.1}
+      fadeInDelay={0.08}
       className={
         "flex scroll-mt-20 flex-col gap-4 text-pretty sm:w-full sm:gap-6"
       }
@@ -56,7 +56,7 @@ const Projects = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
               once: true,
             }}
             variants={spawnVariants}
-            custom={0.1 + (idx % 2) * 0.1}
+            custom={0.08 + (idx % 2) * 0.08}
           >
             <ProjectCard
               key={idx}
