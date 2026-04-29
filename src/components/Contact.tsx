@@ -1,8 +1,9 @@
 "use client";
 
 import { type ForwardedRef, forwardRef } from "react";
+import { FaLinkedin } from "react-icons/fa6";
 import { MdEmail, MdOutlineSubdirectoryArrowRight } from "react-icons/md";
-import { SiGithub, SiLinkedin } from "react-icons/si";
+import { SiGithub } from "react-icons/si";
 
 import HoverJump from "./Animations/HoverJump";
 import AnchorLink from "./Inputs/AnchorLink";
@@ -51,7 +52,7 @@ const Contact = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
           </HoverJump>
           <HoverJump>
             <CustomLink href={"https://www.linkedin.com/in/racielap"}>
-              <SiLinkedin />
+              <FaLinkedin />
             </CustomLink>
           </HoverJump>
         </div>

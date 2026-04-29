@@ -6,7 +6,7 @@ import { m, useScroll } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { MdBook, MdHouse } from "react-icons/md";
-import { useDebounce } from "usehooks-ts";
+import { useDebounceValue } from "usehooks-ts";
 
 import ToggleButton from "./Inputs/ToggleButton";
 
@@ -20,7 +20,7 @@ export default function Header() {
   const { scrollY } = useScroll();
 
   const [isNavOpen, setIsNavOpen] = useState(true);
-  const debouncedIsNavOpen = useDebounce(isNavOpen, 300);
+  const [debouncedIsNavOpen] = useDebounceValue(isNavOpen, 300);
 
   useEffect(
     () =>

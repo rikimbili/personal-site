@@ -42,3 +42,5 @@ yarn-error.log*
 .idea/workspace.xml
 .idea/usage.statistics.xml
 .idea/shelf
+# next-agents-md
+.next-docs/

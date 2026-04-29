@@ -9,22 +9,31 @@ const REVALIDATE_TIME = 60 * 60; // 1 hour in seconds
 const endpoint = "https://www.googleapis.com/books/v1/volumes/{id}";
 
 async function getBooks(sorted = true) {
-  const results = await Promise.all(
-    books.map(async (book) => {
-      const response = await fetch(endpoint.replace("{id}", book.volumeId), {
-        next: { revalidate: REVALIDATE_TIME },
-      });
-      if (!response.ok) {
-        throw new Error(`Failed to fetch book with id ${book.volumeId}`);
-      }
-      const data = (await response.json()) as Book;
-      data.volumeInfo.description = sanitizeHtml(data.volumeInfo.description, {
-        allowedTags: [],
-        allowedAttributes: {},
-      });
-      return data;
-    }),
-  );
+  const results = (
+    await Promise.all(
+      books.map(async (book) => {
+        try {
+          const response = await fetch(endpoint.replace("{id}", book.volumeId), {
+            next: { revalidate: REVALIDATE_TIME },
+          });
+          if (!response.ok) {
+            return null;
+          }
+          const data = (await response.json()) as Book;
+          data.volumeInfo.description = sanitizeHtml(
+            data.volumeInfo.description,
+            {
+              allowedTags: [],
+              allowedAttributes: {},
+            },
+          );
+          return data;
+        } catch {
+          return null;
+        }
+      }),
+    )
+  ).filter((book): book is Book => book !== null);
 
   if (sorted) {
     results.sort((a, b) => {
@@ -40,10 +49,7 @@ async function getBooks(sorted = true) {
 }
 
 export default async function Bookshelf() {
-  const books = await getBooks().catch((err) => {
-    console.error(err);
-    return [];
-  });
+  const books = await getBooks();
 
   return (
     <>

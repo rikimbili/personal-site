@@ -55,7 +55,12 @@ const nextConfig = {
   transpilePackages: ["next-mdx-remote"],
   reactStrictMode: true,
   images: {
-    domains: ["books.google.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "books.google.com",
+      },
+    ],
   },
   async redirects() {
     return [
