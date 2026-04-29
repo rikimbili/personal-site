@@ -2,7 +2,7 @@
 
 import Button from "@components/Inputs/Button";
 import { spawnVariants } from "@styles/motion-definitions";
-import { m } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { type ForwardedRef, forwardRef, useState } from "react";
 import { MdExpandLess, MdExpandMore } from "react-icons/md";
 
@@ -32,49 +32,65 @@ const Projects = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
       id={"projects"}
       fadeInDelay={0.08}
       className={
-        "flex scroll-mt-20 flex-col gap-4 text-pretty sm:w-full sm:gap-6"
+        "relative flex scroll-mt-20 flex-col gap-6 text-pretty sm:w-full sm:gap-8"
       }
     >
-      <h2
+      <div className={"flex items-center gap-4"}>
+        <h2
+          className={
+            "group flex w-fit select-none items-center gap-2 text-center text-3xl font-semibold sm:text-4xl"
+          }
+        >
+          Projects
+          <AnchorLink
+            href={"#projects"}
+            className={"opacity-0 group-hover:opacity-100"}
+          />
+        </h2>
+      </div>
+      <ul
         className={
-          "group flex w-fit select-none items-center gap-2 text-center text-2xl sm:text-3xl"
+          "grid w-full grid-cols-1 items-stretch gap-6 sm:gap-8 md:grid-cols-2 xl:grid-cols-3"
         }
       >
-        Projects
-        <AnchorLink
-          href={"#projects"}
-          className={"opacity-0 group-hover:opacity-100"}
-        />
-      </h2>
-      <ul className={"grid w-full grid-cols-1 gap-8 sm:gap-12 md:grid-cols-2"}>
-        {projectsToShow.map((project, idx) => (
-          <m.li
-            key={idx}
-            initial={"initial"}
-            whileInView={"visible"}
-            viewport={{
-              once: true,
-            }}
-            variants={spawnVariants}
-            custom={0.08 + (idx % 2) * 0.08}
-          >
-            <ProjectCard
-              key={idx}
-              title={project.title}
-              description={project.description}
-              images={project.images}
-              logo={project.logo}
-              tags={project.tags}
-              visitLink={project.visitLink}
-              sourceLink={project.sourceLink}
-              visitTextOverride={project.visitTextOverride}
-            />
-          </m.li>
-        ))}
+        <AnimatePresence initial={false}>
+          {projectsToShow.map((project, idx) => (
+            <m.li
+              key={project.title}
+              layout
+              initial={"initial"}
+              whileInView={"visible"}
+              exit={{
+                opacity: 0,
+                scale: 0.98,
+                transition: { duration: 0.18 },
+              }}
+              viewport={{
+                once: true,
+              }}
+              variants={spawnVariants}
+              custom={0.08 + (idx % 3) * 0.06}
+              whileHover={{ y: -6 }}
+              transition={{ type: "spring", stiffness: 300, damping: 24 }}
+              className={"min-w-0"}
+            >
+              <ProjectCard
+                title={project.title}
+                description={project.description}
+                images={project.images}
+                logo={project.logo}
+                tags={project.tags}
+                visitLink={project.visitLink}
+                sourceLink={project.sourceLink}
+                visitTextOverride={project.visitTextOverride}
+              />
+            </m.li>
+          ))}
+        </AnimatePresence>
       </ul>
       {projects.length > PROJECTS_TO_SHOW && (
         <Button
-          className={"group mx-auto mt-8"}
+          className={"group mx-auto mt-2"}
           variant={"text"}
           onClick={() => setShowAll((prev) => !prev)}
         >

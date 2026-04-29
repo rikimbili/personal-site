@@ -18,12 +18,12 @@ const Contact = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
       id={"contact"}
       fadeInDelay={0.12}
       className={
-        "flex scroll-mt-20 flex-col gap-4 text-pretty sm:w-full sm:gap-8"
+        "relative flex scroll-mt-20 flex-col gap-4 text-pretty sm:w-full sm:gap-6"
       }
     >
       <h2
         className={
-          "group flex w-fit select-none items-center gap-2 text-center text-2xl sm:text-3xl"
+          "group flex w-fit select-none items-center gap-2 text-center text-3xl font-semibold sm:text-4xl"
         }
       >
         Contact{" "}
@@ -32,8 +32,8 @@ const Contact = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
           className={"opacity-0 group-hover:opacity-100"}
         />
       </h2>
-      <div className={"flex flex-col gap-2 sm:gap-4"}>
-        <p>
+      <div className={"flex max-w-3xl flex-col gap-5 sm:gap-6"}>
+        <p className={"leading-8 text-slate-700 dark:text-slate-200"}>
           Feel free to reach out to me via email at{" "}
           <ExternalLink href="mailto:hey@raciel.dev" target={"_self"}>
             hi@raciel.dev
@@ -44,7 +44,9 @@ const Contact = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
         <div
           className={"flex justify-start gap-4 text-3xl sm:gap-6 sm:text-4xl"}
         >
-          <MdOutlineSubdirectoryArrowRight />
+          <MdOutlineSubdirectoryArrowRight
+            className={"text-indigo-600 dark:text-indigo-300"}
+          />
           <HoverJump>
             <CustomLink href={"https://github.com/Rikimbili"}>
               <SiGithub />
