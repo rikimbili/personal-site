@@ -17,7 +17,18 @@ interface Props {
 }
 
 function increaseCoverRes(image: string) {
-  return image.concat("&fife=w800-h600");
+  try {
+    const url = new URL(image);
+
+    if (url.protocol === "http:" && url.hostname === "books.google.com") {
+      url.protocol = "https:";
+    }
+
+    url.searchParams.set("fife", "w800-h600");
+    return url.toString();
+  } catch {
+    return image;
+  }
 }
 
 const useIsGoogleBooksApiReady = (attempts = 50): boolean => {
